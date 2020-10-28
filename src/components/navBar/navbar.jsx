@@ -6,11 +6,14 @@ import SearchBar from './searchBar/searchbar';
 const NavBar = () => {
   return (
     <div className='Navbar'>
-    <SearchBar/>
-      <div>
-        <Link to='/'>Inicio</Link>
-        <Link to='/'>Vacantes</Link>
-        <Link to='/'>Mi Perfil</Link>
+      <div className='Navbar__Container'>
+        <h1>LinkSquad Logo</h1>
+        <SearchBar />
+        <div>
+          <Link to='/'>Inicio</Link>
+          <Link to='/'>Vacantes</Link>
+          <Link to='/'>Mi Perfil</Link>
+        </div>
       </div>
     </div>
   );

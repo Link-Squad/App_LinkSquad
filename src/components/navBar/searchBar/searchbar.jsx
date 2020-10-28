@@ -1,6 +1,8 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import React, { useEffect, useRef, useState } from 'react';
 import { search } from '../../../services/api.service.js';
-
+import './searchbar.scss';
 const useSearch = () => {
   const [value, setValue] = useState('');
   const intervalId = useRef();
@@ -17,8 +19,7 @@ const useSearch = () => {
     }
 
     intervalId.current = window.setTimeout(() => {
-      search(value)
-      
+      search(value);
     }, 2000);
   }, [value]);
 
@@ -30,12 +31,13 @@ const SearchBar = () => {
 
   return (
     <div className='SearchBar'>
+      <FontAwesomeIcon icon={faSearch} />
       <input
         type='test'
         onChange={onChange}
         value={value}
         className='form-control'
-        placeholder='Search'
+        placeholder=''
       />
 
       {value}

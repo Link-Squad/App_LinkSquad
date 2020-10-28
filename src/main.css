@@ -11,6 +11,10 @@ html {
     font-family: 'Open Sans', sans-serif;
 }
 
+body {
+    margin: 0px;
+}
+
 b,
 em {
     font-weight: 600;

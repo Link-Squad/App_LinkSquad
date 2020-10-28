@@ -1,0 +1,16 @@
+.SearchBar {
+  width: 400px;
+  height: 50%;
+  background-color: whitesmoke;
+  border-radius: 3px;
+
+  svg {
+    padding: 0px 10px;
+  }
+
+  input {
+    width: 85%;
+    height: 100%;
+    padding: 0px;
+  }
+}
