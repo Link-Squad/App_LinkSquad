@@ -1,45 +1,46 @@
-import React, { useEffect, useRef, useState } from 'react'
-//import { search } from '../services/api-client'
+import React, { useEffect, useRef, useState } from 'react';
+import { search } from '../../../services/api.service.js';
 
 const useSearch = () => {
-  const [value, setValue] = useState('')
-  const intervalId = useRef()
+  const [value, setValue] = useState('');
+  const intervalId = useRef();
 
-  const onChange = e => {
-    setValue(e.target.value)
-  }
+  const onChange = (e) => {
+    setValue(e.target.value);
+  };
 
   useEffect(() => {
-    window.clearTimeout(intervalId.current)
+    window.clearTimeout(intervalId.current);
 
     if (value.length <= 3) {
-      return
+      return;
     }
-    
-    /*intervalId.current = window.setTimeout(() => {
-      search(value)
-    }, 2000)*/
-  }, [value])
 
-  return [value, onChange]
-}
+    intervalId.current = window.setTimeout(() => {
+      search(value)
+      
+    }, 2000);
+  }, [value]);
+
+  return [value, onChange];
+};
 
 const SearchBar = () => {
-  const [value, onChange] = useSearch()
+  const [value, onChange] = useSearch();
 
   return (
-    <div className="SearchBar">
+    <div className='SearchBar'>
       <input
-        type="test"
+        type='test'
         onChange={onChange}
         value={value}
-        className="form-control"
-        placeholder="Search"
+        className='form-control'
+        placeholder='Search'
       />
 
       {value}
     </div>
-  )
-}
+  );
+};
 
-export default SearchBar
+export default SearchBar;

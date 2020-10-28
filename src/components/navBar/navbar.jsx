@@ -8,9 +8,9 @@ const NavBar = () => {
     <div className='Navbar'>
     <SearchBar/>
       <div>
-        <Link>Inicio</Link>
-        <Link>Vacantes</Link>
-        <Link>Mi Perfil</Link>
+        <Link to='/'>Inicio</Link>
+        <Link to='/'>Vacantes</Link>
+        <Link to='/'>Mi Perfil</Link>
       </div>
     </div>
   );
