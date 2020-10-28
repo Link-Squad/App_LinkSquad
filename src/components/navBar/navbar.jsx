@@ -1,12 +1,19 @@
-import React from 'react'
+import React from 'react';
 import { Link } from 'react-router-dom';
+import './navbar.scss';
+import SearchBar from './searchBar/searchbar';
 
- const NavBar = () => {
-    return (<div>
-        <Link>Mi Perfil</Link>
-        <Link>Vacantes</Link>
+const NavBar = () => {
+  return (
+    <div className='Navbar'>
+    <SearchBar/>
+      <div>
         <Link>Inicio</Link>
-    </div>)
-}
+        <Link>Vacantes</Link>
+        <Link>Mi Perfil</Link>
+      </div>
+    </div>
+  );
+};
 
 export default NavBar;
