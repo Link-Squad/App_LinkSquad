@@ -1,20 +1,35 @@
-import axios from 'axios'
+import axios from 'axios';
 
+/* CONFIG */
+const http = axios.create({
+	baseURL: process.env.API_URL,
+	withCredentials: true
+});
 
-axios.defaults.baseURL = 'http://localhost:3001'
-axios.defaults.withCredentials = true;
+http.interceptors.response.use(
+	function (response) {
+		return response.data;
+	},
+	function (error) {
+		if (error.response?.status === 401) {
+			localStorage.clear();
+            window.location.assign('/login');
+            //send error msg
+        }
+
+        return Promise.reject(error);
+	}
+);
+
+/* REQUESTS */
+export const login = (email, password) => {
+	return http.post('/login', { email, password }).then((res) => res.data);
+};
 
 export const search = (value) => {
     const path = `?game=${value}`;
-    console.log(path);
-    //http://localhost:3001/games/?game=5f9723b9e28b262b4bc30534
     return axios.get(`/games/${path}`).then((res) => {
         console.log(res.data);
         return res.data
     })
-}
-
-//test
-export const login = (email, password) => {
-    return axios.post('/login', {email, password}).then((res) => res.data)
 }

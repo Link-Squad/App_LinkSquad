@@ -1,0 +1,16 @@
+.Login {
+    background-color: var(--dark-bg-color);
+    width: 40%;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+
+    &__body {
+        margin-bottom: 2.5rem;
+    }
+}
+
+.Login__reset-password {
+    display: block;
+    text-align: right;
+}
+

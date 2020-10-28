@@ -11,8 +11,35 @@ html {
     font-family: 'Open Sans', sans-serif;
 }
 
-b, em {
+b,
+em {
     font-weight: 600;
+}
+
+a {
+    font-size: 0.875rem;
+    color: white;
+}
+
+input {
+    border: none;
+    background-color: inherit;
+}
+
+input:focus {
+    outline: none;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: 'Lato', sans-serif;
 }
 
 .legal {
