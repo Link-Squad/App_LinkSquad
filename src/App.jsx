@@ -5,7 +5,6 @@ import Landing from './components/landing/Landing';
 import Header from './components/header/Header';
 import Home from './components/home/Home';
 import NotFound from './components/notFound/NotFound';
-import InputWithLabel from './components/inputWithLabel/InputWithLabel';
 
 const App = () => {
   return (

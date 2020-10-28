@@ -13,7 +13,7 @@ const InputWithLabel = ({
 	return (
 		<div className="InputWithLabel">
 			<label className="InputWithLabel__label" for={name}>
-				{label}
+				{name}
 			</label>
 			<input
 				className="InputWithLabel__input"

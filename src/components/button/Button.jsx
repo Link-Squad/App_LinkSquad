@@ -1,11 +1,10 @@
 import React from 'react';
 import './Button.scss';
 
-const Button = ({ text, handleClick, value, type, alt}) => {
+const Button = ({ text, handleClick, value, alt}) => {
 	return (
 		<button
 			className={alt ? 'Button Button--alt' : 'Button Button--primary'}
-			type={type || 'button'}
 			value={value}
 			onClick={handleClick}
 		>

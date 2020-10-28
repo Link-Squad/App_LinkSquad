@@ -16,6 +16,11 @@ em {
     font-weight: 600;
 }
 
+a {
+    font-size: 0.875rem;
+    color: white;
+}
+
 input {
     border: none;
     background-color: inherit;
