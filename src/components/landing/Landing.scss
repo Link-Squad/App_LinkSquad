@@ -1,8 +1,38 @@
 .Landing {
-    display: flex;
-    justify-content: center;
-    margin: auto;
-    max-width: 826px;
-    max-height: 635px;
-    background-color: var(--dark-bg-color);
+	margin: auto;
+	max-width: 826px;
+	height: 635px;
+	background-color: var(--dark-bg-color);
+ 	box-shadow: var(--card-shadow); 
+	border-radius: 3px;
+
+	&__nav {
+		height: 19.31%;
+		padding-top: 2rem;
+		padding-right: 2rem;
+		text-align: right;
+
+		& a {
+			text-decoration: none;
+		}
+	}
+
+	&__body {
+		display: flex;
+		& > div {
+            width: 50%;
+            padding: 0 2rem;
+		}
+	}
+
+	&__form {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	&__sidebar {
+        display: flex;
+        justify-content: center;
+	}
 }

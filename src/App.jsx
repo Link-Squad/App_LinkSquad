@@ -11,8 +11,8 @@ const App = () => {
     <div className='App'>
       <Header />
       <Switch>
-        <Route exact path='/home' component={Home} />
-        <Route exact path='/' component={Landing} />
+        <Route exact path='/' component={Home} />
+        <Route exact path='/login' component={Landing} />
         <Route component={NotFound} />
       </Switch>
     </div>
