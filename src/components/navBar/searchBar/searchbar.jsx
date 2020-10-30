@@ -3,11 +3,13 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import React, { useEffect, useRef, useState } from 'react';
 import { search } from '../../../services/api.service.js';
 import './searchbar.scss';
+import ResultsBox from './resultsBox.jsx/ResultsBox.jsx';
 const useSearch = () => {
   const [value, setValue] = useState('');
+  const [results, setResults] = useState('');
   const intervalId = useRef();
-  const results = useRef();
   const onChange = (e) => {
+    setResults('');
     setValue(e.target.value);
   };
 
@@ -19,16 +21,18 @@ const useSearch = () => {
     }
 
     intervalId.current = window.setTimeout(() => {
-      results.current = search(value);
-    }, 2000);
+      search(value).then((res) => {
+        console.log(res);
+        setResults(res);
+      });
+    }, 1500);
   }, [value]);
 
-  return [value, onChange, results.current];
+  return { value, onChange, results };
 };
 
 const SearchBar = () => {
-  const [value, onChange, results] = useSearch();
-
+  const { value, onChange, results } = useSearch();
   return (
     <div className='SearchBar'>
       <FontAwesomeIcon icon={faSearch} />
@@ -39,7 +43,7 @@ const SearchBar = () => {
         className='form-control'
         placeholder=''
       />
-      {results}
+      {results ? <ResultsBox results={results.flat()} /> : undefined}
     </div>
   );
 };

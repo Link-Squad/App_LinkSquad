@@ -1,7 +1,8 @@
 import axios from 'axios';
+
 /* CONFIG */
 const http = axios.create({
-  baseURL: process.env.API_URL || 'http://192.168.0.16:3001',
+  baseURL: process.env.REACT_APP_API_URL,
   withCredentials: true
 });
 
@@ -22,10 +23,11 @@ http.interceptors.response.use(
 
 /* REQUESTS */
 export const login = (email, password) => {
-  return http.post('/login', { email, password }).then((res) => res.data);
+  return http.post('/login', { email, password }).then((data) => data);
 };
 
 export const search = (value) => {
   const path = `?game=${value}`;
-  return http.get(`/games/${path}`);
+
+  return Promise.all([http.get(`/games/${path}`),http.get(`/games/?game=dota`)]).then((data) => data);
 };

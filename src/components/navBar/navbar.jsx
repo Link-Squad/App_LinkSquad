@@ -10,9 +10,9 @@ const NavBar = () => {
         <h1>LinkSquad Logo</h1>
         <SearchBar />
         <div>
-          <Link to='/'>Inicio</Link>
+          <Link to='/login'>Inicio</Link>
           <Link to='/'>Vacantes</Link>
-          <Link to='/'>Mi Perfil</Link>
+          <Link to='/profile'>Mi Perfil</Link>
         </div>
       </div>
     </div>

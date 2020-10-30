@@ -5,6 +5,7 @@ import Landing from './components/landing/Landing';
 import Header from './components/header/Header';
 import Home from './components/home/Home';
 import NotFound from './components/notFound/NotFound';
+import Profile from './components/profile/Profile';
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
       <Switch>
         <Route exact path='/' component={Home} />
         <Route exact path='/login' component={Landing} />
+        <Route exact path='/profile' component={Profile} />
         <Route component={NotFound} />
       </Switch>
     </div>
