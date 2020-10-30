@@ -5,18 +5,16 @@ import Landing from './components/landing/Landing';
 import Header from './components/header/Header';
 import Home from './components/home/Home';
 import NotFound from './components/notFound/NotFound';
-import LoginForm from './components/loginForm/LoginForm';
 
 const App = () => {
   return (
     <div className='App'>
       <Header />
       <Switch>
-        <Route exact path='/' component={Home} />
-        <Route exact path='/landing' component={Landing} />
+        <Route exact path='/home' component={Home} />
+        <Route exact path='/' component={Landing} />
         <Route component={NotFound} />
       </Switch>
-      <LoginForm />
     </div>
   );
 }
