@@ -6,7 +6,7 @@ import './searchbar.scss';
 const useSearch = () => {
   const [value, setValue] = useState('');
   const intervalId = useRef();
-
+  const results = useRef();
   const onChange = (e) => {
     setValue(e.target.value);
   };
@@ -19,15 +19,15 @@ const useSearch = () => {
     }
 
     intervalId.current = window.setTimeout(() => {
-      search(value);
+      results.current = search(value);
     }, 2000);
   }, [value]);
 
-  return [value, onChange];
+  return [value, onChange, results.current];
 };
 
 const SearchBar = () => {
-  const [value, onChange] = useSearch();
+  const [value, onChange, results] = useSearch();
 
   return (
     <div className='SearchBar'>
@@ -39,8 +39,7 @@ const SearchBar = () => {
         className='form-control'
         placeholder=''
       />
-
-      {value}
+      {results}
     </div>
   );
 };
