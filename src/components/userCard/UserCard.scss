@@ -1,3 +1,37 @@
 .UserCard {
+    width: 251px;
+    height: 470px;
     box-shadow: var(--card-shadow);
+
+    &__avatar {
+        width: 100%;
+        height: 36.80%;
+        object-fit: cover;
+    }
+
+    &__body {
+        padding: 0 1rem;
+    }
+
+    &__stats {
+        margin-top: 1.5rem;
+
+        & + .UserCard__stats {
+            margin-bottom: 1.5rem;
+        }
+
+        & span {
+            font-size: 2rem;
+            font-family: 'lato';
+            font-weight: 800;
+            padding-right: 0.8rem;
+        }
+    }
+
+    
+
+    &__Link {
+        margin-top: 2.5rem;
+        margin-bottom: 2.5rem;
+    }
 }
