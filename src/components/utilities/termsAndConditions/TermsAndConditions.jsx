@@ -1,12 +1,13 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import Checkbox from '../checkbox/Checkbox';
 import './TermsAndConditions.scss';
 
-const TermsAndConditions = () => {
+const TermsAndConditions = ({handleChange}) => {
 	return (
 		<div className="TermsAndConditions">
-			<input type="checkbox" className="TermsAndConditions__input"></input>
-			<Link to="#" className="TermsAndConditions__link">
+			<Checkbox handleChange={handleChange}/>
+			<Link to="#" className="TermsAndConditions__link small">
 				I have read and accept the terms and conditions
 			</Link>
 		</div>
