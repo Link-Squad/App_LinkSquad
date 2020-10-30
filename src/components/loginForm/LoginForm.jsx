@@ -9,11 +9,12 @@ import TermsAndConditions from '../utilities/termsAndConditions/TermsAndConditio
 const LoginForm = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	const [isAccepted, setIsAccepted] = useState(false);
 	const [error, setError] = useState('');
 
 	const handleSubmit = (e) => {
 		e.preventDefault(); 
-		console.log({ email, password }); 
+		console.log({ email, password, isAccepted }); 
 		login(email, password)
 			.then((user) => console.log(user)) 
 			.catch((e) => {
@@ -44,7 +45,7 @@ const LoginForm = () => {
 
 			{error && <p>There was an error: {error.message} </p>}
 
-			<TermsAndConditions />
+			<TermsAndConditions  handleChange={(e) => setIsAccepted(!isAccepted)}/>
 			<Button text="Log In" className="Login__submit-button" />
 		</form>
 	);
