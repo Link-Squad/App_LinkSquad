@@ -17,12 +17,12 @@ em {
 }
 
 a {
-    font-size: 0.875rem;
     color: white;
 }
 
 input {
     border: none;
+    font-size: 1rem;
     background-color: inherit;
 }
 
@@ -42,7 +42,7 @@ h5 {
     font-family: 'Lato', sans-serif;
 }
 
-.legal {
+.small {
     font-size: 0.875rem;
 }
 
