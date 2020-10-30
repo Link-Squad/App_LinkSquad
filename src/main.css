@@ -11,12 +11,6 @@ html {
     font-family: 'Open Sans', sans-serif;
 }
 
-<<<<<<< HEAD
-body {
-    margin: 0px;
-}
-
-=======
 html, body, #root, .App {
     min-height: 100vh;
 }
@@ -26,7 +20,6 @@ body {
 }
 
 
->>>>>>> main
 b,
 em {
     font-weight: 600;
