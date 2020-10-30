@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import EventCalendar from "./eventCalendar/eventCalendar";
 import "./UserCard.scss";
 
 const UserCard = ({ user }) => {
@@ -14,7 +15,7 @@ const UserCard = ({ user }) => {
 					<p className="UserCard__stats">
 						<span>{user.friends}</span> Friends
 					</p>
-					<p>CLICKABLE TEXT</p>
+					<EventCalendar />
 				</div>
 
 				<Link
