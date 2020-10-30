@@ -1,25 +1,26 @@
 import React, { useState } from 'react';
-import InputWithLabel from '../inputWithLabel/InputWithLabel';
-import Button from '../button/Button';
+import InputWithLabel from '../utilities/inputWithLabel/InputWithLabel';
+import Button from '../utilities/button/Button';
 import './LoginForm.scss';
 import { Link } from 'react-router-dom';
-import {login} from '../../services/api.service';
-import TermsAndConditions from '../termsAndConditions/TermsAndConditions';
+import { login } from '../../services/api.service';
+import TermsAndConditions from '../utilities/termsAndConditions/TermsAndConditions';
 
 const LoginForm = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	const [isAccepted, setIsAccepted] = useState(false);
 	const [error, setError] = useState('');
 
 	const handleSubmit = (e) => {
-		e.preventDefault();
-		console.log({ email, password });
+		e.preventDefault(); 
+		console.log({ email, password, isAccepted }); 
 		login(email, password)
-			.then(user => console.log(user))
-			.catch(e => {
+			.then((user) => console.log(user)) 
+			.catch((e) => {
 				console.log(e);
 				setError(e);
-			})
+			});
 	};
 
 	return (
@@ -37,14 +38,14 @@ const LoginForm = () => {
 					value={password}
 					handleChange={(e) => setPassword(e.target.value)}
 				/>
-				<Link to="#" className="Login__reset-password">
+				<Link to="#" className="Login__reset-password small">
 					Forgot your password?
 				</Link>
 			</div>
 
 			{error && <p>There was an error: {error.message} </p>}
 
-			<TermsAndConditions/>	
+			<TermsAndConditions  handleChange={(e) => setIsAccepted(!isAccepted)}/>
 			<Button text="Log In" className="Login__submit-button" />
 		</form>
 	);

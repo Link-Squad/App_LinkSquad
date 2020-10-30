@@ -6,27 +6,39 @@ html {
     --dark-bg-color: #2A2F3E;
     --light-bg-color: #07C7C1;
     --main-color: #F56059;
-    --card-shadow: 0, 4px, 10px, #2A2F3E;
-    --graph-shadow: 0, 2px, 6px, #2a2f3e;
+    --card-shadow: 0 4px 10px 0 #2A2F3E;
+    --graph-shadow: 0 2px 6px #2a2f3e;
     font-family: 'Open Sans', sans-serif;
 }
 
+<<<<<<< HEAD
 body {
     margin: 0px;
 }
 
+=======
+html, body, #root, .App {
+    min-height: 100vh;
+}
+
+body {
+    margin: 0;
+}
+
+
+>>>>>>> main
 b,
 em {
     font-weight: 600;
 }
 
 a {
-    font-size: 0.875rem;
     color: white;
 }
 
 input {
     border: none;
+    font-size: 1rem;
     background-color: inherit;
 }
 
@@ -46,7 +58,7 @@ h5 {
     font-family: 'Lato', sans-serif;
 }
 
-.legal {
+.small {
     font-size: 0.875rem;
 }
 
