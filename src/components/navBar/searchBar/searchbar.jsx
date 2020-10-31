@@ -12,7 +12,10 @@ const useSearch = () => {
     setResults('');
     setValue(e.target.value);
   };
-
+  const resetSearchBar = (e) => {
+    setResults('');
+    setValue('');
+  };
   useEffect(() => {
     window.clearTimeout(intervalId.current);
 
@@ -28,11 +31,16 @@ const useSearch = () => {
     }, 1500);
   }, [value]);
 
-  return { value, onChange, results };
+
+
+  return { value, onChange, results, resetSearchBar};
 };
 
+
+
 const SearchBar = () => {
-  const { value, onChange, results } = useSearch();
+  const { value, onChange, results, resetSearchBar } = useSearch();
+
   return (
     <div className='SearchBar'>
       <FontAwesomeIcon icon={faSearch} />
@@ -43,7 +51,7 @@ const SearchBar = () => {
         className='form-control'
         placeholder=''
       />
-      {results ? <ResultsBox results={results} /> : undefined}
+      {results ? <ResultsBox results={results} onClickShowResults={resetSearchBar}/> : undefined}
     </div>
   );
 };
