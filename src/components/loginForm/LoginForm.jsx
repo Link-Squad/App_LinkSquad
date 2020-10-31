@@ -1,26 +1,75 @@
-import React, { useState } from 'react';
-import InputWithLabel from '../utilities/inputWithLabel/InputWithLabel';
-import Button from '../utilities/button/Button';
-import './LoginForm.scss';
-import { Link } from 'react-router-dom';
-import { login } from '../../services/api.service';
-import TermsAndConditions from '../utilities/termsAndConditions/TermsAndConditions';
+import React, { useState } from "react";
+import InputWithLabel from "../utilities/inputWithLabel/InputWithLabel";
+import Button from "../utilities/button/Button";
+import "./LoginForm.scss";
+import { Link } from "react-router-dom";
+import { login } from "../../services/api.service";
+import TermsAndConditions from "../utilities/termsAndConditions/TermsAndConditions";
+import validationsFn, {
+	validationFn
+} from "../../constants/validations.constants";
 
 const LoginForm = () => {
-	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
+	/*STATE & HOOKS */
+	const [state, setState] = useState({
+		data: {
+			email: "",
+			password: ""
+		},
+		error: {
+			email: "",
+			password: "",
+		},
+		touch: {}
+	});
 	const [isAccepted, setIsAccepted] = useState(false);
-	const [error, setError] = useState('');
+	const [loginError, setLoginError] = useState(null);
 
-	const handleSubmit = (e) => {
-		e.preventDefault(); 
-		console.log({ email, password, isAccepted }); 
+	const { data, error, touch } = state;
+	const { email, password } = data;
+	const isError = !isAccepted && Object.values(error).some(err => err)
+
+	/* HANDLERS */
+	const handleSubmit = e => {
+		e.preventDefault();
 		login(email, password)
-			.then((user) => console.log(user)) 
-			.catch((e) => {
-				console.log(e);
-				setError(e);
+			.then(user => console.log(user))
+			.catch(e => {
+				setLoginError(e.response?.data?.message);
 			});
+	};
+
+	const handleChange = e => {
+		const { name, value } = e.target;
+		const isValid = validationsFn(value);
+
+		setState(prev => {
+			return {
+				...prev,
+				data: {
+					...prev.data,
+					[name]: value
+				},
+				error: {
+					...prev.error,
+					[name]: !isValid
+				}
+			};
+		});
+	};
+
+	const handleBlur = e => {
+		const { name } = e.target;
+
+		setState(prev => {
+			return {
+				...prev,
+				touch: {
+					...touch,
+					[name]: true
+				}
+			};
+		});
 	};
 
 	return (
@@ -30,13 +79,15 @@ const LoginForm = () => {
 					name="email"
 					type="email"
 					value={email}
-					handleChange={(e) => setEmail(e.target.value)}
+					handleChange={handleChange}
+					handleBlur={handleBlur}
 				/>
 				<InputWithLabel
 					name="password"
 					type="password"
 					value={password}
-					handleChange={(e) => setPassword(e.target.value)}
+					handleChange={handleChange}
+					handleBlur={handleBlur}
 				/>
 				<Link to="#" className="Login__reset-password small">
 					Forgot your password?
@@ -45,8 +96,11 @@ const LoginForm = () => {
 
 			{error && <p>There was an error: {error.message} </p>}
 
-			<TermsAndConditions  handleChange={(e) => setIsAccepted(!isAccepted)}/>
-			<Button text="Log In" className="Login__submit-button" />
+			<TermsAndConditions
+				handleChange={() => setIsAccepted(!isAccepted)}
+				handleBlur={handleBlur}
+			/>
+			<Button text="Log In" className="Login__submit-button" isDisabled={isError} />
 		</form>
 	);
 };

@@ -5,13 +5,13 @@ import Header from "./components/header/Header";
 import Home from "./components/home/Home";
 import NotFound from "./components/notFound/NotFound";
 import Profile from "./components/profile/Profile";
-import './App.scss';
+import "./App.scss";
 
 const App = () => {
 	return (
 		<div className="App">
 			<Header />
-      <div className='App_container' style={{backgroundImage: 'url(./background.png)'}}>
+      <div className='App__container' style={{backgroundImage: 'url(./background.png)'}}>
         <div className="App__content">
           <Switch>
             <Route exact path="/" component={Home} />

@@ -32,6 +32,11 @@
 	background-color: var(--dark-bg-color);
 }
 
+button:disabled{
+	background-color: slategray;
+	border: 2px solid slategray;
+}
+
 .icon {
 	font-size: 25px;
 	color: black;
