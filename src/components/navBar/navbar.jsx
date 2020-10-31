@@ -5,7 +5,7 @@ import SearchBar from './searchBar/searchbar';
 
 const NavBar = () => {
   return (
-    <div className='Navbar'>
+    <navbar className='Navbar'>
       <div className='Navbar__Container'>
         <h1>LinkSquad Logo</h1>
         <SearchBar />
@@ -15,7 +15,7 @@ const NavBar = () => {
           <Link to='/profile'>Profile</Link>
         </div>
       </div>
-    </div>
+    </navbar>
   );
 };
 
