@@ -1,0 +1,39 @@
+.PlayerCardLong {
+    max-width: 826px;
+    height: 188px;
+    display: flex;
+
+    &__avatar {
+        height: 100%;
+        width: 190px
+    }
+
+    &__body {
+        margin: 1rem 1.5rem;
+        width: calc(828px - 190px);
+    }
+
+    &__header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+    }
+
+    &__title {
+        margin-right: 0.5rem;
+    }
+
+    &__games-wrapper {
+        margin-bottom: 1.5rem;
+    }
+
+    &__game-icon {
+        width: 45px;
+        height: 45px;
+    }
+
+    &__footer {
+         display: flex;
+         justify-content: space-between;
+    }
+}
