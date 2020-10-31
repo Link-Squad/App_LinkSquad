@@ -1,6 +1,6 @@
 .App {
 	&__container {
-		height: calc(100vh - 4.9375rem);
+		min-height: calc(100vh - 4.9375rem);
 	}
 
 	&__content {

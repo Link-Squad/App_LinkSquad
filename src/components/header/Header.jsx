@@ -2,9 +2,9 @@ import React from 'react'
 import NavBar from '../navBar/navbar'
 
  const Header = () => {
-    return <div>
+    return <header>
         <NavBar/>
-    </div>
+    </header>
 }
 
 export default Header;
