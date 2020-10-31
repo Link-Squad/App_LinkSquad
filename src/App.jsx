@@ -11,14 +11,16 @@ const App = () => {
 	return (
 		<div className="App">
 			<Header />
-			<div className="App__content" style={{backgroundImage: 'url(./background.png)'}}>
-				<Switch>
-					<Route exact path="/" component={Home} />
-					<Route exact path="/login" component={Landing} />
-					<Route exact path="/profile" component={Profile} />
-					<Route component={NotFound} />
-				</Switch>
-			</div>
+      <div className='App_container' style={{backgroundImage: 'url(./background.png)'}}>
+        <div className="App__content">
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/login" component={Landing} />
+            <Route exact path="/profile" component={Profile} />
+            <Route component={NotFound} />
+          </Switch>
+        </div>
+      </div>
 		</div>
 	);
 };
