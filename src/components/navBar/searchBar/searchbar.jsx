@@ -36,6 +36,7 @@ const SearchBar = () => {
   return (
     <div className='SearchBar'>
       <FontAwesomeIcon icon={faSearch} />
+      <FontAwesomeIcon icon={["far", "fa-calendar"]} />
       <input
         type='test'
         onChange={onChange}
