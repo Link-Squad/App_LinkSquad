@@ -36,7 +36,6 @@ const SearchBar = () => {
   return (
     <div className='SearchBar'>
       <FontAwesomeIcon icon={faSearch} />
-      <FontAwesomeIcon icon={["far", "fa-calendar"]} />
       <input
         type='test'
         onChange={onChange}
@@ -44,7 +43,7 @@ const SearchBar = () => {
         className='form-control'
         placeholder=''
       />
-      {results ? <ResultsBox results={results.flat()} /> : undefined}
+      {results ? <ResultsBox results={results} /> : undefined}
     </div>
   );
 };

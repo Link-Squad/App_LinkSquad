@@ -1,7 +1,7 @@
 .SearchBar {
   width: 400px;
   height: 50%;
-  background-color: whitesmoke;
+  background-color: white;
   border-radius: 3px;
 
   svg {
@@ -12,5 +12,6 @@
     width: 85%;
     height: 100%;
     padding: 0px;
+    background-color: transparent;
   }
 }
