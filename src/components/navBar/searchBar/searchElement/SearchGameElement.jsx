@@ -1,7 +1,7 @@
 import React from 'react';
 import './SearchElement.scss';
 
-const SearchElement = ({ game }) => {
+const SearchGameElement = ({ game }) => {
   //console.log(game);
   return (
     <div className='SearchElement'>
@@ -14,4 +14,4 @@ const SearchElement = ({ game }) => {
   );
 };
 
-export default SearchElement;
+export default SearchGameElement;

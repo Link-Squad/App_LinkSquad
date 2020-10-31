@@ -11,8 +11,8 @@ const NavBar = () => {
         <SearchBar />
         <div>
           <Link to='/login'>Home</Link>
-          <Link to='/'>Vacantes</Link>
-          <Link to='/profile'>Mi Perfil</Link>
+          <Link to='/'>Vacants</Link>
+          <Link to='/profile'>Profile</Link>
         </div>
       </div>
     </div>

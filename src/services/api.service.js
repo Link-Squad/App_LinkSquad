@@ -27,7 +27,7 @@ export const login = (email, password) => {
 };
 
 export const search = (value) => {
-  const path = `?game=${value}`;
-
-  return Promise.all([http.get(`/games/${path}`),http.get(`/games/?game=dota`)]).then((data) => data);
+  const gamePath = `?game=${value}`;
+  const userPath = `?username=${value}`;
+  return Promise.all([http.get(`/games/${gamePath}`),http.get(`/users/search/${userPath}`)]).then((data) => data);
 };
