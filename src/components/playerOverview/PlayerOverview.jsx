@@ -5,7 +5,7 @@ import "./PlayerOverview.scss";
 
 const PlayerOverview = ({ player }) => {
 	return (
-		<div className="PlayerOverview">
+		<div className="PlayerOverview card">
 			<img src={player.img} className="PlayerOverview__avatar" />
 			<article className="PlayerOverview__body">
 				<p className="title">{player.username}</p>
