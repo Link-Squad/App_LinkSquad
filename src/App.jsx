@@ -11,7 +11,7 @@ const App = () => {
 	return (
 		<div className="App">
 			<Header />
-      <div className='App_container' style={{backgroundImage: 'url(./background.png)'}}>
+      <div className='App__container' style={{backgroundImage: 'url(./background.png)'}}>
         <div className="App__content">
           <Switch>
             <Route exact path="/" component={Home} />
