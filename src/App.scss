@@ -1,8 +1,9 @@
 .App {
 	&__container {
-		margin-top: 3.5rem;
+		min-height: calc(100vh - 4.9375rem);
 	}
 	&__content {
+		padding-top: 3.5rem;
 		max-width: 1100px;
 		margin-right: auto;
 		margin-left: auto;
