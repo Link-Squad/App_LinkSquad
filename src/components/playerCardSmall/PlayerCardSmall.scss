@@ -1,4 +1,4 @@
-.PlayerOverview {
+.PlayerCardSmall {
     width: 214px;
     height: 343px;
 
@@ -16,7 +16,7 @@
         margin: 0.5rem 0
     }
 
-    &__icon + .PlayerOverview__icon{
+    &__icon + .PlayerCardSmall__icon{
         margin-left: 0.5rem
     }
 
