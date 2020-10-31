@@ -4,6 +4,6 @@ const VALIDATIONS = {
     password: v => v.length
 }
 
-const validationsFn = (name) => VALIDATIONS[name];
+const validationsFn = (name, value) => VALIDATIONS[name](value);
 
 export default validationsFn

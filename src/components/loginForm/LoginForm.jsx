@@ -5,9 +5,7 @@ import "./LoginForm.scss";
 import { Link } from "react-router-dom";
 import { login } from "../../services/api.service";
 import TermsAndConditions from "../utilities/termsAndConditions/TermsAndConditions";
-import validationsFn, {
-	validationFn
-} from "../../constants/validations.constants";
+import validationsFn from "../../constants/validations.constants";
 
 const LoginForm = () => {
 	/*STATE & HOOKS */
@@ -17,8 +15,8 @@ const LoginForm = () => {
 			password: ""
 		},
 		error: {
-			email: "",
-			password: "",
+			email: true,
+			password: true,
 		},
 		touch: {}
 	});
@@ -27,7 +25,7 @@ const LoginForm = () => {
 
 	const { data, error, touch } = state;
 	const { email, password } = data;
-	const isError = !isAccepted && Object.values(error).some(err => err)
+	const isFormValid = isAccepted && Object.values(error).every(err => !err)
 
 	/* HANDLERS */
 	const handleSubmit = e => {
@@ -41,7 +39,7 @@ const LoginForm = () => {
 
 	const handleChange = e => {
 		const { name, value } = e.target;
-		const isValid = validationsFn(value);
+		const isValid = validationsFn(name, value);
 
 		setState(prev => {
 			return {
@@ -72,6 +70,7 @@ const LoginForm = () => {
 		});
 	};
 
+	/* RENDER */
 	return (
 		<form className="Login" onSubmit={handleSubmit}>
 			<div className="Login__body">
@@ -81,6 +80,7 @@ const LoginForm = () => {
 					value={email}
 					handleChange={handleChange}
 					handleBlur={handleBlur}
+					error={error.email && touch.email && "* Invalid email"}
 				/>
 				<InputWithLabel
 					name="password"
@@ -88,19 +88,18 @@ const LoginForm = () => {
 					value={password}
 					handleChange={handleChange}
 					handleBlur={handleBlur}
+					error={error.password && touch.password && "* Invalid password"}
 				/>
 				<Link to="#" className="Login__reset-password small">
 					Forgot your password?
 				</Link>
 			</div>
 
-			{error && <p>There was an error: {error.message} </p>}
-
 			<TermsAndConditions
 				handleChange={() => setIsAccepted(!isAccepted)}
 				handleBlur={handleBlur}
 			/>
-			<Button text="Log In" className="Login__submit-button" isDisabled={isError} />
+			<Button text="Log In" className="Login__submit-button" isDisabled={!isFormValid} />
 		</form>
 	);
 };

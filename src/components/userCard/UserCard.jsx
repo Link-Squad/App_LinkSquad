@@ -6,7 +6,7 @@ import "./UserCard.scss";
 const UserCard = ({ user }) => {
 	return (
 		<div className="UserCard card">
-			<img className="UserCard__avatar" src={user.img} />
+			<img className="UserCard__avatar" alt="your user avatar" src={user.img} />
 			<article className="UserCard__body">
 				<div className="UserCard__stats-wrapper">
 					<p className="UserCard__stats">

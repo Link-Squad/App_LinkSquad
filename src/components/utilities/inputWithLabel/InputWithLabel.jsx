@@ -1,5 +1,5 @@
-import React from 'react';
-import './InputWithLabel.scss';
+import React from "react";
+import "./InputWithLabel.scss";
 
 const InputWithLabel = ({
 	name,
@@ -7,13 +7,17 @@ const InputWithLabel = ({
 	handleBlur,
 	handleChange,
 	placeholder,
-	type
+	type,
+	error
 }) => {
 	return (
 		<div className="InputWithLabel">
-			<label className="InputWithLabel__label" htmlFor={name}>
-				{name}
-			</label>
+			<div className="InputWithLabel__label-wrapper">
+				<label className="InputWithLabel__label" htmlFor={name}>
+					{name}
+				</label>
+				<p className="InputWithLabel__error small">{error}</p>
+			</div>
 			<input
 				className="InputWithLabel__input"
 				id={name}
@@ -21,11 +25,11 @@ const InputWithLabel = ({
 				value={value}
 				onChange={handleChange}
 				onBlur={handleBlur}
-				placeholder={placeholder || ''}
-				type={type || 'text'}
+				placeholder={placeholder || ""}
+				type={type || "text"}
 			></input>
 		</div>
 	);
 };
 
-export default InputWithLabel
+export default InputWithLabel;

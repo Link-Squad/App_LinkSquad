@@ -17,4 +17,15 @@
         font-weight: 600;
         color: var(--main-color);
     }
+
+    &__label-wrapper {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__error {
+        text-align: right;
+        color: #0EAAA8;
+        font-weight: 800;
+    }
 }
