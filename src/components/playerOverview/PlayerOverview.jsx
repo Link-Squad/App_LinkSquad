@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaYoutube } from "react-icons/fa";
 import "./PlayerOverview.scss";
 
 const PlayerOverview = ({ player }) => {
@@ -11,7 +10,6 @@ const PlayerOverview = ({ player }) => {
 				<p className="title">{player.username}</p>
 				<div>
 					<Link to={player.social.youtube}>
-						<FaYoutube />
 					</Link>
 				</div>
 				<Link
