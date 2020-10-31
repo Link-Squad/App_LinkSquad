@@ -7,7 +7,7 @@ const NavBar = () => {
   return (
     <navbar className='Navbar'>
       <div className='Navbar__Container'>
-        <h1>LinkSquad Logo</h1>
+        <img src='logo.png' alt='linksquad logo'/>
         <SearchBar />
         <div>
           <Link to='/login'>Home</Link>
