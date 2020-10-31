@@ -1,11 +1,12 @@
+import { faCalendar } from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import {FaCalendar} from 'react-icons/fa'
 import './eventCalendar.scss';
 
 const EventCalendar = () => {
 
     return (
-        <p className="EventCalendar"><FaCalendar className="EventCalendar__icon"/>View my events calendar</p>
+        <p className="EventCalendar"><FontAwesomeIcon icon={faCalendar} className="EventCalendar__icon"/>View my events</p>
     )
 }
 

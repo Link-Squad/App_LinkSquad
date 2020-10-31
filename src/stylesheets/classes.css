@@ -1,0 +1,25 @@
+.small {
+	font-size: 0.875rem;
+}
+
+.title {
+	font-size: 1.875rem;
+}
+
+.title--alt {
+	font-size: 1.5;
+	font-weight: 900;
+}
+
+.card {
+	border-color: var(--dark-bg-color);
+	box-shadow: var(--card-shadow);
+}
+
+.button--fake {
+    display: inline-block;
+	border-radius: 3px;
+	padding: 0.6875rem 2.1562rem;
+	color: white;
+	border: 2px solid var(--main-color);
+}
