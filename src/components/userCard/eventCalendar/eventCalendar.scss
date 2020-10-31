@@ -1,0 +1,12 @@
+.EventCalendar {
+	text-decoration: underline;
+	color: #444956;
+
+	&__icon {
+		padding-right: 0.6rem;
+	}
+
+	&:hover {
+		cursor: pointer;
+	}
+}
