@@ -15,7 +15,7 @@ const Landing = () => {
 					<LoginForm />
 				</div>
 				<div className="Landing__sidebar">
-					<img className="Landing__img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Controller.svg/1024px-Controller.svg.png" height="265" width="265"/>
+					<img className="Landing__img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Controller.svg/1024px-Controller.svg.png" height="265" width="265" alt="controller logo"/>
 				</div>
 			</section>
 		</main>
