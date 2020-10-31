@@ -1,0 +1,21 @@
+.SearchElement {  
+  height: 60px;  
+  display: flex;
+  & > :first-child {
+    margin: 0px;
+  }
+
+  & > img {
+    width: 50px;
+    height: 80%;
+  }
+}
+
+.TextContainer {
+  margin: 0px;
+  margin-left: 5px;
+
+  p {
+    margin: 0px;
+  }
+}
