@@ -29,11 +29,11 @@ const PlayerCardLong = ({ player }) => {
 				</div>
 
 				<div className="PlayerCardLong__footer">
-					<div className="PlayerCard__languages-wrapper">
+					<ul className="PlayerCard__languages-wrapper">
 						{player.languages?.map(language => (
-							<span className="language-box">{language}</span>
+							<li className="language-box">{language}</li>
 						))}
-					</div>
+					</ul>
                     <Link to={`/users/${player.id}`}  className="button--fake button--primary">View Profile </Link>
 				</div>
 			</article>

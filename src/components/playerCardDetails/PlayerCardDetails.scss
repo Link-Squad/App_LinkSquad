@@ -1,0 +1,22 @@
+.PlayerCardDetails {
+	min-height: 34.9375rem;
+	width: 16.6875rem;
+
+	&__avatar {
+		width: 100%;
+		height: 10.81rem;
+		object-fit: cover;
+	}
+
+	&__body {
+		padding: 1.5rem 3.5rem 1rem;
+    }
+
+	&__title {
+		margin-bottom: 0.5rem;
+    }
+    
+    &__team {
+        margin-bottom: 0.5rem;
+    }
+}
