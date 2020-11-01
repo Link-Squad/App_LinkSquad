@@ -2,7 +2,7 @@ import React from 'react';
 import './SearchElement.scss';
 
 const SearchGameElement = ({ game }) => {
-  //console.log(game);
+  console.log(game);
   return (
     <div className='SearchElement'>
       <img src='./MGX_logo.png' alt='movistar gaming experience logo' />
