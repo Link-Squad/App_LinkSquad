@@ -21,9 +21,9 @@ const PlayerCardLong = ({ player }) => {
 				<div className="PlayerCardLong__games-wrapper">
 					{player.games?.map(game => (
 						<img
-							src={game.logo}
-							alt="game that the player plays"
-							className="PlayerCardLong__game-logo"
+							src={game.icon}
+							alt={`icon of ${game.name}`}
+							className="PlayerCardLong__game-icon"
 						/>
 					))}
 				</div>

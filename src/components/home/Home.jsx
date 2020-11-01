@@ -5,70 +5,27 @@ import PlayerCardLong from '../playerCardLong/PlayerCardLong';
 import PlayerCardSmall from '../playerCardSmall/PlayerCardSmall';
 import UserCard from '../userCard/UserCard';
 import './Home.scss';
-const player1 = {
-	username: 'bo$$619',
-	friends: 58,
-	views: 401,
-	social: { youtube: 'http://www.youtube.com' },
-	id: 324234234,
-	img:
-		'https://www.choiceofgames.com/press-files/screenshots/deathless/ios/iTunesArtwork.png',
 
-	games: [
-		{
-			name: 'Overwatch',
-			icon: 'https://maxcdn.icons8.com/Color/PNG/512/Logos/overwatch-512.png',
-			logo:
-				'https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Overwatch_circle_logo.svg/1200px-Overwatch_circle_logo.svg.png'
-		}
-	],
+import {user1, user2} from '../../mocks/users.mock';
+import { overwatch } from '../../mocks/games.mock';
 
-	languages: ['Español']
-};
 const Home = () => {
 	return (
 		<main className="Home">
 			Home
 			<UserCard
-				user={{
-					username: 'josete',
-					friends: 58,
-					views: 401,
-					id: 324234234,
-					img: 'https://cdn141.picsart.com/275574803034201.jpg'
-				}}
+				user={user2}
 			/>
-			<PlayerCardLong player={player1} />
+			<PlayerCardLong player={user1} />
 			<PlayerCardSmall
-				player={{
-					username: 'bo$$619',
-					friends: 58,
-					views: 401,
-					social: { youtube: 'http://www.youtube.com' },
-					id: 324234234,
-					img:
-						'https://www.choiceofgames.com/press-files/screenshots/deathless/ios/iTunesArtwork.png'
-				}}
+				player={user1}
 			/>
 			<GameCardDetails
-				game={{
-					date: '20/04/96',
-					genre: 'MOBA',
-					platforms: [
-						'PS4',
-						'PC',
-						'XBOX One',
-						'Wii',
-						'Gameboy Color',
-						'Commodore 61',
-						'Texas instruments calculator'
-					],
-					logo:
-						'https://logos-download.com/wp-content/uploads/2019/06/Dota_2_Logo.png'
-				}}
+				game={overwatch
+				}
 			/>
 
-			<PlayerCardDetails player={player1}/>
+			<PlayerCardDetails player={user1}/>
 		</main>
 	);
 };
