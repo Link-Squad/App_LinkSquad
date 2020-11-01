@@ -17,6 +17,7 @@ const player1 = {
 	games: [
 		{
 			name: 'Overwatch',
+			icon: 'https://maxcdn.icons8.com/Color/PNG/512/Logos/overwatch-512.png',
 			logo:
 				'https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Overwatch_circle_logo.svg/1200px-Overwatch_circle_logo.svg.png'
 		}
