@@ -7,13 +7,17 @@ const InputWithLabel = ({
 	handleBlur,
 	handleChange,
 	placeholder,
-	type
+	type,
+	error
 }) => {
 	return (
 		<div className="InputWithLabel">
-			<label className="InputWithLabel__label" htmlFor={name}>
-				{name}
-			</label>
+			<div className="InputWithLabel__label-wrapper">
+				<label className="InputWithLabel__label" htmlFor={name}>
+					{name}
+				</label>
+				<p className="InputWithLabel__error small">{error}</p>
+			</div>
 			<input
 				className="InputWithLabel__input"
 				id={name}
@@ -28,4 +32,4 @@ const InputWithLabel = ({
 	);
 };
 
-export default InputWithLabel
+export default InputWithLabel;
