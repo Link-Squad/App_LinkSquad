@@ -26,15 +26,16 @@ const Home = () => {
 					id: 324234234,
 					img:
 						"https://www.choiceofgames.com/press-files/screenshots/deathless/ios/iTunesArtwork.png",
-          
-          games: [
-             {
-              name: 'Overwatch',
-              logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Overwatch_circle_logo.svg/1200px-Overwatch_circle_logo.svg.png'
-            }
-          ],
 
-          languages: ['Español']
+					games: [
+						{
+							name: "Overwatch",
+							logo:
+								"https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Overwatch_circle_logo.svg/1200px-Overwatch_circle_logo.svg.png"
+						}
+					],
+
+					languages: ["Español"]
 				}}
 			/>
 			<PlayerCardSmall
@@ -48,8 +49,15 @@ const Home = () => {
 						"https://www.choiceofgames.com/press-files/screenshots/deathless/ios/iTunesArtwork.png"
 				}}
 			/>
-
-			<GameCardDetails game={{date: '20/04/96'}} />
+			<GameCardDetails
+				game={{
+					date: "20/04/96",
+					genre: 'MOBA',
+					platforms: ['PS4', 'PC', 'XBOX One', 'Wii', 'Gameboy Color', 'Commodore 61', 'Texas instruments calculator'],
+					logo:
+						"https://logos-download.com/wp-content/uploads/2019/06/Dota_2_Logo.png"
+				}}
+			/>
 		</main>
 	);
 };
