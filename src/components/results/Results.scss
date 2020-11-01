@@ -1,0 +1,7 @@
+.Results {
+    display: flex;
+    justify-content: space-between;
+    &__content {
+        flex-direction: column;
+    }
+}

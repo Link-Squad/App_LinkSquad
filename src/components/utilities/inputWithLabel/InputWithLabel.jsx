@@ -1,5 +1,5 @@
-import React from "react";
-import "./InputWithLabel.scss";
+import React from 'react';
+import './InputWithLabel.scss';
 
 const InputWithLabel = ({
 	name,
@@ -25,8 +25,8 @@ const InputWithLabel = ({
 				value={value}
 				onChange={handleChange}
 				onBlur={handleBlur}
-				placeholder={placeholder || ""}
-				type={type || "text"}
+				placeholder={placeholder || ''}
+				type={type || 'text'}
 			></input>
 		</div>
 	);

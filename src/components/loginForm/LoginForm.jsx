@@ -1,22 +1,22 @@
-import React, { useState } from "react";
-import InputWithLabel from "../utilities/inputWithLabel/InputWithLabel";
-import Button from "../utilities/button/Button";
-import "./LoginForm.scss";
-import { Link } from "react-router-dom";
-import { login } from "../../services/api.service";
-import TermsAndConditions from "../utilities/termsAndConditions/TermsAndConditions";
-import validationsFn from "../../constants/validations.constants";
+import React, { useState } from 'react';
+import InputWithLabel from '../utilities/inputWithLabel/InputWithLabel';
+import Button from '../utilities/button/Button';
+import './LoginForm.scss';
+import { Link } from 'react-router-dom';
+import { login } from '../../services/api.service';
+import TermsAndConditions from '../utilities/termsAndConditions/TermsAndConditions';
+import validationsFn from '../../constants/validations.constants';
 
 const LoginForm = () => {
 	/*STATE & HOOKS */
 	const [state, setState] = useState({
 		data: {
-			email: "",
-			password: ""
+			email: '',
+			password: ''
 		},
 		error: {
 			email: true,
-			password: true,
+			password: true
 		},
 		touch: {}
 	});
@@ -25,7 +25,7 @@ const LoginForm = () => {
 
 	const { data, error, touch } = state;
 	const { email, password } = data;
-	const isFormValid = isAccepted && Object.values(error).every(err => !err)
+	const isFormValid = isAccepted && Object.values(error).every(err => !err);
 
 	/* HANDLERS */
 	const handleSubmit = e => {
@@ -80,7 +80,7 @@ const LoginForm = () => {
 					value={email}
 					handleChange={handleChange}
 					handleBlur={handleBlur}
-					error={error.email && touch.email && "* Invalid email"}
+					error={error.email && touch.email && '* Invalid email'}
 				/>
 				<InputWithLabel
 					name="password"
@@ -88,7 +88,9 @@ const LoginForm = () => {
 					value={password}
 					handleChange={handleChange}
 					handleBlur={handleBlur}
-					error={error.password && touch.password && "* Invalid password"}
+					error={
+						error.password && touch.password && '* Invalid password'
+					}
 				/>
 				<Link to="#" className="Login__reset-password small">
 					Forgot your password?
@@ -99,7 +101,11 @@ const LoginForm = () => {
 				handleChange={() => setIsAccepted(!isAccepted)}
 				handleBlur={handleBlur}
 			/>
-			<Button text="Log In" className="Login__submit-button" isDisabled={!isFormValid} />
+			<Button
+				text="Log In"
+				className="Login__submit-button"
+				isDisabled={!isFormValid}
+			/>
 		</form>
 	);
 };
