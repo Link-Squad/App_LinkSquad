@@ -1,0 +1,50 @@
+.GameCardDetails {
+	width: 15.6875rem;
+	min-height: 29.875rem;
+
+	&__logo {
+		height: 36.19%;
+		max-height: 173px;
+		width: 100%;
+		display: block;
+	}
+
+	&__body {
+		padding: 1.5rem 1rem 2.5rem;
+
+		&:first-child > h3 {
+			display: inline;
+		}
+	}
+
+	&__info {
+		margin-bottom: 0.5rem;
+	}
+
+	&__title {
+		font-weight: 600;
+		font-family: "Lato", sans-serif;
+	}
+
+	&__platforms-list {
+        display: flex;
+        flex-wrap: wrap;
+
+		& li {
+			& + li {
+			}
+			&::after {
+				content: "|";
+				padding-right: 0.5rem;
+				padding-left: 0.5rem;
+			}
+		}
+		& :last-child::after {
+			content: "";
+		}
+	}
+
+	&__link {
+		margin-top: 1rem;
+	}
+}

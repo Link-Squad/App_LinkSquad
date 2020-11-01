@@ -14,6 +14,7 @@
 .card {
 	border-color: var(--dark-bg-color);
 	box-shadow: var(--card-shadow);
+	border-radius: 3px;
 	background-color: #fff;
 }
 
@@ -23,13 +24,15 @@
 	padding: 0.6875rem 2.1562rem;
 	color: white;
 	border: 2px solid var(--main-color);
-}
-
-.button--primary {
 	background-color: var(--main-color);
 }
 
-.button--alt {
+.button--fake-alt {
+	display: inline-block;
+	border-radius: 3px;
+	padding: 0.6875rem 2.1562rem;
+	color: white;
+	border: 2px solid var(--main-color);
 	background-color: var(--dark-bg-color);
 }
 
@@ -42,4 +45,10 @@ button:disabled {
 .icon {
 	font-size: 25px;
 	color: black;
+}
+
+.language-box {
+	color: var(--light-bg-color);
+	border: 2px solid var(--light-bg-color);
+	padding: 0.5rem 0.68rem;
 }

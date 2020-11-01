@@ -3,10 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import './eventCalendar.scss';
 
-const EventCalendar = () => {
+const EventCalendar = ({whose}) => {
 
     return (
-        <p className="EventCalendar"><FontAwesomeIcon icon={faCalendar} className="EventCalendar__icon"/>View my events</p>
+        <p className="EventCalendar"><FontAwesomeIcon icon={faCalendar} className="EventCalendar__icon"/>View {whose} events</p>
     )
 }
 
