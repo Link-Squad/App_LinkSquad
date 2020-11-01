@@ -1,4 +1,5 @@
 import React from "react";
+import GameCardDetails from "../gameCardDetails/GameCardDetails";
 import PlayerCardLong from "../playerCardLong/PlayerCardLong";
 import PlayerCardSmall from "../playerCardSmall/PlayerCardSmall";
 import UserCard from "../userCard/UserCard";
@@ -29,7 +30,7 @@ const Home = () => {
           games: [
              {
               name: 'Overwatch',
-              icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Overwatch_circle_logo.svg/1200px-Overwatch_circle_logo.svg.png'
+              logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Overwatch_circle_logo.svg/1200px-Overwatch_circle_logo.svg.png'
             }
           ],
 
@@ -47,6 +48,8 @@ const Home = () => {
 						"https://www.choiceofgames.com/press-files/screenshots/deathless/ios/iTunesArtwork.png"
 				}}
 			/>
+
+			<GameCardDetails game={{date: '20/04/96'}} />
 		</main>
 	);
 };
