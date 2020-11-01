@@ -6,7 +6,7 @@ import './TermsAndConditions.scss';
 const TermsAndConditions = ({handleChange}) => {
 	return (
 		<div className="TermsAndConditions">
-			<Checkbox handleChange={handleChange}/>
+			<Checkbox handleChange={handleChange} value={true}/>
 			<Link to="#" className="TermsAndConditions__link small">
 				I have read and accept the terms and conditions
 			</Link>
