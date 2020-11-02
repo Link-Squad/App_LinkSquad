@@ -14,7 +14,6 @@ import { offer1 } from '../../mocks/offers.mock';
 const Home = () => {
 	return (
 		<main className="Home">
-			Home
 			<UserCard user={user2} />
 			<PlayerCardLong player={user1} />
 			<PlayerCardSmall player={user1} />
