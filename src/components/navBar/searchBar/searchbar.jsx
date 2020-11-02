@@ -28,7 +28,7 @@ const useSearch = () => {
         console.log(res);
         setResults(res);
       });
-    }, 1500);
+    }, 500);
   }, [value]);
 
 

@@ -1,3 +1,5 @@
+import { faShareAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './OfferCard.scss';
@@ -32,7 +34,8 @@ const OfferCard = ({ offer }) => {
 				</article>
 			</div>
 			<div className="OfferCard__footer">
-                <p>Team sponsored by: </p>
+				<FontAwesomeIcon icon={faShareAlt} />
+                <p>Share</p>
             </div>
 		</div>
 	);
