@@ -12,6 +12,7 @@ const DropDownFilter = ({ text }) => {
       {open === true ? (
         <div className='DropDown_open_container'></div>
       ) : undefined}
+      <hr></hr>
     </div>
   );
 };
