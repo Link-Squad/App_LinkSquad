@@ -7,6 +7,7 @@ import NotFound from './components/notFound/NotFound';
 import Profile from './components/profile/Profile';
 import './App.scss';
 import Results from './components/results/Results';
+import Footer from './components/footer/Footer';
 
 const App = () => {
   return (
@@ -26,6 +27,8 @@ const App = () => {
           </Switch>
         </div>
       </div>
+
+      <Footer/>
     </div>
   );
 

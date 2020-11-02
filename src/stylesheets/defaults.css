@@ -4,6 +4,7 @@ html {
 	--main-color: #f56059;
 	--card-shadow: 0 4px 10px 0 #2a2f3e;
 	--graph-shadow: 0 2px 6px #2a2f3e;
+	--content-width: 1100px;
 	font-family: "Open Sans", sans-serif;
 }
 
