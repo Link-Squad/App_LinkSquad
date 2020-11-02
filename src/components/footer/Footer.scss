@@ -1,0 +1,37 @@
+.Footer {
+    height: 5.6875rem;
+    background-color: var(--dark-bg-color);
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    color: white;
+
+
+    &__content {
+        width: var(--content-width);
+        height: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__nav a{
+        margin-right: 2.5rem;
+    }
+
+    &__info {
+        display: flex;
+        align-items: baseline;
+
+        & .SocialLinks {
+            margin-left: 2rem;
+            margin-right: 1rem;
+
+            & svg {
+                color: white;
+            }
+        }
+    }
+}

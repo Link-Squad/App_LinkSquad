@@ -1,8 +1,9 @@
 import React from 'react'
 import NavBar from '../navBar/navbar'
+import './Header.scss';
 
  const Header = () => {
-    return <header>
+    return <header className="Header">
         <NavBar/>
     </header>
 }
