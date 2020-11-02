@@ -1,13 +1,14 @@
 import React from 'react';
 import SearchGameElement from '../../navBar/searchBar/searchElement/SearchGameElement';
-import SearchUserElement from '../../navBar/searchBar/searchElement/SearchUserElement';
+import PlayerCardLong from '../../playerCardLong/PlayerCardLong';
 import './ResultCard.scss';
 const ResultCard = ({ game, user }) => {
   console.log({ game, user });
   return (
     <div className='ResultCard'>
       {game ? <SearchGameElement game={game} /> : undefined}
-      {user ? <SearchUserElement user={user} /> : undefined}
+      {user ? <PlayerCardLong player={user} /> : undefined}
+      
     </div>
   );
 };

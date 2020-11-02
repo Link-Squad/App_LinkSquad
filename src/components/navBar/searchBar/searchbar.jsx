@@ -19,7 +19,7 @@ const useSearch = () => {
   useEffect(() => {
     window.clearTimeout(intervalId.current);
 
-    if (value.length <= 3) {
+    if (value.length <= 1) {
       return;
     }
 
