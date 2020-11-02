@@ -7,7 +7,6 @@ import "./Home.scss";
 const Home = () => {
 	return (
 		<main className="Home">
-			Home
 			<UserCard
 				user={{
 					username: "josete",

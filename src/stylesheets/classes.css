@@ -44,7 +44,7 @@ button:disabled {
 
 .icon {
 	font-size: 25px;
-	color: black;
+	color: var(--dark-bg-color);
 }
 
 .language-box {
