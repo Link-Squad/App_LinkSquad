@@ -27,6 +27,10 @@
 	background-color: var(--main-color);
 }
 
+.button--fake a {
+	text-decoration: none;
+}
+
 .button--fake-alt {
 	display: inline-block;
 	border-radius: 3px;
@@ -34,6 +38,10 @@
 	color: white;
 	border: 2px solid var(--main-color);
 	background-color: var(--dark-bg-color);
+}
+
+.button--fake-alt a {
+	text-decoration: none;
 }
 
 button:disabled {

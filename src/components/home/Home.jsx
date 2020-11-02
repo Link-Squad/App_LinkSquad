@@ -10,8 +10,12 @@ import { user1, user2 } from '../../mocks/users.mock';
 import { overwatch } from '../../mocks/games.mock';
 import OfferCard from '../offerCard/OfferCard';
 import { offer1 } from '../../mocks/offers.mock';
+import { useAuthContext } from '../../contexts/AuthContext';
 
 const Home = () => {
+	const authContext = useAuthContext();
+	const user = authContext.user;
+
 	return (
 		<main className="Home">
 			<UserCard user={user2} />
