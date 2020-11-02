@@ -1,8 +1,12 @@
 .Results {
     width: 1100px;
     display: flex;
-    justify-content: space-between;
+
     &__content {
         flex-direction: column;
+        margin-left: 24px;
+    }
+    &__left-side {
+        width: 251px;
     }
 }
