@@ -16,7 +16,7 @@ const PlayerCardLong = ({ player }) => {
 					<h2 className="PlayerCardLong__title title">
 						{player.username}
 					</h2>
-					<SocialLinks social={player.social} />
+					{player.social ? <SocialLinks social={player.social} /> : undefined}
 				</div>
 				<div className="PlayerCardLong__games-wrapper">
 					{player.games?.map(game => (
