@@ -21,19 +21,19 @@ const PlayerCardLong = ({ player }) => {
 				<div className="PlayerCardLong__games-wrapper">
 					{player.games?.map(game => (
 						<img
-							src={game.logo}
-							alt="game that the player plays"
-							className="PlayerCardLong__game-logo"
+							src={game.icon}
+							alt={`icon of ${game.name}`}
+							className="PlayerCardLong__game-icon"
 						/>
 					))}
 				</div>
 
 				<div className="PlayerCardLong__footer">
-					<div className="PlayerCard__languages-wrapper">
+					<ul className="PlayerCard__languages-wrapper">
 						{player.languages?.map(language => (
-							<span className="language-box">{language}</span>
+							<li className="language-box">{language}</li>
 						))}
-					</div>
+					</ul>
                     <Link to={`/users/${player.id}`}  className="button--fake button--primary">View Profile </Link>
 				</div>
 			</article>

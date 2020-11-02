@@ -9,7 +9,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./SocialLinks.scss";
 
 const SocialLinks = ({ social }) => {
-	console.log(social);
 
 	return (
 		<div className="SocialLinks">

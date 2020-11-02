@@ -1,0 +1,47 @@
+.OfferCard {
+	width: 51.625rem;
+	height: 14.4375rem;
+
+	&__content {
+        height: 12.5rem;
+        display: flex;
+    }
+
+	&__img {
+		width: 38.5rem;
+		height: 100%;
+		object-fit: cover;
+            clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%);
+    }
+    
+    &__body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        flex: 1;
+    }
+
+	&__requirements {
+        display: flex;
+
+        & p {
+            text-align: center;
+        }
+
+		& img {
+			width: 3.75rem;
+            height: 3rem;
+			object-fit: contain;
+		}
+	}
+
+	&__footer {
+        background-color: var(--dark-bg-color);
+        color: white;
+        height: calc(100% - 12.5rem);
+        display: flex;
+        align-items: center;
+        padding-left: 1.5rem;
+	}
+}

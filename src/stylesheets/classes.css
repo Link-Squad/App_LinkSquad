@@ -44,11 +44,12 @@ button:disabled {
 
 .icon {
 	font-size: 25px;
-	color: black;
+	color: var(--dark-bg-color);
 }
 
 .language-box {
 	color: var(--light-bg-color);
 	border: 2px solid var(--light-bg-color);
 	padding: 0.5rem 0.68rem;
+	display: inline-block;
 }
