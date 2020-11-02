@@ -5,6 +5,7 @@
   margin-top: -3px;
   padding: 0px 16px;
   animation: stretch 1.5s;
+  position: relative;
   
   &-NoResults {
     @extend .ResultsBox;
