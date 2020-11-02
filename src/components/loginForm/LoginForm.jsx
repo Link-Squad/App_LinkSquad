@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { login } from '../../services/api.service';
 import TermsAndConditions from '../utilities/termsAndConditions/TermsAndConditions';
 import validationsFn from '../../constants/validations.constants';
+import { useAuthContext } from '../../contexts/AuthContext';
 
 const LoginForm = () => {
 	/*STATE & HOOKS */
@@ -23,6 +24,8 @@ const LoginForm = () => {
 	const [isAccepted, setIsAccepted] = useState(false);
 	const [loginError, setLoginError] = useState(null);
 
+	const authContext = useAuthContext();
+
 	const { data, error, touch } = state;
 	const { email, password } = data;
 	const isFormValid = isAccepted && Object.values(error).every(err => !err);
@@ -31,7 +34,7 @@ const LoginForm = () => {
 	const handleSubmit = e => {
 		e.preventDefault();
 		login(email, password)
-			.then(user => console.log(user))
+			.then(user => authContext.login(user))
 			.catch(e => {
 				setLoginError(e.response?.data?.message);
 			});
@@ -101,6 +104,9 @@ const LoginForm = () => {
 				handleChange={() => setIsAccepted(!isAccepted)}
 				handleBlur={handleBlur}
 			/>
+			
+					{loginError && <p>{loginError}</p>}
+
 			<Button
 				text="Log In"
 				className="Login__submit-button"
