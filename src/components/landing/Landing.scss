@@ -4,31 +4,43 @@
 	width: 75.09%;
 	height: 71%;
 	background-color: var(--dark-bg-color);
- 	box-shadow: var(--card-shadow); 
+	box-shadow: var(--card-shadow);
 	border-radius: 3px;
-
-	&__nav {
-		height: 19.31%;
-		text-align: right;
-	}
-
-	&__body {
-		display: flex;
-		justify-content: space-between;
-	}
+	display: flex;
 
 	&__form {
+		width: 50%;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 	}
 
-	&__img {
-		width: 36%;
-		object-fit: contain;
+	&__nav {
+		&-wrapper {
+			width: 50%;
+			display: flex;
+			flex-direction: column;
+		}
+
+		&-links {
+			display: flex;
+			text-align: center;
+
+			& a {
+				flex-grow: 1;
+			}
+		}
 	}
 
-	@media only screen and (max-width: 700px){
-		width: 90vw;	
+	&__img {
+		width: 69.55%;
+		margin-left: auto;
+		margin-right: auto;
+		object-fit: contain;
+		flex-grow: 1;
+	}
+
+	@media only screen and (max-width: 700px) {
+		width: 90vw;
 	}
 }

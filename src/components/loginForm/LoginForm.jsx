@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import InputWithLabel from '../utilities/inputWithLabel/InputWithLabel';
 import Button from '../utilities/button/Button';
-import './LoginForm.scss';
 import { Link } from 'react-router-dom';
 import { login } from '../../services/api.service';
 import TermsAndConditions from '../utilities/termsAndConditions/TermsAndConditions';
 import validationsFn from '../../constants/validations.constants';
 import { useAuthContext } from '../../contexts/AuthContext';
+import './LoginForm.scss';
 
 const LoginForm = () => {
 	/*STATE & HOOKS */
