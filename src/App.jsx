@@ -8,6 +8,7 @@ import Profile from './components/profile/Profile';
 import './App.scss';
 import Results from './components/results/Results';
 import Footer from './components/footer/Footer';
+import AuthenticatedRoute from './components/utilities/authenticatedRoute/AuthenticatedRoute';
 
 const App = () => {
   return (
@@ -19,9 +20,9 @@ const App = () => {
       >
         <div className='App__content'>
           <Switch>
-            <Route exact path='/' component={Home} />
+            <AuthenticatedRoute exact path='/home' component={Home} />
             <Route exact path='/login' component={Landing} />
-            <Route exact path='/profile' component={Profile} />
+            <AuthenticatedRoute exact path='/profile' component={Profile} />
             <Route exact path='/results' component={Results} />
             <Route component={NotFound} />
           </Switch>

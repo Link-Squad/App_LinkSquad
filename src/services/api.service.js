@@ -26,6 +26,10 @@ export const login = (email, password) => {
   return http.post('/login', { email, password }).then((data) => data);
 };
 
+export const logout = () => {
+  return http.get('/logout')
+}
+
 export const search = (value) => {
   const gamePath = `?game=${value}`;
   const userPath = `?username=${value}`;
