@@ -5,7 +5,7 @@
 	}
 
 	&__content {
-		width: var(--content-width);
+		max-width: var(--content-width);
 		max-height: 50rem;
 		padding-top: 3.5rem;
 		margin-right: auto;
