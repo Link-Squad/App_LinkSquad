@@ -1,7 +1,8 @@
 import React from 'react';
-import SearchGameElement from '../../navBar/searchBar/searchElement/SearchGameElement';
 import PlayerCardLong from '../../playerCardLong/PlayerCardLong';
+import SearchGameElement from '../../header/searchBar/searchElement/SearchGameElement';
 import './ResultCard.scss';
+
 const ResultCard = ({ game, user }) => {
   console.log({ game, user });
   return (
