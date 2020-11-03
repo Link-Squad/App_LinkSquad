@@ -1,17 +1,22 @@
 .App {
 	&__container {
-		min-height: calc(100vh - 4.9375rem);
+		background-size: cover;
+		height: calc(92.575vh);
 		display: flex;
 		background-repeat: no-repeat;
 		background-size: cover;
 	}
 
 	&__content {
-		width: var(--content-width);
+		max-width: var(--content-width);
 		max-height: 50rem;
 		padding-top: 3.5rem;
 		margin-right: auto;
 		margin-left: auto;
 		overflow-y: scroll;
+
+		@media only screen and(min-width: 1100px) {
+			min-width: var(--content-width);
+		}
 	}
 }

@@ -28,7 +28,9 @@ const App = () => {
         </div>
       </div>
 
-      <Footer/>
+     <Switch>
+      <Route exact path='/login' component={Footer} />
+     </Switch> 
     </div>
   );
 
