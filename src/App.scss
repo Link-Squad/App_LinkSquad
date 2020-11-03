@@ -1,5 +1,6 @@
 .App {
 	&__container {
+		background-size: cover;
 		height: calc(92.575vh);
 		display: flex;
 	}
@@ -11,5 +12,9 @@
 		margin-right: auto;
 		margin-left: auto;
 		overflow-y: scroll;
+
+		@media only screen and(min-width: 1100px) {
+			min-width: var(--content-width);
+		}
 	}
 }

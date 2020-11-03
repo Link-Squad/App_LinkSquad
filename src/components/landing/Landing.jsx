@@ -21,7 +21,7 @@ const Landing = () => {
 				</div>
 				<img
 					className="Landing__img"
-					src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Controller.svg/1024px-Controller.svg.png"
+					src="/img/controller.png"
 					alt="controller logo"
 				/>
 			</section>
