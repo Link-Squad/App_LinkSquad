@@ -1,5 +1,5 @@
 .Footer {
-    height: 5.6875rem;
+    height: 8.55vh;
     background-color: var(--dark-bg-color);
     position: fixed;
     width: 100%;
@@ -8,7 +8,7 @@
 
 
     &__content {
-        width: var(--content-width);
+        max-width: var(--content-width);
         height: 100%;
         margin-left: auto;
         margin-right: auto;
