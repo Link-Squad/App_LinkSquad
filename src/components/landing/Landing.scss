@@ -1,15 +1,14 @@
 .Landing {
 	margin: auto;
-	max-width: 826px;
-	height: 635px;
+	padding: 2rem;
+	width: 58.36%;
+	height: 71%;
 	background-color: var(--dark-bg-color);
  	box-shadow: var(--card-shadow); 
 	border-radius: 3px;
 
 	&__nav {
 		height: 19.31%;
-		padding-top: 2rem;
-		padding-right: 2rem;
 		text-align: right;
 
 		& a {
@@ -19,10 +18,7 @@
 
 	&__body {
 		display: flex;
-		& > div {
-            width: 50%;
-            padding: 0 2rem;
-		}
+		justify-content: space-between;
 	}
 
 	&__form {
@@ -31,8 +27,12 @@
 		justify-content: center;
 	}
 
-	&__sidebar {
-        display: flex;
-        justify-content: center;
+	&__img {
+		width: 36%;
+		object-fit: contain;
+	}
+
+	@media only screen and (max-width: 700px){
+		width: 90vw;	
 	}
 }
