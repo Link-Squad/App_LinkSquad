@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Footer from '../footer/Footer';
 import LoginForm from '../loginForm/LoginForm';
 import './Landing.scss';
 
