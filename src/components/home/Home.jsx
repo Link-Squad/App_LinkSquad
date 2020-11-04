@@ -17,14 +17,25 @@ const Home = () => {
 	const user = authContext.user;
 
 	return (
-		<main className="Home">
-			<UserCard user={user2} />
-			<PlayerCardLong player={user1} />
-			<PlayerCardSmall player={user1} />
-			<GameCardDetails game={overwatch} />
-			<PlayerCardDetails player={user1} />
-			<OfferCard offer={offer1} />
-		</main>
+		<div className="Home">
+			<aside className="Home__aside">
+				<UserCard user={user} />
+				<div>Footer goes here</div>
+			</aside>
+			<main>
+				<section>
+					<h2>Friend Suggestions</h2>
+					<div className="friend-suggestions">
+						<PlayerCardSmall player={user1} />
+						<PlayerCardSmall player={user2} />
+					</div>
+				</section>
+				<section>
+					<h2>News</h2>
+					<OfferCard offer={offer1} />
+				</section>
+			</main>
+		</div>
 	);
 };
 
