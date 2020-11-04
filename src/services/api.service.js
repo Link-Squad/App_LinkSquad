@@ -35,3 +35,8 @@ export const search = (value) => {
   const userPath = `?username=${value}`;
   return Promise.all([http.get(`/games/${gamePath}`),http.get(`/users/search/${userPath}`)]).then((data) => data);
 };
+
+
+export const findFriends = (user) => {
+  const {games, languages} = user;
+}
