@@ -1,46 +1,49 @@
 import React, { useState } from 'react';
 import InputWithLabel from '../utilities/inputWithLabel/InputWithLabel';
 import Button from '../utilities/button/Button';
-import { Link, Redirect, useHistory, useLocation } from 'react-router-dom';
-import { login } from '../../services/api.service';
+import { Link, useHistory, useLocation } from 'react-router-dom';
+import { signup } from '../../services/api.service';
 import TermsAndConditions from '../utilities/termsAndConditions/TermsAndConditions';
 import validationsFn from '../../constants/validations.constants';
 import { useAuthContext } from '../../contexts/AuthContext';
-import './LoginForm.scss';
+import './SignupForm.scss';
 
-const LoginForm = () => {
+const SignupForm = () => {
 	/*STATE & HOOKS */
 	const [state, setState] = useState({
 		data: {
+			username: '',
 			email: '',
 			password: ''
 		},
 		error: {
+			username: true,
 			email: true,
 			password: true
 		},
 		touch: {}
 	});
 	const location = useLocation();
-	const [loginError, setLoginError] = useState(location?.state?.loginError);
+	const [isAccepted, setIsAccepted] = useState(false);
+	const [signupError, setSignupError] = useState(location?.state?.signupError);
 
 	const authContext = useAuthContext();
 	const history = useHistory();
 
 	const { data, error, touch } = state;
-	const { email, password } = data;
-	const isFormValid = Object.values(error).every(err => !err);
+	const { email, password, username } = data;
+	const isFormValid = isAccepted && Object.values(error).every(err => !err);
 
 	/* HANDLERS */
 	const handleSubmit = e => {
 		e.preventDefault();
-		login(email, password)
+		signup(data)
 			.then(user => {
 				authContext.login(user);
-				history.push('/home')
+				history.push('/create');
 			})
 			.catch(e => {
-				setLoginError(e.response?.data?.message);
+				setSignupError(e.response?.data?.message);
 			});
 	};
 
@@ -79,8 +82,18 @@ const LoginForm = () => {
 
 	/* RENDER */
 	return (
-		<form className="Login" onSubmit={handleSubmit}>
-			<div className="Login__body">
+		<form className="Signup" onSubmit={handleSubmit}>
+			<div className="Signup__body">
+				<InputWithLabel
+					name="username"
+					type="text"
+					value={username}
+					handleChange={handleChange}
+					handleBlur={handleBlur}
+					error={
+						error.username && touch.username && '* Invalid username'
+					}
+				/>
 				<InputWithLabel
 					name="email"
 					type="email"
@@ -89,6 +102,7 @@ const LoginForm = () => {
 					handleBlur={handleBlur}
 					error={error.email && touch.email && '* Invalid email'}
 				/>
+
 				<InputWithLabel
 					name="password"
 					type="password"
@@ -99,22 +113,22 @@ const LoginForm = () => {
 						error.password && touch.password && '* Invalid password'
 					}
 				/>
-				<Link to="#" className="Login__reset-password small">
-					Forgot your password?
-				</Link>
 			</div>
 
-			
+			<TermsAndConditions
+				handleChange={() => setIsAccepted(!isAccepted)}
+				handleBlur={handleBlur}
+			/>
 
-			{loginError && <p style={{ color: 'red' }}>{loginError}</p>}
+			{signupError && <p style={{ color: 'red' }}>{signupError}</p>}
 
 			<Button
-				text="Log In"
-				className="Login__submit-button"
+				text="Create an account"
+				className="Signup__submit-button"
 				isDisabled={!isFormValid}
 			/>
 		</form>
 	);
 };
 
-export default LoginForm;
+export default SignupForm;

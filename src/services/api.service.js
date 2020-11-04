@@ -26,6 +26,11 @@ export const login = (email, password) => {
   return http.post('/login', { email, password }).then((data) => data);
 };
 
+export const signup = (newUser) => {
+  const {username, email, password} = newUser;
+  return http.post('/users' , {username, email, password}).then(data => data)
+}
+
 export const logout = () => {
   return http.get('/logout')
 }

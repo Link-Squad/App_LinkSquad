@@ -1,4 +1,4 @@
-.Landing {
+.Auth {
 	margin: auto;
 	padding: 2rem;
 	width: 75.09%;
@@ -10,9 +10,15 @@
 
 	&__form {
 		width: 50%;
+		padding-left: 1rem;
+		padding-right: 1rem;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+
+		& form {
+			flex-grow: 1;
+		}
 	}
 
 	&__nav {
@@ -22,11 +28,11 @@
 			flex-direction: column;
 		}
 
-		&-links {
+		&-buttons {
 			display: flex;
 			text-align: center;
 
-			& a {
+			& button {
 				flex-grow: 1;
 				text-decoration: none;
 			}
