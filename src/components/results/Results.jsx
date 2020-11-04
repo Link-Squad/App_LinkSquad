@@ -26,6 +26,7 @@ const Results = (props) => {
           }}
         />
         <FilterBox />
+        <p>Legal Stuff</p>
       </div>
       <div className='Results__content'>
         {gameResults.length > 0

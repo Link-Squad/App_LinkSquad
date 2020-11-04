@@ -2,21 +2,29 @@ import React, { useState } from 'react';
 import './DropDownFilter.scss';
 import Checkbox from '../../../utilities/checkbox/Checkbox';
 
-const DropDownFilter = ({ text,handleChange, value}) => {
+const DropDownFilter = ({ text, handleChange, options }) => {
   const [open, setOpen] = useState(false);
   const handleClick = () => {
     setOpen(!open);
   };
 
   return (
-    <div className='DropDownFilter' onClick={handleClick}>
-      <p>{text}</p>
+    <div className='DropDownFilter'>
+      <p onClick={handleClick}>{text}</p>
       {open === true ? (
         <div className='DropDownFilter_open_container'>
-          <Checkbox handleChange={handleChange} value={value} text='Players'/>
+          {options.map((element) => {
+            return (
+              <Checkbox
+                name={element}
+                handleChange={handleChange}
+                value={false}
+                text={element}
+              />
+            );
+          })}
         </div>
       ) : undefined}
-      <hr></hr>
     </div>
   );
 };

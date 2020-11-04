@@ -1,6 +1,5 @@
 .FilterBox {
     width: 250px;
-    height: 373px;
     background-color: rgba( #2a2f3e, 0.5);
     margin-top: 24px;
     box-shadow: var(--card-shadow);
@@ -8,6 +7,9 @@
     border: 1px solid;
     border-color: var(--dark-bg-color);
     color: white;
-    
-    
+    padding-bottom: 24px;
+
+    button {
+        margin-left: 14px;
+    }
 }

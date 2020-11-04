@@ -7,13 +7,13 @@ import './ResultsBox.scss';
 const ResultsBox = ({ results, onClickShowResults }) => {
   const gameResults = results[0];
   const userResults = results[1];
-  const boxHeight = (gameResults.length + userResults.length) * 60 + 60;
+  //const boxHeight = (gameResults.length + userResults.length) * 60 + 60;
   if (gameResults.length > 0 || userResults.length > 0) {
     //const eventResults = results[2];
     return (
       <div
         className='ResultsBox'
-        style={{ maxHeight: `${boxHeight.toString()}px` }}
+        //style={{ maxHeight: `${boxHeight.toString()}px` }}
       >
         <hr className='grow'></hr>
         {gameResults
