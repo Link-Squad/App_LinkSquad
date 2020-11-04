@@ -21,7 +21,7 @@ const App = () => {
       >
         <div className='App__content'>
           <Switch>
-            <AuthenticatedRoute exact path='/home' component={Home} />
+            <AuthenticatedRoute exact path='/' component={Home} />
             <UnauthenticatedRoute exact path='/login' component={Landing} />
             <AuthenticatedRoute exact path='/profile' component={Profile} />
             <Route exact path='/results' component={Results} />
