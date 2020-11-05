@@ -18,6 +18,7 @@ const SOCIAL_MEDIA = ['twitch', 'twitter', 'youtube', 'discord'];
 
 const FillDetails = () => {
 	const [pageNumber, setPageNumber] = useState(1);
+	const [gamesIds, setGamesIds] = useState()
 	const [state, setState] = useState({
 		data: {
 			languages: LANGUAGES.reduce(
@@ -25,11 +26,10 @@ const FillDetails = () => {
 				{}
 			),
 			games: [],
-			social: {
-				twitter: '',
-				twitch: '',
-				discord: ''
-			}
+			social: SOCIAL_MEDIA.reduce(
+				(o, key) => Object.assign(o, { [key]: '' }),
+				{}
+			)
 		}
 	});
 
@@ -37,7 +37,6 @@ const FillDetails = () => {
 	const progress = (pageNumber / maxPageNumber) * 100 + '%';
 	const progressBarWidth = { width: progress };
 	const { data } = state;
-	const { youtube, twitch, twitter, discord } = data.social;
 
 	const handleInput = e => {
 		const { value, name } = e.target;
@@ -76,6 +75,8 @@ const FillDetails = () => {
 					(o, game) => Object.assign(o, { [game.name]: false }),
 					{}
 				);
+
+				setGamesIds(gamesArray.reduce((o, game) => Object.assign(o, {[game.name] : game.id}), {}))
 				setState(prev => {
 					return {
 						...prev,
@@ -103,6 +104,19 @@ const FillDetails = () => {
 				}
 			};
 		});
+	};
+
+	const handleSubmit = e => {
+		const languages = Object.keys(data.languages).filter(
+			l => data.languages[l]
+		);
+		const games = Object.keys(data.games).filter(g => data.games[g]).map(selectedGame => gamesIds[selectedGame]);
+		//validate links!
+		const social = data.social;
+
+		const userData = { languages, games, social };
+		e.preventDefault();
+		console.log(userData);
 	};
 
 	/* DECLARATIONS */
@@ -145,7 +159,7 @@ const FillDetails = () => {
 		};
 
 		return (
-			<div className="social-media__item">
+			<div className="social-media__item" key={socialName}>
 				<label htmlFor={socialName} className="social-media__icon">
 					<FontAwesomeIcon icon={socialIcons[socialName]} />
 				</label>
@@ -176,6 +190,8 @@ const FillDetails = () => {
 	const renderAvatarUpload = () => (
 		<div>
 			<h2>Upload your avatar here</h2>
+
+			<Button type="submit" text="Done!" />
 		</div>
 	);
 
@@ -208,7 +224,9 @@ const FillDetails = () => {
 					</span>
 				</div>
 			</div>
-			<form className="FillDetails__form">{content[pageNumber]}</form>
+			<form className="FillDetails__form" onSubmit={handleSubmit}>
+				{content[pageNumber]}
+			</form>
 
 			<footer className="FillDetails__footer">
 				<Button

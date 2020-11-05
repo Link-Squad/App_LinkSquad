@@ -31,6 +31,10 @@ export const signup = (newUser) => {
   return http.post('/users' , {username, email, password}).then(data => data)
 }
 
+export const update = (updatedUser) => {
+  return http.patch('/users', {updatedUser}).then(data => data)
+}
+
 export const logout = () => {
   return http.get('/logout')
 }
