@@ -40,7 +40,7 @@ const SignupForm = () => {
 		signup(data)
 			.then(user => {
 				authContext.login(user);
-				history.push('/create');
+				history.push('/fill-details');
 			})
 			.catch(e => {
 				setSignupError(e.response?.data?.message);
