@@ -1,13 +1,9 @@
 import React from 'react';
-import GameCardDetails from '../gameCardDetails/GameCardDetails';
-import PlayerCardDetails from '../playerCardDetails/PlayerCardDetails';
-import PlayerCardLong from '../playerCardLong/PlayerCardLong';
 import PlayerCardSmall from '../playerCardSmall/PlayerCardSmall';
 import UserCard from '../userCard/UserCard';
 import './Home.scss';
 
 import { user1, user2 } from '../../mocks/users.mock';
-import { overwatch } from '../../mocks/games.mock';
 import OfferCard from '../offerCard/OfferCard';
 import { offer1 } from '../../mocks/offers.mock';
 import { useAuthContext } from '../../contexts/AuthContext';

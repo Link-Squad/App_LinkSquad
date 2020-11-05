@@ -35,6 +35,10 @@ export const logout = () => {
   return http.get('/logout')
 }
 
+export const getGames = () => {
+  return http.get('/games')
+}
+
 export const search = (value) => {
   const gamePath = `?game=${value}`;
   const userPath = `?username=${value}`;

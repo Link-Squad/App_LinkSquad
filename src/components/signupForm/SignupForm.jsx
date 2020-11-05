@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import InputWithLabel from '../utilities/inputWithLabel/InputWithLabel';
 import Button from '../utilities/button/Button';
-import { Link, useHistory, useLocation } from 'react-router-dom';
+import {  useHistory, useLocation } from 'react-router-dom';
 import { signup } from '../../services/api.service';
 import TermsAndConditions from '../utilities/termsAndConditions/TermsAndConditions';
 import validationsFn from '../../constants/validations.constants';
