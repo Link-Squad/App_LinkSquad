@@ -1,31 +1,40 @@
 .InputWithLabel {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1rem;
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 1rem;
 
-    &__input {
-        border-bottom: 2px solid var(--main-color);
-        padding-left: 0.5rem;
-        color: white;
-        background-color: inherit;
+	&__input {
+		border-bottom: 2px solid var(--main-color);
+		padding-left: 0.5rem;
+		color: white;
+		background-color: inherit;
+	}
 
-    }
+	&__label {
+		margin-bottom: 1rem;
+		text-transform: uppercase;
+		font-weight: 600;
+		color: var(--main-color);
+	}
 
-    &__label {
-        margin-bottom: 1rem;
-        text-transform: uppercase;
-        font-weight: 600;
-        color: var(--main-color);
-    }
+	&__label-wrapper {
+		display: flex;
+		justify-content: space-between;
+	}
 
-    &__label-wrapper {
-        display: flex;
-        justify-content: space-between;
-    }
+	&__error {
+		text-align: right;
+		color: #0eaaa8;
+		font-weight: 800;
+	}
 
-    &__error {
-        text-align: right;
-        color: #0EAAA8;
-        font-weight: 800;
-    }
+	&:focus-within {
+		.InputWithLabel__input {
+			border-bottom: 2px solid var(--light-bg-color);
+		}
+
+		.InputWithLabel__label {
+			color: var(--light-bg-color);
+		}
+	}
 }
