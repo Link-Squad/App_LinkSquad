@@ -13,13 +13,12 @@ const News = () => {
     }, [])
 
 
-    const content = offers?.map(offer => <OfferCard offer={offer} />)
+    const content = offers?.map(offer => <OfferCard offer={offer} key={offer.id}/>)
 
 
 
     return (
         <section className="News">
-            <h2 className="News__title title">News</h2>
             {content || <h2>There is nothing new for you!</h2>}
         </section>
     )

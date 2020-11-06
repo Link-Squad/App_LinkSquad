@@ -1,0 +1,36 @@
+.FriendSuggestions {
+    &__title {
+        color: white;
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+    }
+
+	&__container {
+		display: flex;
+		align-items: center;
+	}
+	&__list {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		overflow-x: scroll;
+
+		& .PlayerCardSmall {
+			margin-right: 2.5rem;
+		}
+	}
+	& button {
+		margin-right: 2rem;
+		height: 350px;
+		width: 2.25rem;
+		background-color: rgba(235, 235, 235, 0.55);
+		border-radius: 3px;
+		box-shadow: var(--card-shadow);
+		border: none;
+		outline: none;
+
+		&:hover {
+			background-color: rgba(235, 235, 235, 0.60);
+		}
+	}
+}

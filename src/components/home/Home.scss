@@ -1,13 +1,12 @@
 .Home {
-    display: flex;
-    justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 
-    &__aside {
-        margin-right: 1.5rem;
-    }
+	&__aside {
+		margin-right: 1.5rem;
+	}
+
+	&__main {
+		width: 74%;
+	}
 }
-
-.friend-suggestions {
-    display: flex;
-}
-

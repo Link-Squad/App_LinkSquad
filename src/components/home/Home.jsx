@@ -7,6 +7,7 @@ import { user1, user2 } from '../../mocks/users.mock';
 import { useAuthContext } from '../../contexts/AuthContext';
 import News from '../news/News';
 import FooterSmall from '../utilities/footerSmall/FooterSmall';
+import FriendSuggestions from './friendSuggestions/FriendSuggestions';
 
 const Home = () => {
 	const authContext = useAuthContext();
@@ -18,14 +19,8 @@ const Home = () => {
 				<UserCard user={user} />
 				<FooterSmall />
 			</aside>
-			<main>
-				<section>
-					<h2>Friend Suggestions</h2>
-					<div className="friend-suggestions">
-						<PlayerCardSmall player={user1} />
-						<PlayerCardSmall player={user2} />
-					</div>
-				</section>
+			<main className="Home__main">
+				<FriendSuggestions />
 				<News />
 			</main>
 		</div>
