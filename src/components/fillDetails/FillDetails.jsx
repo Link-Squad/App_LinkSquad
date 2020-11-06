@@ -18,7 +18,7 @@ const SOCIAL_MEDIA = ['twitch', 'twitter', 'youtube', 'discord'];
 const FillDetails = () => {
 	const history = useHistory();
 	const [pageNumber, setPageNumber] = useState(1);
-	const [gamesIds, setGamesIds] = useState()
+	const [gamesIds, setGamesIds] = useState();
 	const [state, setState] = useState({
 		data: {
 			languages: LANGUAGES.reduce(
@@ -56,18 +56,17 @@ const FillDetails = () => {
 	};
 
 	const handleInputChange = e => {
-		const {value, name} = e.target;
+		const { value, name } = e.target;
 		setState(prev => {
 			return {
 				...prev,
 				data: {
 					...prev.data,
-					[name] : value
+					[name]: value
 				}
-			}
-		})
-
-	}
+			};
+		});
+	};
 
 	const changePage = e => {
 		const value = parseInt(e.target.value);
@@ -90,7 +89,12 @@ const FillDetails = () => {
 					{}
 				);
 
-				setGamesIds(gamesArray.reduce((o, game) => Object.assign(o, {[game.name] : game.id}), {}))
+				setGamesIds(
+					gamesArray.reduce(
+						(o, game) => Object.assign(o, { [game.name]: game.id }),
+						{}
+					)
+				);
 				setState(prev => {
 					return {
 						...prev,
@@ -124,18 +128,20 @@ const FillDetails = () => {
 		const languages = Object.keys(data.languages).filter(
 			l => data.languages[l]
 		);
-		const games = Object.keys(data.games).filter(g => data.games[g]).map(selectedGame => gamesIds[selectedGame]);
+		const games = Object.keys(data.games)
+			.filter(g => data.games[g])
+			.map(selectedGame => gamesIds[selectedGame]);
 		//validate links!
 		const social = data.social;
 		const bio = data.bio;
 
-		const userData = { languages, games, social, bio};
+		const userData = { languages, games, social, bio };
 		e.preventDefault();
 		update(userData)
 			.then(r => {
-				history.push('/')
-		})
-			.catch(e => console.error(e))
+				history.push('/');
+			})
+			.catch(e => console.error(e));
 	};
 
 	/* DECLARATIONS */
@@ -209,15 +215,32 @@ const FillDetails = () => {
 	const renderBio = () => (
 		<div className="Form__page">
 			<h2 className="Form__title">Write something about yourself</h2>
-			<textarea className="TextArea" placeholder="max 200 characters" maxLength={200} onChange={handleInputChange} value={data.bio} name="bio"></textarea>
+			<textarea
+				className="TextArea"
+				placeholder="max 200 characters"
+				maxLength={200}
+				onChange={handleInputChange}
+				value={data.bio}
+				name="bio"
+			></textarea>
 		</div>
-	)
+	);
 
 	const renderAvatarUpload = () => (
 		<div className="Form__page">
 			<h2 className="Form__title">Upload your avatar here</h2>
+			<input
+				type="file"
+				id="avatar"
+				name="avatar"
+				accept="image/png, image/jpeg"
+				default=""
+			className="input-image"></input>
 
+		<div className="Form__submit-button">
 			<Button type="submit" text="Done!" />
+		</div>
+
 		</div>
 	);
 
