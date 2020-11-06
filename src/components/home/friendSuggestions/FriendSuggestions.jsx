@@ -27,6 +27,10 @@ const FriendSuggestions = () => {
 		const languageQuery = `languages=${randomLanguage}`;
 		const userGames = user.userGames?.map(ug => ug.game.id);
 
+		if(user.userGames.length || user.languages.length) {
+			return
+		}
+
 		const randomGame = getRandomElementFromArray(userGames);
 		Promise.all([getUsersByGame(randomGame), getUsers(languageQuery)]).then(
 			([usersByGame, usersByLanguage]) => {
@@ -49,7 +53,7 @@ const FriendSuggestions = () => {
 							player={suggestedUser}
 							key={suggestedUser.id}
 						/>
-					)) || 'loading...'}
+					)) || 'You have too many friends already, go out'}
 				</div>
 				<button onClick={handleClick}> {'>'} </button>
 			</div>
