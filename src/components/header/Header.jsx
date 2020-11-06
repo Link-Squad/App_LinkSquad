@@ -1,5 +1,5 @@
 import React from 'react';
-import NavBar from './navBar/navbar';
+import NavBar from './navBar/Navbar';
 import SearchBar from './searchBar/searchbar';
 import './Header.scss';
 

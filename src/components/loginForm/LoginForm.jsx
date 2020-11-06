@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import InputWithLabel from '../utilities/inputWithLabel/InputWithLabel';
 import Button from '../utilities/button/Button';
-import { Link } from 'react-router-dom';
+import { Link, Redirect, useHistory, useLocation } from 'react-router-dom';
 import { login } from '../../services/api.service';
 import TermsAndConditions from '../utilities/termsAndConditions/TermsAndConditions';
 import validationsFn from '../../constants/validations.constants';
@@ -21,10 +21,13 @@ const LoginForm = () => {
 		},
 		touch: {}
 	});
+	const location = useLocation();
 	const [isAccepted, setIsAccepted] = useState(false);
-	const [loginError, setLoginError] = useState(null);
+	const [loginError, setLoginError] = useState(location?.state?.loginError);
+	console.log(loginError);
 
 	const authContext = useAuthContext();
+	const history = useHistory();
 
 	const { data, error, touch } = state;
 	const { email, password } = data;
@@ -34,7 +37,10 @@ const LoginForm = () => {
 	const handleSubmit = e => {
 		e.preventDefault();
 		login(email, password)
-			.then(user => authContext.login(user))
+			.then(user => {
+				authContext.login(user);
+				history.push('/home')
+			})
 			.catch(e => {
 				setLoginError(e.response?.data?.message);
 			});
@@ -104,8 +110,8 @@ const LoginForm = () => {
 				handleChange={() => setIsAccepted(!isAccepted)}
 				handleBlur={handleBlur}
 			/>
-			
-					{loginError && <p>{loginError}</p>}
+
+			{loginError && <p style={{ color: 'red' }}>{loginError}</p>}
 
 			<Button
 				text="Log In"
