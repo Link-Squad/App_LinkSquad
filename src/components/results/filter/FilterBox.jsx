@@ -1,17 +1,21 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import './FilterBox.scss';
 import Button from '../../utilities/button/Button';
 import DropDownFilter from './dropDownFilter/DropDownFilter';
 
-const FilterBox = () => {
-  const handleChange = () => {};
+const FilterBox = ({ OnApplyFilter }) => {
+  const filters = useRef({});
+  const handleChange = (e) => {
+    console.log(e.target.name);
+    filters.current.hasOwnProperty(`${e.target.name}`)
+  };
 
   return (
     <div className='FilterBox'>
       <DropDownFilter
         text='What are you looking for?'
         handleChange={handleChange}
-        options={['Players', 'Games', 'Vacants', 'News']}
+        options={['Players', 'Games', 'Vacants']}
       />
       <hr></hr>
 
@@ -28,7 +32,11 @@ const FilterBox = () => {
         options={['Tank', 'Support', 'Damage', 'Jungle']}
       />
 
-      <Button className='Button--primary' text='Apply Filter' />
+      <Button
+        className='Button--primary'
+        text='Apply Filter'
+        handleClick={OnApplyFilter}
+      />
     </div>
   );
 };

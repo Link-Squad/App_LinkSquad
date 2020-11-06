@@ -1,14 +1,21 @@
-.SearchElement {  
-  max-height: 50%;  
+.SearchElement {
+  max-height: 50%;
   display: flex;
+  padding: 6px 12px 6px 12px;
+  transition: 0.25s;
+
   & > :first-child {
     margin: 0px;
   }
 
-  > img {
-    width: 50px;
+  &__img {
+    width: 64px;
     height: 30%;
   }
+}
+
+.SearchElement:hover {
+  background-color: whitesmoke;
 }
 
 .TextContainer {

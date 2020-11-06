@@ -1,20 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import SearchGameElement from '../searchElement/SearchGameElement';
 import SearchUserElement from '../searchElement/SearchUserElement';
 import './ResultsBox.scss';
 
-const ResultsBox = ({ results, onClickShowResults }) => {
+const ResultsBox = ({ results, onClickShowResults, onClickOutsideBox }) => {
   const gameResults = results[0];
   const userResults = results[1];
-  //const boxHeight = (gameResults.length + userResults.length) * 60 + 60;
+  //const mouseInside = useRef();
+  console.log(results);
+
+  useEffect(() => {
+
+    document.addEventListener('click', onClickOutsideBox);
+
+    return () => {
+      document.removeEventListener('click', onClickOutsideBox);
+    };
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
   if (gameResults.length > 0 || userResults.length > 0) {
-    //const eventResults = results[2];
     return (
-      <div
-        className='ResultsBox'
-        //style={{ maxHeight: `${boxHeight.toString()}px` }}
-      >
+      <div className='ResultsBox' id='ResultsBox'>
         <hr className='grow'></hr>
         {gameResults
           ? gameResults.map((el, i) => <SearchGameElement key={i} game={el} />)
@@ -22,7 +30,15 @@ const ResultsBox = ({ results, onClickShowResults }) => {
         {userResults
           ? userResults.map((el, i) => <SearchUserElement key={i} user={el} />)
           : undefined}
-        {results ? <Link to={{pathname: '/results',query: {results}}} className='button--primary button--fake' onClick={onClickShowResults}>Show All Results</Link> : undefined}
+        {results ? (
+          <Link
+            to={{ pathname: '/results', query: { results } }}
+            className='button--primary button--fake'
+            onClick={onClickShowResults}
+          >
+            Show All Results
+          </Link>
+        ) : undefined}
       </div>
     );
   } else {

@@ -1,12 +1,31 @@
 .Results {
-    width: 1100px;
-    display: flex;
+  width: 1100px;
+  display: flex;
 
-    &__content {
-        flex-direction: column;
-        margin-left: 24px;
+  &__content {
+    flex-direction: column;
+    margin-left: 24px;
+    margin-top: 3.15rem;
+  }
+
+  &__left-side {
+    width: 251px;
+
+    &__nav {
+      font-size: 0.8rem;
+      
+      a {
+        display: inline-block;
+        text-decoration: none;
+        padding-right: 15px;
+        line-height: 1.4rem;
+      }
     }
-    &__left-side {
-        width: 251px;
+
+    &__info {
+      font-size: 0.8rem;
+      color: white;
+      line-height: 1.4rem;
     }
+  }
 }
