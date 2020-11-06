@@ -30,7 +30,7 @@ const App = () => {
 						/>
 						<AuthenticatedRoute
 							exact
-							path="/profile"
+							path="/profile/:id"
 							component={Profile}
 						/>
 						<AuthenticatedRoute

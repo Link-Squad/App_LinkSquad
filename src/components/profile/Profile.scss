@@ -1,18 +1,23 @@
-.Results {
+.Profile {
+  width: 1100px;
   display: flex;
 
   &__content {
     flex-direction: column;
     margin-left: 24px;
-    margin-top: 2.3rem;
+    margin-top: rem;
   }
 
   &__left-side {
     width: 251px;
 
+    & h2 {
+      margin-top: -1.7rem;
+    }
+
     &__nav {
       font-size: 0.8rem;
-      
+
       a {
         display: inline-block;
         text-decoration: none;
@@ -27,7 +32,7 @@
       line-height: 1.4rem;
     }
 
-    &__title{
+    &__title {
       font-weight: 400;
       text-align: center;
       text-shadow: black 1px 1px;
