@@ -13,7 +13,6 @@ const RedirectToLogin = () => (
 
 const AuthenticatedRoute = props => {
 	const { user } = useAuthContext();
-
 	return (
 		<Route
 			{...props}

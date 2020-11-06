@@ -53,3 +53,15 @@ export const search = (value) => {
 export const findFriends = (user) => {
   const {games, languages} = user;
 }
+
+export const getUserById = (id) => {
+  return http.get(`/users?_id=${id}`)
+}
+
+export const createFriendship = (id) => {
+  return http.post(`/friends/${id}`)
+}
+
+export const updateFriendship = (id) => {
+  return http.patch(`/friends/${id}`)
+}
