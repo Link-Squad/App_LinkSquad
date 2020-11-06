@@ -1,5 +1,5 @@
 const VALIDATIONS = {
-    name: v => v.length,
+    username: v => v.length,
     email: v => v.length,
     password: v => v.length
 }

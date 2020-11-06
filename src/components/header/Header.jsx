@@ -2,13 +2,15 @@ import React from 'react';
 import NavBar from './navBar/Navbar';
 import SearchBar from './searchBar/searchbar';
 import './Header.scss';
+import { useAuthContext } from '../../contexts/AuthContext';
 
 const Header = () => {
+	const {user} = useAuthContext()
 	return (
 		<header className="Header">
 			<div className="Header__content">
 				<img src="logo.png" alt="linksquad logo" />
-				<SearchBar />
+				{user && <SearchBar />}
 				<NavBar />
 			</div>
 		</header>

@@ -26,8 +26,21 @@ export const login = (email, password) => {
   return http.post('/login', { email, password }).then((data) => data);
 };
 
+export const signup = (newUser) => {
+  const {username, email, password} = newUser;
+  return http.post('/users' , {username, email, password}).then(data => data)
+}
+
+export const update = (updatedUser) => {
+  return http.patch('/users', updatedUser).then(data => data)
+}
+
 export const logout = () => {
   return http.get('/logout')
+}
+
+export const getGames = () => {
+  return http.get('/games')
 }
 
 export const search = (value) => {
@@ -35,3 +48,12 @@ export const search = (value) => {
   const userPath = `?username=${value}`;
   return Promise.all([http.get(`/games/${gamePath}`),http.get(`/users/search/${userPath}`)]).then((data) => data);
 };
+
+
+export const findFriends = (user) => {
+  const {games, languages} = user;
+}
+
+export const getOffers = () => {
+  return http.get('/offers')
+}
