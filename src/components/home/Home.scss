@@ -1,6 +1,13 @@
 .Home {
-    & > * {
-        margin-bottom: 5.5rem;
+    display: flex;
+    justify-content: space-between;
+
+    &__aside {
+        margin-right: 1.5rem;
     }
+}
+
+.friend-suggestions {
+    display: flex;
 }
 

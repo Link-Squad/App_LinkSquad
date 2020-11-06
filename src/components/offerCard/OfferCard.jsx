@@ -15,8 +15,8 @@ const OfferCard = ({ offer }) => {
 				/>
 				<article className="OfferCard__body">
 					<h2 className="OfferCard__header title">Wanted</h2>
-					<div className="OfferCard__requirements">
-						<div className="OfferCard__role">
+					<div className="OfferCard__requirement-wrapper">
+						<div className="OfferCard__requirement-field">
 							<img
 								src="https://c8.alamy.com/comp/PNC23T/sword-on-shield-videogame-cartoon-PNC23T.jpg"
 								alt="offer role"
@@ -24,7 +24,7 @@ const OfferCard = ({ offer }) => {
 							<p>{offer.role}</p>
 						</div>
 
-						<div className="OfferCard__rank">
+						<div className="OfferCard__requirement-field">
 							<img src="https://cdn0.iconfinder.com/data/icons/video-game-3/24/102-512.png" alt="offer rank"/>
 							<p>Rank</p>
 						</div>

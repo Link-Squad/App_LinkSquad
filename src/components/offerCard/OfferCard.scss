@@ -1,51 +1,58 @@
 .OfferCard {
-	width: 51.625rem;
-	height: 14.4375rem;
+	height: 231px;
 
 	&__content {
-        height: 12.5rem;
-        display: flex;
-    }
+		height: 200px;
+		display: flex;
+	}
 
 	&__img {
-		width: 38.5rem;
+		width: 49vw;
+		min-width: 420px;
 		height: 100%;
 		object-fit: cover;
-            clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%);
-    }
-    
-    &__body {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-        flex: 1;
-    }
+		clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%);
 
-	&__requirements {
-        display: flex;
+		@media only screen and(min-width: 1100px) {
+			width: 612px;
+		}
+	}
 
-        & p {
-            text-align: center;
-        }
+	&__body {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+		padding: 1.5rem;
+	}
 
-		& img {
-			width: 3.75rem;
-            height: 3rem;
-			object-fit: contain;
+	&__requirement {
+		&-wrapper {
+			display: flex;
+		}
+
+		&-field {
+			text-align: center;
+			margin: 0 0.5rem;
+
+			& img {
+				width: 3.75rem;
+				height: 3rem;
+				object-fit: contain;
+			}
 		}
 	}
 
 	&__footer {
-        background-color: var(--dark-bg-color);
-        color: white;
-        height: calc(100% - 12.5rem);
-        display: flex;
-        align-items: center;
-        padding-left: 1.5rem;
+		background-color: var(--dark-bg-color);
+		color: white;
+		height: calc(100% - 200px);
+		display: flex;
+		align-items: center;
+		padding-left: 1.5rem;
 
-        & :first-child {
-            margin-right: 1rem;
-        }
+		& :first-child {
+			margin-right: 1rem;
+		}
 	}
 }

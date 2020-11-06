@@ -61,3 +61,7 @@ button:disabled {
 	padding: 0.5rem 0.68rem;
 	display: inline-block;
 }
+
+.hidden {
+	display: none;
+}
