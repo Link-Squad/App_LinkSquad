@@ -8,8 +8,7 @@ const ResultCard = ({ game, user }) => {
   return (
     <div className='ResultCard'>
       {game ? <GameCardLong game={game} /> : undefined}
-      {user ? <PlayerCardLong player={user} /> : undefined}
-      
+      {user ? <PlayerCardLong player={user} /> : undefined}      
     </div>
   );
 };

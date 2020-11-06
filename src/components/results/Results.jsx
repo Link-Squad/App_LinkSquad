@@ -7,35 +7,44 @@ import './Results.scss';
 const Results = (props) => {
   const [filters, setFilters] = useState();
   const [filteredResults, setFilteredResults] = useState(
-    props.location.query.results
+    props.location.query?.results
   );
-  console.log(filteredResults);
   const ApplyFilter = (filters) => {
     setFilters(filters);
   };
 
   useEffect(() => {
-    console.log(filters === undefined);
-    const tempFilteredGameResults =
-      filters === undefined || filters.games === undefined
-        ? props.location.query.results[0]
-        : [];
-    const tempFilteredUserResults =
-      filters === undefined || filters.users === undefined
-        ? props.location.query.results[1]
-        : [];
-    console.log([tempFilteredGameResults, tempFilteredUserResults]);
-    setFilteredResults([tempFilteredGameResults, tempFilteredUserResults]);
-  }, [filters]);
+    console.log(filters)
+    const query = props.location.query;
+    if (query && query.results)
+    {
+      const gamesResults = query.results[0]
+      const usersResults = query.results[1]
+      const tempFilteredGameResults =
+      filters === undefined || filters.Games === true
+      ? gamesResults
+      : [];
+      const tempFilteredUserResults =
+      filters === undefined || filters.Players === undefined
+      ? usersResults
+      : [];
+      /*const tempFilteredVacantsResults =
+      filters === undefined || filters.Vacants === undefined
+      ? usersResults
+      : [];*/
+      console.log([tempFilteredGameResults, tempFilteredUserResults]);
+      setFilteredResults([tempFilteredGameResults, tempFilteredUserResults]);
+    }
+  }, [filters,props.location.query?.results]);
 
-  if (props.location.query?.results === undefined) {
+  if (!props.location.query || props.location.query?.results === undefined) {
     return <Redirect to='/' />;
   } else {
     return (
       <div className='Results'>
         <div className='Results__left-side'>
-          <h2>Filter:</h2>
-          <FilterBox />
+          <h2 className='Results__left-side__title'>Filter:</h2>
+          <FilterBox onApplyFilter={ApplyFilter}/>
           <hr></hr>
           <nav className='Results__left-side__nav'>
             <Link to='/info/conditions'>Terms and conditions</Link>

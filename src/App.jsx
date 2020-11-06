@@ -23,8 +23,8 @@ const App = () => {
           <Switch>
             <AuthenticatedRoute exact path='/' component={Home} />
             <UnauthenticatedRoute exact path='/login' component={Landing} />
+            <UnauthenticatedRoute exact path='/results' component={Results} />
             <AuthenticatedRoute exact path='/profile' component={Profile} />
-            <Route exact path='/results' component={Results} />
             <Route component={NotFound} />
           </Switch>
         </div>

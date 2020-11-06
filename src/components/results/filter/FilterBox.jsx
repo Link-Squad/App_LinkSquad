@@ -3,11 +3,29 @@ import './FilterBox.scss';
 import Button from '../../utilities/button/Button';
 import DropDownFilter from './dropDownFilter/DropDownFilter';
 
-const FilterBox = ({ OnApplyFilter }) => {
+const FilterBox = ({ onApplyFilter }) => {
   const filters = useRef({});
   const handleChange = (e) => {
-    console.log(e.target.name);
-    filters.current.hasOwnProperty(`${e.target.name}`)
+    const name = e.target.name;
+
+    if(filters.current === undefined) {
+      filters.current = {};
+    }
+
+    if (filters.current?.hasOwnProperty(`${name}`) === false) {
+      filters.current[name] = true;
+      console.log(filters.current)
+    } else {
+      delete filters.current[name];
+    }
+    if(Object.keys(filters.current).length === 0) {
+      console.log(' 0 length filters')
+      filters.current = undefined;
+    }
+  };
+
+  const handleButtonClick = (e) => {
+    onApplyFilter(filters.current);
   };
 
   return (
@@ -35,7 +53,7 @@ const FilterBox = ({ OnApplyFilter }) => {
       <Button
         className='Button--primary'
         text='Apply Filter'
-        handleClick={OnApplyFilter}
+        handleClick={handleButtonClick}
       />
     </div>
   );

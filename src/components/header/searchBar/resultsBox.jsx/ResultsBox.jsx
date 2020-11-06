@@ -30,6 +30,7 @@ const ResultsBox = ({ results, onClickShowResults, onClickOutsideBox }) => {
         {userResults
           ? userResults.map((el, i) => <SearchUserElement key={i} user={el} />)
           : undefined}
+          {console.log(results)}
         {results ? (
           <Link
             to={{ pathname: '/results', query: { results } }}
