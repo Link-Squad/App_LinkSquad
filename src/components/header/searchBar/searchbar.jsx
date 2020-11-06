@@ -51,7 +51,7 @@ const SearchBar = () => {
         className='form-control'
         placeholder=''
       />
-      {results ? <ResultsBox results={results} onClickShowResults={resetSearchBar}/> : undefined}
+      {results ? <ResultsBox results={results} onClickShowResults={resetSearchBar} onClickOutsideBox={resetSearchBar}/> : undefined}
     </div>
   );
 };

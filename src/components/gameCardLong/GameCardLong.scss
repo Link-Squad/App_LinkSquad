@@ -1,0 +1,46 @@
+.GameCardLong {
+  max-width: 51.62rem;
+  height: 12.875rem;
+  display: flex;
+  &__content {
+    width: 25.87rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__avatar {
+    width: 11.87rem;
+    object-fit: cover;
+  }
+
+  &__body {
+    padding: 1rem 1.5rem;
+    width: calc(51.62rem - 11.87rem);
+    display: flex;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-size: 2rem;
+  }
+
+  &__title {
+    margin-right: 0.5rem;
+  }
+
+  &__platforms-list {
+    display: flex;
+    & li {
+     size: 30px;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    height: 1rem;
+    align-self: flex-end;
+  }
+}
