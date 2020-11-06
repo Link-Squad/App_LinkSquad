@@ -32,7 +32,7 @@ export const signup = (newUser) => {
 }
 
 export const update = (updatedUser) => {
-  return http.patch('/users', {updatedUser}).then(data => data)
+  return http.patch('/users', updatedUser).then(data => data)
 }
 
 export const logout = () => {

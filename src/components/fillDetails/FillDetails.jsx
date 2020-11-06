@@ -8,7 +8,7 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { getGames } from '../../services/api.service';
+import { getGames, update } from '../../services/api.service';
 import Button from '../utilities/button/Button';
 import InputWithLabel from '../utilities/inputWithLabel/InputWithLabel';
 import './FillDetails.scss';
@@ -26,6 +26,7 @@ const FillDetails = () => {
 				{}
 			),
 			games: [],
+			bio: '',
 			social: SOCIAL_MEDIA.reduce(
 				(o, key) => Object.assign(o, { [key]: '' }),
 				{}
@@ -33,14 +34,13 @@ const FillDetails = () => {
 		}
 	});
 
-	const maxPageNumber = 4;
+	const maxPageNumber = 5;
 	const progress = (pageNumber / maxPageNumber) * 100 + '%';
 	const progressBarWidth = { width: progress };
 	const { data } = state;
 
-	const handleInput = e => {
+	const handleSocial = e => {
 		const { value, name } = e.target;
-		console.log(name);
 		setState(prev => {
 			return {
 				...prev,
@@ -54,6 +54,20 @@ const FillDetails = () => {
 			};
 		});
 	};
+
+	const handleInputChange = e => {
+		const {value, name} = e.target;
+		setState(prev => {
+			return {
+				...prev,
+				data: {
+					...prev.data,
+					[name] : value
+				}
+			}
+		})
+
+	}
 
 	const changePage = e => {
 		const value = parseInt(e.target.value);
@@ -113,10 +127,13 @@ const FillDetails = () => {
 		const games = Object.keys(data.games).filter(g => data.games[g]).map(selectedGame => gamesIds[selectedGame]);
 		//validate links!
 		const social = data.social;
+		const bio = data.bio;
 
-		const userData = { languages, games, social };
+		const userData = { languages, games, social, bio};
 		e.preventDefault();
-		console.log(userData);
+		update(userData)
+			.then(r => console.log( r))
+			.catch(e => console.error(e))
 	};
 
 	/* DECLARATIONS */
@@ -167,7 +184,7 @@ const FillDetails = () => {
 					className="social-media__input"
 					type="url"
 					placeholder={socialName}
-					onChange={handleInput}
+					onChange={handleSocial}
 					name={socialName}
 					id={socialName}
 					value={data.social[socialName]}
@@ -187,9 +204,16 @@ const FillDetails = () => {
 		</div>
 	);
 
+	const renderBio = () => (
+		<div className="Form__page">
+			<h2 className="Form__title">Write something about yourself</h2>
+			<textarea className="TextArea" placeholder="max 200 characters" maxLength={200} onChange={handleInputChange} value={data.bio} name="bio"></textarea>
+		</div>
+	)
+
 	const renderAvatarUpload = () => (
-		<div>
-			<h2>Upload your avatar here</h2>
+		<div className="Form__page">
+			<h2 className="Form__title">Upload your avatar here</h2>
 
 			<Button type="submit" text="Done!" />
 		</div>
@@ -199,7 +223,8 @@ const FillDetails = () => {
 		1: renderOptionsList('languages', 'What languages do you speak?'),
 		2: renderOptionsList('games', 'What are your favourite games?'),
 		3: renderSocialMedia(),
-		4: renderAvatarUpload()
+		4: renderBio(),
+		5: renderAvatarUpload()
 	};
 
 	return (

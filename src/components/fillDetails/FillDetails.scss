@@ -160,3 +160,18 @@
 		color: white;
 	}
 }
+
+.TextArea {
+	padding: 1rem;
+	box-sizing: border-box;
+	width: 100%;
+	min-height: 100px;
+	background-color: var(--dark-bg-color);
+	border: 2px solid var(--main-color);
+	color: white;
+
+	&:focus {
+		border: 2px solid var(--light-bg-color);
+		outline: none;
+	}
+}
