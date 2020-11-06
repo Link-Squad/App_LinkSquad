@@ -3,7 +3,11 @@
 	justify-content: space-between;
 
 	&__aside {
-		margin-right: 1.5rem;
+        margin-right: 1.5rem;
+        
+        & .UserCard {
+            margin-bottom: 1rem;
+        }
 	}
 
 	&__main {
