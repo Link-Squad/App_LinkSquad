@@ -18,14 +18,14 @@ const OfferCard = ({ offer }) => {
 					<div className="OfferCard__requirement-wrapper">
 						<div className="OfferCard__requirement-field">
 							<img
-								src="https://c8.alamy.com/comp/PNC23T/sword-on-shield-videogame-cartoon-PNC23T.jpg"
+								src={`/roles/${offer.role}.png`}
 								alt="offer role"
 							/>
 							<p>{offer.role}</p>
 						</div>
 
 						<div className="OfferCard__requirement-field">
-							<img src="https://cdn0.iconfinder.com/data/icons/video-game-3/24/102-512.png" alt="offer rank"/>
+							<img src={`/ranks/${offer.rank}.png`} alt="offer rank"/>
 							<p>Rank</p>
 						</div>
 					</div>
