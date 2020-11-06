@@ -7,16 +7,16 @@ import {
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { getGames, update } from '../../services/api.service';
 import Button from '../utilities/button/Button';
-import InputWithLabel from '../utilities/inputWithLabel/InputWithLabel';
 import './FillDetails.scss';
 
 const LANGUAGES = ['spanish', 'english', 'french', 'arabic', 'russian'];
 const SOCIAL_MEDIA = ['twitch', 'twitter', 'youtube', 'discord'];
 
 const FillDetails = () => {
+	const history = useHistory();
 	const [pageNumber, setPageNumber] = useState(1);
 	const [gamesIds, setGamesIds] = useState()
 	const [state, setState] = useState({
@@ -132,7 +132,9 @@ const FillDetails = () => {
 		const userData = { languages, games, social, bio};
 		e.preventDefault();
 		update(userData)
-			.then(r => console.log( r))
+			.then(r => {
+				history.push('/')
+		})
 			.catch(e => console.error(e))
 	};
 

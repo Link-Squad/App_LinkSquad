@@ -1,12 +1,11 @@
 import React from 'react';
-import PlayerCardSmall from '../playerCardSmall/PlayerCardSmall';
 import UserCard from '../userCard/UserCard';
 import './Home.scss';
 
-import { user1, user2 } from '../../mocks/users.mock';
-import OfferCard from '../offerCard/OfferCard';
-import { offer1 } from '../../mocks/offers.mock';
 import { useAuthContext } from '../../contexts/AuthContext';
+import News from '../news/News';
+import FooterSmall from '../utilities/footerSmall/FooterSmall';
+import FriendSuggestions from './friendSuggestions/FriendSuggestions';
 
 const Home = () => {
 	const authContext = useAuthContext();
@@ -16,20 +15,11 @@ const Home = () => {
 		<div className="Home">
 			<aside className="Home__aside">
 				<UserCard user={user} />
-				<div>Footer goes here</div>
+				<FooterSmall />
 			</aside>
-			<main>
-				<section>
-					<h2>Friend Suggestions</h2>
-					<div className="friend-suggestions">
-						<PlayerCardSmall player={user1} />
-						<PlayerCardSmall player={user2} />
-					</div>
-				</section>
-				<section>
-					<h2>News</h2>
-					<OfferCard offer={offer1} />
-				</section>
+			<main className="Home__main">
+				<FriendSuggestions />
+				<News />
 			</main>
 		</div>
 	);

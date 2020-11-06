@@ -43,6 +43,14 @@ export const getGames = () => {
   return http.get('/games')
 }
 
+export const getUsersByGame = (gameId) => {
+  return http.get(`/games/${gameId}/users`)
+}
+
+export const getUsers = (query) => {
+  return http.get(`/users?${query}`)
+}
+
 export const search = (value) => {
   const gamePath = `?game=${value}`;
   const userPath = `?username=${value}`;
@@ -64,4 +72,8 @@ export const createFriendship = (id) => {
 
 export const updateFriendship = (id) => {
   return http.patch(`/friends/${id}`)
+}
+
+export const getOffers = () => {
+  return http.get('/offers')
 }

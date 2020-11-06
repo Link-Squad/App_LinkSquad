@@ -36,7 +36,7 @@ const LoginForm = () => {
 		login(email, password)
 			.then(user => {
 				authContext.login(user);
-				history.push('/home')
+				history.push('/')
 			})
 			.catch(e => {
 				setLoginError(e.response?.data?.message);

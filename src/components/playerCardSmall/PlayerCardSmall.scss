@@ -1,6 +1,6 @@
 .PlayerCardSmall {
     width: 214px;
-    height: 343px;
+    min-height: 343px;
 
     &__body {
         text-align: center;
@@ -9,11 +9,13 @@
     &__avatar {
         width: 100%;
         height: 55.97%;
+        max-height: 230px;
         object-fit: cover;
     }
 
     &__name {
-        margin: 0.5rem 0
+        margin: 0.5rem 0;
+        overflow-x:hidden
     }
 
     &__icon + .PlayerCardSmall__icon{

@@ -17,7 +17,7 @@ const PlayerCardSmall = ({ player }) => {
 				</h2>
 				<SocialLinks social={player.social} />
 				<Link
-					to={`/user/${player.id}`}
+					to={`/profile/${player.id}`}
 					className="PlayerCardSmall__profile-link button--fake button--primary"
 				>
 					View Profile
