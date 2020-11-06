@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import InputWithLabel from '../utilities/inputWithLabel/InputWithLabel';
 import Button from '../utilities/button/Button';
-import {  useHistory, useLocation } from 'react-router-dom';
-import { signup } from '../../services/api.service';
+import { useHistory, useLocation } from 'react-router-dom';
+import { login, signup } from '../../services/api.service';
 import TermsAndConditions from '../utilities/termsAndConditions/TermsAndConditions';
 import validationsFn from '../../constants/validations.constants';
 import { useAuthContext } from '../../contexts/AuthContext';
@@ -25,7 +25,9 @@ const SignupForm = () => {
 	});
 	const location = useLocation();
 	const [isAccepted, setIsAccepted] = useState(false);
-	const [signupError, setSignupError] = useState(location?.state?.signupError);
+	const [signupError, setSignupError] = useState(
+		location?.state?.signupError
+	);
 
 	const authContext = useAuthContext();
 	const history = useHistory();
@@ -39,8 +41,10 @@ const SignupForm = () => {
 		e.preventDefault();
 		signup(data)
 			.then(user => {
-				authContext.login(user);
-				history.push('/fill-details');
+				login(data.email, data.password).then(() => {
+					authContext.login(user);
+					history.push('/fill-details');
+				});
 			})
 			.catch(e => {
 				setSignupError(e.response?.data?.message);
