@@ -19,9 +19,9 @@ const PlayerCardLong = ({ player }) => {
 					<SocialLinks social={player.social} /> 
 				</div>
 				<div className="PlayerCardLong__games-wrapper">
-					{player.games?.map(game => (
+					{player.userGames?.map(game => (
 						<img
-							src={game.icon}
+							src={game.game.icon}
 							alt={`icon of ${game.name}`}
 							className="PlayerCardLong__game-icon"
 						/>

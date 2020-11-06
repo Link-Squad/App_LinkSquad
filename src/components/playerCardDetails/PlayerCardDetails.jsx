@@ -13,7 +13,7 @@ const PlayerCardDetails = ({player}) => {
                 <p className="PlayerCardDetails__team">{player.team || 'No team'}</p>
                 <SocialLinks social={player.social}/>
                 <ul className="PlayerCardDetails__languages">{player.languages?.map(language =><li className="language-box">{language}</li>)}</ul>
-                <div className="PlayerCardDetails__games">{player.games?.map(game => <img src={game.icon} alt={`icon of ${game.name}`}/>)}</div>
+                <div className="PlayerCardDetails__games">{player.games?.map(game => <img src={game.game.icon} alt={`icon of ${game.name}`}/>)}</div>
                 <Link to={`/users/${player.id}`} className="PlayerCardDetails__link button--fake">View Profile </Link>
             </article>
         </div>
