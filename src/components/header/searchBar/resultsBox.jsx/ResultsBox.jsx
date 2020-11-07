@@ -6,10 +6,8 @@ import SearchUserElement from '../searchElement/SearchUserElement';
 import './ResultsBox.scss';
 
 const ResultsBox = ({ results, onClickShowResults, onClickOutsideBox }) => {
-  const gameResults = results[0];
-  const userResults = results[1];
-  //const mouseInside = useRef();
-  console.log(results);
+  const userResults = results[1].slice(0,2);
+  const gameResults = userResults.length < 2 ?results[0].slice(0,2) : [];
 
   useEffect(() => {
 

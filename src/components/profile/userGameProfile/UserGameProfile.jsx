@@ -1,45 +1,70 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import SocialLinks from '../../utilities/socialLinks/SocialLinks';
 import './UserGameProfile.scss';
 import { useAuthContext } from '../../../contexts/AuthContext';
 import Button from '../../utilities/button/Button';
 import { createFriendship, getUserById, updateFriendship } from '../../../services/api.service';
 
-const UserGameProfile = ({ user }) => {
+const UserGameProfile = ({ user,currentUser }) => {
   const authContext = useAuthContext();
-  const currentUser = authContext.user;
+  const [filterFriendship,setFilteredFriendship] = useState(undefined);
 
+  useEffect(()=>{
+    console.log('get friendship');
+    console.log(currentUser);
+    getFriendship(user);
+  },[])
+
+  const getFriendship = (user) => {
+    if(currentUser.friendship === undefined) {
+      return undefined;
+    }
+
+    const currentFriendship = currentUser.friendship;
+    for(let i = 0; i < currentFriendship.length ; i++) {
+      const usersID  = [currentFriendship[i].users[0].id,currentFriendship[i].users[1].id]
+      const acceptedID  = [currentFriendship[i].accepted[0]?.id,currentFriendship[i].accepted[1]?.id]
+      
+      if(usersID.includes(user.id)){
+        const tempfriendship = { 
+          users: usersID,
+          accepted: acceptedID.filter((el) => el !== undefined)
+        }
+        console.log(tempfriendship);
+        setFilteredFriendship(tempfriendship)
+        break;
+      }
+    }
+  }
 
   const checkIfFriend = (user) => {
     console.log(currentUser);
-    const filterFriendship = currentUser.filterFriendship?.filter((friend) => {
-    console.log(friend);
-
-      return friend.users.includes({id: `${user.id}`})
-    })
+    console.log(filterFriendship);
     if(filterFriendship === undefined || filterFriendship.length === 0) {
       return false
     }
 
-    if(filterFriendship.users.includes(user.id) && filterFriendship.accepted.includes(user.id)) {
+    if(filterFriendship.accepted.includes(user.id)) {
       if(filterFriendship.accepted.length === 2) {
+        console.log('friendship both accepted');
+
         return true;
       } else {
         if(filterFriendship.accepted.includes(currentUser.id)) {
+          console.log('i accepted, other didnt');
           return true;
         } else {
+          console.log('other accepted, i didnt');
           return false;
         }
       }
     } else {
+      console.log('other accepted, i didnt');
       return false;
     }
   }
 
   const addFriend = () => {
-    const filterFriendship = currentUser.friendship?.filter((friend) => {
-      return friend.users.includes(user.id)
-    })
 
     if( filterFriendship !== undefined && filterFriendship.length !== 0) {
       console.log('filter not undefinded or length 0');
@@ -67,11 +92,7 @@ const UserGameProfile = ({ user }) => {
 
   const removeFriend = () => {
     console.log('removing friend')
-    const filterFriendship = currentUser.friendship?.filter((friend) => {
-      return friend.users.includes(user.id)
-    })
 
-    console.log(filterFriendship);
     if(filterFriendship !== undefined && filterFriendship.length !== 0) {
       updateFriendship(user.id)
       .then(() =>{
@@ -85,12 +106,16 @@ const UserGameProfile = ({ user }) => {
   }
 
   const initializeButton = () => {
+    
     if(checkIfFriend(user)) {
       return (<Button handleClick={removeFriend} className='button--fake button--primary' text='Remove Friend'/>);
     } else {
       return (<Button handleClick={addFriend} className='button--fake button--primary' text='Add Friend'/>);
     }
   }
+
+
+
   return (
     <div className='UserGameProfile card'>
       <img
@@ -111,7 +136,7 @@ const UserGameProfile = ({ user }) => {
           return <img src={game.game.img} alt='icon' />;
         })}
       </div>
-      {currentUser.id === user.id ? undefined: initializeButton()}
+      { currentUser.id === user.id || filterFriendship === undefined ? undefined: initializeButton()}
       
     </div>
   );
