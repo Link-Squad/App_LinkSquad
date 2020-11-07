@@ -2,7 +2,6 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useAuthContext } from '../../../contexts/AuthContext';
 import { logout } from '../../../services/api.service';
-import Button from '../button/Button';
 import './LogoutLink.scss';
 
 const LogoutLink = () => {
@@ -11,7 +10,7 @@ const LogoutLink = () => {
 
     const handleClick = (e) => {
         logout()  
-            .then(() => history.push('/login'))
+            .then(() => history.push('/'))
             .catch(e => console.error(e))
     }
 

@@ -35,6 +35,10 @@ export const update = (updatedUser) => {
   return http.patch('/users', updatedUser).then(data => data)
 }
 
+export const createUserGames = (game) => {
+  return http.post('/usersgames/new', {game})
+}
+
 export const logout = () => {
   return http.get('/logout')
 }
@@ -48,7 +52,7 @@ export const getUsersByGame = (gameId) => {
 }
 
 export const getUsers = (query) => {
-  return http.get(`/users?${query}`)
+  return http.get(`/users${query}`)
 }
 
 export const search = (value) => {

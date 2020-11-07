@@ -40,8 +40,8 @@ const SignupForm = () => {
 	const handleSubmit = e => {
 		e.preventDefault();
 		signup(data)
-			.then(user => {
-				login(data.email, data.password).then(() => {
+			.then(() => {
+				login(data.email, data.password).then((user) => {
 					authContext.login(user);
 					history.push('/fill-details');
 				});

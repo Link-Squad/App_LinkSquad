@@ -8,7 +8,7 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { getGames, update } from '../../services/api.service';
+import { createUserGames, getGames, update } from '../../services/api.service';
 import Button from '../utilities/button/Button';
 import './FillDetails.scss';
 
@@ -137,7 +137,10 @@ const FillDetails = () => {
 
 		const userData = { languages, games, social, bio };
 		e.preventDefault();
-		update(userData)
+		Promise.all([
+		update(userData),
+		createUserGames(games[0])
+		])
 			.then(r => {
 				history.push('/');
 			})

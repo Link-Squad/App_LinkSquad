@@ -24,11 +24,12 @@ const FriendSuggestions = () => {
 
 	useEffect(() => {
 		const randomLanguage = getRandomElementFromArray(user.languages);
-		const languageQuery = `languages=${randomLanguage}`;
+		const languageQuery = `?languages=${randomLanguage}`;
 		const userGames = user.userGames?.map(ug => ug.game.id);
 
-		if(user.userGames.length || user.languages.length) {
-			return
+		if(user.userGames|| user.languages) {
+			getUsers().then(() => console.log('yay'))
+
 		}
 
 		const randomGame = getRandomElementFromArray(userGames);
