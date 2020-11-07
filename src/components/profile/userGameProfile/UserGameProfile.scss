@@ -1,6 +1,6 @@
 .UserGameProfile {
     width: 251px;
-    height: 470px;
+    height: auto;
     
     &__avatar {
         width: 100%;
@@ -29,6 +29,10 @@
         & img {
             width: 64px;
         }
+    }
+
+    & > button {
+        margin: 12px 0px 12px 12px;
     }
 
     

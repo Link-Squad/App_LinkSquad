@@ -1,9 +1,13 @@
 import React from 'react';
 import './SearchElement.scss';
 
-const SearchUserElement = ({ user }) => {
+const SearchUserElement = ({ user, handleClick }) => {
+
+  const mouseDown = () =>{
+    handleClick(user.id);
+  }
   return (
-    <div className='SearchElement'>
+    <div className='SearchElement' onMouseDown={mouseDown}>
       <img className='SearchElement__img' src={user.img} alt='user logo' />
       <div className='TextContainer'>
         <p>{user.username}</p>
