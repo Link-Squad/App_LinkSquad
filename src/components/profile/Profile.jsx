@@ -25,7 +25,7 @@ const Profile = (props) => {
         <div className='Profile__left-side'>
           {currentUser.id === user.id ? <h2>My Profile</h2> : undefined}
           <UserGameProfile profileUser={user} />
-          <LogoutLink className='Button-fake Button-primary' />
+          {currentUser.id === user.id ? <LogoutLink className='Button-fake Button-primary' /> : undefined}
         </div>
       ) : (
         <p>Loading...</p>
