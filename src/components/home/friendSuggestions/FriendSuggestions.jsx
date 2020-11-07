@@ -24,8 +24,13 @@ const FriendSuggestions = () => {
 
 	useEffect(() => {
 		const randomLanguage = getRandomElementFromArray(user.languages);
-		const languageQuery = `languages=${randomLanguage}`;
+		const languageQuery = `?languages=${randomLanguage}`;
 		const userGames = user.userGames?.map(ug => ug.game.id);
+
+		if(user.userGames|| user.languages) {
+			getUsers().then(() => console.log('yay'))
+
+		}
 
 		const randomGame = getRandomElementFromArray(userGames);
 		Promise.all([getUsersByGame(randomGame), getUsers(languageQuery)]).then(
@@ -49,7 +54,7 @@ const FriendSuggestions = () => {
 							player={suggestedUser}
 							key={suggestedUser.id}
 						/>
-					)) || 'loading...'}
+					)) || 'You have too many friends already, go out'}
 				</div>
 				<button onClick={handleClick}> {'>'} </button>
 			</div>
