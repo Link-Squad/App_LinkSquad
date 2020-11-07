@@ -18,7 +18,7 @@ const Profile = (props) => {
       console.log(res[0]);
       setUser(res[0]);
     });
-  }, []);
+  }, [props.match.params.id]);
   return (
     <div className='Profile'>
       {user ? (
