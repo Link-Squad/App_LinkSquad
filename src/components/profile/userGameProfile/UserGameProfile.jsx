@@ -1,143 +1,169 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { useAuthContext } from '../../../contexts/AuthContext.js';
 import SocialLinks from '../../utilities/socialLinks/SocialLinks';
 import './UserGameProfile.scss';
-import { useAuthContext } from '../../../contexts/AuthContext';
 import Button from '../../utilities/button/Button';
-import { createFriendship, getUserById, updateFriendship } from '../../../services/api.service';
+import {
+  createFriendship,
+  getUserById,
+  updateFriendship
+} from '../../../services/api.service';
 
-const UserGameProfile = ({ user,currentUser }) => {
+const UserGameProfile = ({ profileUser }) => {
+  const isFriend = useRef();
   const authContext = useAuthContext();
-  const [filterFriendship,setFilteredFriendship] = useState(undefined);
+  let user = authContext.user;
 
-  useEffect(()=>{
-    console.log('get friendship');
-    console.log(currentUser);
-    getFriendship(user);
-  },[])
+  const [handleButtonClick, setHandleButtonClick] = useState();
+  const [buttonText, setButtonText] = useState();
+  const [filterFriendship, setFilteredFriendship] = useState();
 
-  const getFriendship = (user) => {
-    if(currentUser.friendship === undefined) {
+  const getFriendship = (otherUser) => {
+    console.log(user);
+    if (user.friendship === undefined) {
       return undefined;
     }
+    const currentFriendship = user.friendship;
+    for (let i = 0; i < currentFriendship.length; i++) {
+      const usersID = [
+        currentFriendship[i].users[0].id,
+        currentFriendship[i].users[1].id
+      ];
+      const acceptedID = [
+        currentFriendship[i].accepted[0]?.id,
+        currentFriendship[i].accepted[1]?.id
+      ];
 
-    const currentFriendship = currentUser.friendship;
-    for(let i = 0; i < currentFriendship.length ; i++) {
-      const usersID  = [currentFriendship[i].users[0].id,currentFriendship[i].users[1].id]
-      const acceptedID  = [currentFriendship[i].accepted[0]?.id,currentFriendship[i].accepted[1]?.id]
-      
-      if(usersID.includes(user.id)){
-        const tempfriendship = { 
+      if (usersID.includes(otherUser.id)) {
+        const tempfriendship = {
           users: usersID,
           accepted: acceptedID.filter((el) => el !== undefined)
-        }
-        console.log(tempfriendship);
-        setFilteredFriendship(tempfriendship)
-        break;
+        };
+        console.log('friendship exists');
+        setFilteredFriendship(tempfriendship);
+        return;
       }
     }
-  }
+    console.log('no friends');
+    setFilteredFriendship(undefined);
 
-  const checkIfFriend = (user) => {
-    console.log(currentUser);
-    console.log(filterFriendship);
-    if(filterFriendship === undefined || filterFriendship.length === 0) {
-      return false
-    }
-
-    if(filterFriendship.accepted.includes(user.id)) {
-      if(filterFriendship.accepted.length === 2) {
-        console.log('friendship both accepted');
-
-        return true;
-      } else {
-        if(filterFriendship.accepted.includes(currentUser.id)) {
-          console.log('i accepted, other didnt');
-          return true;
-        } else {
-          console.log('other accepted, i didnt');
-          return false;
-        }
-      }
-    } else {
-      console.log('other accepted, i didnt');
-      return false;
-    }
-  }
+  };
 
   const addFriend = () => {
-
-    if( filterFriendship !== undefined && filterFriendship.length !== 0) {
+    console.log(user);
+    console.log(user.id);
+    if (filterFriendship !== undefined && filterFriendship.length !== 0) {
       console.log('filter not undefinded or length 0');
-      updateFriendship(currentUser.id)
-      .then(() =>{
-        getUserById(currentUser.id)
-        .then((userUpdated) => {
-          console.log(userUpdated);
-          authContext.update(userUpdated);
-        })
-      })
+      updateFriendship(user.id).then(() => {
+        getUserById(user.id).then((userUpdated) => {
+          console.log(userUpdated[0]);
+          authContext.update(userUpdated[0]);
+          user = userUpdated[0];
+          getFriendship(profileUser);
+        });
+      });
     } else {
-    console.log('createFriendship')
+      console.log('createFriendship');
 
-      createFriendship(user.id)
-      .then(() => {
-        getUserById(currentUser.id)
-        .then((userUpdated) => {
-          console.log(userUpdated);
-          authContext.update(userUpdated);
-        })
-      })
+      createFriendship(profileUser.id).then(() => {
+        getUserById(user.id).then((userUpdated) => {
+          console.log(userUpdated[0]);
+          authContext.update(userUpdated[0]);
+          user = userUpdated[0];
+          getFriendship(profileUser);
+        });
+      });
     }
-  }
+  };
 
   const removeFriend = () => {
-    console.log('removing friend')
+    console.log('removing friend');
 
-    if(filterFriendship !== undefined && filterFriendship.length !== 0) {
-      updateFriendship(user.id)
-      .then(() =>{
-        getUserById(currentUser.id)
-        .then((userUpdated) => {
-          console.log(userUpdated);
-          authContext.update(userUpdated);
-        })
-      })
-    }    
-  }
-
-  const initializeButton = () => {
-    
-    if(checkIfFriend(user)) {
-      return (<Button handleClick={removeFriend} className='button--fake button--primary' text='Remove Friend'/>);
-    } else {
-      return (<Button handleClick={addFriend} className='button--fake button--primary' text='Add Friend'/>);
+    if (filterFriendship !== undefined && filterFriendship.length !== 0) {
+      updateFriendship(profileUser.id).then(() => {
+        getUserById(user.id).then((userUpdated) => {
+          console.log(userUpdated[0]);
+          authContext.update(userUpdated[0]);
+          user = userUpdated[0];
+          getFriendship(profileUser);
+        });
+      });
     }
-  }
+  };
 
+  const checkIfFriend = () => {
+    console.log(user);
+    console.log(filterFriendship);
+    if (filterFriendship === undefined || filterFriendship.length === 0) {
+      isFriend.current = false;
+      setButtonText('Add Friend');
+      setHandleButtonClick(() => addFriend);
+      return;
+    }
+    if (filterFriendship.accepted.length === 2) {
+      console.log('friendship both accepted');
+      isFriend.current = true;
+    } else {
+      if (filterFriendship.accepted.includes(user.id)) {
+        console.log('i accepted, other didnt');
+        isFriend.current = true;
+      } else if (filterFriendship.accepted.includes(profileUser.id)) {
+        console.log('i didnt accept, other accepted');
+        isFriend.current = false;
+      } else {
+        console.log('empty friendship');
+        isFriend.current = false;
+      }
+    }
+    console.log(isFriend.current)
+    if (isFriend.current === true) {
+      setButtonText('Remove Friend');
+      setHandleButtonClick(() => removeFriend);
+    } else {
+      setButtonText('Add Friend');
+      setHandleButtonClick(() => addFriend);
+    }
+  };
+  useEffect(() => {
+    if(!filterFriendship) {
+      return;
+    }
+    checkIfFriend();
+  }, [filterFriendship]);
 
+  useEffect(() => {
+    getFriendship(profileUser);
+    checkIfFriend();
+  }, []);
 
   return (
     <div className='UserGameProfile card'>
       <img
         className='UserGameProfile__avatar'
-        src={user.img}
+        src={profileUser.img}
         alt='user profile logo'
       />
       <div className='UserGameProfile__body'>
-        <h2>{user.username}</h2>
-        <SocialLinks social={user.social} />
+        <h2>{profileUser.username}</h2>
+        <SocialLinks social={profileUser.social} />
         <ul className='PlayerCard__languages-wrapper'>
-          {user.languages?.map((language) => (
-            <li className='language-box'>{language}</li>
+          {profileUser.languages?.map((language, index) => (
+            <li key={index} className='language-box'>
+              {language}
+            </li>
           ))}
         </ul>
-        {user?.userGames.map((game) => {
-          console.log(game.game.img);
-          return <img src={game.game.img} alt='icon' />;
+        {profileUser?.userGames.map((game, index) => {
+          return <img key={index} src={`/icons/${game.game.name}.png`} alt='icon' />;
         })}
       </div>
-      { currentUser.id === user.id || filterFriendship === undefined ? undefined: initializeButton()}
-      
+      {user === undefined || user.id === profileUser.id ? undefined : (
+        <Button
+          handleClick={handleButtonClick}
+          className='button--fake button--primary'
+          text={buttonText}
+        />
+      )}
     </div>
   );
 };

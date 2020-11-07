@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect, useHistory } from 'react-router-dom';
 import SearchGameElement from '../searchElement/SearchGameElement';
 import SearchUserElement from '../searchElement/SearchUserElement';
 import './ResultsBox.scss';
@@ -8,6 +8,11 @@ import './ResultsBox.scss';
 const ResultsBox = ({ results, onClickShowResults, onClickOutsideBox }) => {
   const userResults = results[1].slice(0,2);
   const gameResults = userResults.length < 2 ?results[0].slice(0,2) : [];
+  const history = useHistory();
+
+  const handleUserClick = (id) => {
+    history.push(`/profile/${id}`);
+  }
 
   useEffect(() => {
 
@@ -26,7 +31,7 @@ const ResultsBox = ({ results, onClickShowResults, onClickOutsideBox }) => {
           ? gameResults.map((el, i) => <SearchGameElement key={i} game={el} />)
           : undefined}
         {userResults
-          ? userResults.map((el, i) => <SearchUserElement key={i} user={el} />)
+          ? userResults.map((el, i) => <SearchUserElement key={i} user={el} handleClick={handleUserClick}/>)
           : undefined}
           {console.log(results)}
         {results ? (

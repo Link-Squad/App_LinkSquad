@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
+import OfferCard from '../offerCard/OfferCard';
 import UserCard from '../userCard/UserCard';
 import FilterBox from './filter/FilterBox';
 import ResultCard from './resultcard/ResultCard';
@@ -14,28 +15,34 @@ const Results = (props) => {
   };
 
   useEffect(() => {
-    console.log(filters)
+    console.log(filters);
     const query = props.location.query;
-    if (query && query.results)
-    {
-      const gamesResults = query.results[0]
-      const usersResults = query.results[1]
+    if (query && query.results) {
+      const gamesResults = query.results[0];
+      const usersResults = query.results[1];
+      const offerResults = query.results[2];
       const tempFilteredGameResults =
-      filters === undefined || filters.Games === true
-      ? gamesResults
-      : [];
+        filters === undefined || filters.Games === true ? gamesResults : [];
       const tempFilteredUserResults =
-      filters === undefined || filters.Players === undefined
-      ? usersResults
-      : [];
-      /*const tempFilteredVacantsResults =
-      filters === undefined || filters.Vacants === undefined
-      ? usersResults
-      : [];*/
-      console.log([tempFilteredGameResults, tempFilteredUserResults]);
-      setFilteredResults([tempFilteredGameResults, tempFilteredUserResults]);
+        filters === undefined || filters.Players === true
+          ? usersResults
+          : [];
+      const tempFilteredVacantsResults =
+        filters === undefined || filters.Vacants === true
+          ? offerResults
+          : [];
+      console.log([
+        tempFilteredGameResults,
+        tempFilteredUserResults,
+        tempFilteredVacantsResults
+      ]);
+      setFilteredResults([
+        tempFilteredGameResults,
+        tempFilteredUserResults,
+        tempFilteredVacantsResults
+      ]);
     }
-  }, [filters,props.location.query?.results]);
+  }, [filters, props.location.query?.results]);
 
   if (!props.location.query || props.location.query?.results === undefined) {
     return <Redirect to='/' />;
@@ -44,7 +51,7 @@ const Results = (props) => {
       <div className='Results'>
         <div className='Results__left-side'>
           <h2 className='Results__left-side__title'>Filter:</h2>
-          <FilterBox onApplyFilter={ApplyFilter}/>
+          <FilterBox onApplyFilter={ApplyFilter} />
           <hr></hr>
           <nav className='Results__left-side__nav'>
             <Link to='/info/conditions'>Terms and conditions</Link>
@@ -66,6 +73,11 @@ const Results = (props) => {
           {filteredResults[1].length > 0
             ? filteredResults[1].map((el, i) => (
                 <ResultCard key={i} user={el} />
+              ))
+            : undefined}
+          {filteredResults[2].length > 0
+            ? filteredResults[2].map((offer, i) => (
+              <OfferCard offer={offer} key={offer.id}/>
               ))
             : undefined}
         </div>

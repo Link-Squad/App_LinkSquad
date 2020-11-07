@@ -5,12 +5,12 @@ import LogoutLink from '../utilities/logoutLink/LogoutLink';
 import AboutMe from './aboutMe/AboutMe';
 import './Profile.scss';
 import UserGameProfile from './userGameProfile/UserGameProfile';
+import { getRandomElementFromArray } from '../../helpers/helpers.js';
 
 const Profile = (props) => {
   const [user, setUser] = useState();
   const authContext = useAuthContext();
   const currentUser = authContext.user;
-
 
   useEffect(() => {
     const userId = props.match.params.id;
@@ -24,7 +24,7 @@ const Profile = (props) => {
       {user ? (
         <div className='Profile__left-side'>
           {currentUser.id === user.id ? <h2>My Profile</h2> : undefined}
-          <UserGameProfile user={user} currentUser={currentUser}/>
+          <UserGameProfile profileUser={user} />
           <LogoutLink className='Button-fake Button-primary' />
         </div>
       ) : (
@@ -33,7 +33,16 @@ const Profile = (props) => {
 
       {user ? (
         <div className='Profile__content'>
-          <AboutMe user={user}/>
+          <AboutMe user={user} />
+          {user.userGames.map((game) => {
+            console.log(game.game)
+            return (
+              <article className='Profile__content__liked-game card'>
+                <img src={`/icons/${game.game.name}.png`} alt='game icon' />
+                <img src={`/ranks/${getRandomElementFromArray([0,1,2,3,4,5,6,7])}.png`} alt='game icon' />
+              </article>
+            );
+          })}
         </div>
       ) : (
         <p>Loading...</p>

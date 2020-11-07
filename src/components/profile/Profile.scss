@@ -1,11 +1,25 @@
 .Profile {
-  width: 1100px;
   display: flex;
 
   &__content {
     flex-direction: column;
     margin-left: 24px;
     margin-top: rem;
+
+    &__liked-game {
+      max-width: 51.62rem;
+      height: 10.875rem;
+      padding: 16px 24px 16px 16px;
+      margin-top: 24px;
+      display: flex;
+      align-items: center;
+      & > img {
+        width: 10rem;
+      }
+      & > img + img{
+        width: 5rem;
+      }
+    }
   }
 
   &__left-side {
