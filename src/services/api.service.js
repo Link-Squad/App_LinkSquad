@@ -31,11 +31,11 @@ export const signup = (newUser) => {
   return http.post('/users' , {username, email, password}).then(data => data)
 }
 
-export const update = (updatedUser) => {
+export const updateUser = (updatedUser) => {
   return http.patch('/users', updatedUser).then(data => data)
 }
 
-export const createUserGames = (game) => {
+export const createUserGame = (game) => {
   return http.post('/usersgames/new', {game})
 }
 
@@ -67,7 +67,7 @@ export const findFriends = (user) => {
 }
 
 export const getUserById = (id) => {
-  return http.get(`/users?_id=${id}`)
+  return http.get(`/users?_id=${id}`).then(data => data[0])
 }
 
 export const createFriendship = (id) => {

@@ -8,7 +8,14 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { createUserGames, getGames, update } from '../../services/api.service';
+import { useAuthContext } from '../../contexts/AuthContext';
+import {
+	createUserGame,
+	getGames,
+	getUserById,
+	getUsersByQuery,
+	updateUser
+} from '../../services/api.service';
 import Button from '../utilities/button/Button';
 import './FillDetails.scss';
 
@@ -16,6 +23,8 @@ const LANGUAGES = ['spanish', 'english', 'french', 'arabic', 'russian'];
 const SOCIAL_MEDIA = ['twitch', 'twitter', 'youtube', 'discord'];
 
 const FillDetails = () => {
+	const { user } = useAuthContext();
+	const { update } = useAuthContext();
 	const history = useHistory();
 	const [pageNumber, setPageNumber] = useState(1);
 	const [gamesIds, setGamesIds] = useState();
@@ -125,24 +134,31 @@ const FillDetails = () => {
 	};
 
 	const handleSubmit = e => {
+		e.preventDefault();
 		const languages = Object.keys(data.languages).filter(
 			l => data.languages[l]
 		);
+		//validate links!
+		const { social, bio } = data;
+		const userData = { languages, social, bio };
+
+		const updateRequests = [];
+
 		const games = Object.keys(data.games)
 			.filter(g => data.games[g])
 			.map(selectedGame => gamesIds[selectedGame]);
-		//validate links!
-		const social = data.social;
-		const bio = data.bio;
 
-		const userData = { languages, games, social, bio };
-		e.preventDefault();
-		Promise.all([
-		update(userData),
-		createUserGames(games[0])
-		])
+		games.forEach(game => {
+			updateRequests.push(createUserGame(game));
+		});
+		updateRequests.push(updateUser(userData));
+
+		Promise.all(updateRequests)
 			.then(r => {
-				history.push('/');
+				getUserById(user.id).then(updatedUser => {
+					update(updatedUser);
+					history.push('/');
+				});
 			})
 			.catch(e => console.error(e));
 	};
@@ -238,12 +254,12 @@ const FillDetails = () => {
 				name="avatar"
 				accept="image/png, image/jpeg"
 				default=""
-			className="input-image"></input>
+				className="input-image"
+			></input>
 
-		<div className="Form__submit-button">
-			<Button type="submit" text="Done!" />
-		</div>
-
+			<div className="Form__submit-button">
+				<Button type="submit" text="Done!" />
+			</div>
 		</div>
 	);
 
