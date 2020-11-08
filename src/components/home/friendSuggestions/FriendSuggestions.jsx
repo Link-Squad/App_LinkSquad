@@ -1,41 +1,60 @@
 import React, { useState, useEffect } from 'react';
 import { useAuthContext } from '../../../contexts/AuthContext';
 import { getRandomElementFromArray } from '../../../helpers/helpers';
-import { getUsers, getUsersByGame } from '../../../services/api.service';
+import { getUsersByQuery, getUsersByGame } from '../../../services/api.service';
 import PlayerCardSmall from '../../playerCardSmall/PlayerCardSmall';
 import './FriendSuggestions.scss';
 
 const FriendSuggestions = () => {
 	const { user } = useAuthContext();
-	const [suggestedUsers, setSuggestedUsers] = useState();
+	const [fetchedUsers, setFetchedUsers] = useState();
 	const [usersToDisplay, setUsersToDisplay] = useState();
 	const [seeMore, setSeeMore] = useState(0)
 
 	useEffect(() => {
 		const max = 3;
 		const randNumber = Math.floor(
-			Math.random() * (suggestedUsers?.length - max) + max
+			Math.random() * (fetchedUsers?.length - max) + max
 		);
 
 		const end = randNumber + max;
-		const userSlice = suggestedUsers?.slice(randNumber, end);
+		const userSlice = fetchedUsers?.slice(randNumber, end);
 		setUsersToDisplay(userSlice);
-	}, [suggestedUsers, seeMore]);
+	}, [fetchedUsers, seeMore]);
 
 	useEffect(() => {
-		const randomLanguage = getRandomElementFromArray(user.languages);
-		const languageQuery = `?languages=${randomLanguage}`;
-		const userGames = user.userGames?.map(ug => ug.game.id);
+		// this could be abstracted in createRequests() function
+		const getUsersRequests = []
+		const {languages, userGames} = user;
 
-		if(user.userGames|| user.languages) {
-			getUsers().then(() => console.log('yay'))
+		if (languages.length) {
+			const randomLanguage = getRandomElementFromArray(user.languages);
+			const languageQuery = `?languages=${randomLanguage}`;
+			const byLanguageRequest = getUsersByQuery(languageQuery)
 
+			getUsersRequests.push(byLanguageRequest);
 		}
 
-		const randomGame = getRandomElementFromArray(userGames);
-		Promise.all([getUsersByGame(randomGame), getUsers(languageQuery)]).then(
-			([usersByGame, usersByLanguage]) => {
-				setSuggestedUsers([...usersByLanguage, ...usersByGame]);
+		if (userGames.length) {
+			const userGames = user.userGames?.map(ug => ug.game.id);
+			const randomGame = getRandomElementFromArray(userGames);
+			const byGameRequest = getUsersByGame(randomGame);
+			
+			getUsersRequests.push(byGameRequest);
+		}
+
+		if (!getUsersRequests.length) {
+			//not very scalable
+			const allUsersRequest = getUsersByQuery('');
+
+			getUsersRequests.push(allUsersRequest)
+		}
+		// till here
+		
+
+		Promise.all(getUsersRequests).then(
+			(response) => {
+				setFetchedUsers(response.flat());
 			}
 		);
 	}, []);

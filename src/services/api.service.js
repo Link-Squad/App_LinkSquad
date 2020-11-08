@@ -51,7 +51,7 @@ export const getUsersByGame = (gameId) => {
   return http.get(`/games/${gameId}/users`)
 }
 
-export const getUsers = (query) => {
+export const getUsersByQuery = (query) => {
   return http.get(`/users${query}`)
 }
 
