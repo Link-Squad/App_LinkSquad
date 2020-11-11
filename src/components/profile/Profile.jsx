@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+/* import React, { useEffect, useState } from 'react';
 import { useAuthContext } from '../../contexts/AuthContext';
 import { getUserById } from '../../services/api.service';
 import LogoutLink from '../utilities/logoutLink/LogoutLink';
-import AboutMe from './aboutMe/AboutMe';
 import './Profile.scss';
 import UserGameProfile from './userGameProfile/UserGameProfile';
 import { getRandomElementFromArray } from '../../helpers/helpers.js';
@@ -33,7 +32,6 @@ const Profile = (props) => {
 
       {user ? (
         <div className='Profile__content'>
-          <AboutMe user={user} />
           {user.userGames.map((game) => {
             console.log(game.game)
             return (
@@ -52,3 +50,4 @@ const Profile = (props) => {
 };
 
 export default Profile;
+ */

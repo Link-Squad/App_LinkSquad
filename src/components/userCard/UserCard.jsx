@@ -20,7 +20,7 @@ const UserCard = ({ user }) => {
 				</div>
 
 				<Link
-					to={`/profile/${user.id}`}
+					to={'/profile'}
 					className="button--fake UserCard__Link"
 				>
 					View my profile

@@ -10,6 +10,7 @@ import Footer from './components/footer/Footer';
 import AuthenticatedRoute from './components/utilities/authenticatedRoute/AuthenticatedRoute';
 import UnauthenticatedRoute from './components/utilities/unauthenticatedRoute/UnauthenticatedRoute';
 import FillDetails from './components/fillDetails/FillDetails';
+import MyProfile from './components/profiles/myProfile/MyProfile';
 import './App.scss';
 
 const App = () => {
@@ -28,10 +29,15 @@ const App = () => {
 							path="/login"
 							component={Auth}
 						/>
-						<AuthenticatedRoute
+{/* 						<AuthenticatedRoute
 							exact
 							path="/profile/:id"
 							component={Profile}
+						/> */}
+						<AuthenticatedRoute
+							exact
+							path="/profile"
+							component={MyProfile}
 						/>
 						<AuthenticatedRoute
 							exact

@@ -1,0 +1,14 @@
+.MyProfile {
+    display: flex;
+    justify-content: space-between;
+
+    &__info {
+        flex-grow: 1;
+        min-width: 74%;
+        margin-left: 1.5rem;
+
+        & > * {
+            margin-bottom: 1.5rem;
+        }
+    }
+}
