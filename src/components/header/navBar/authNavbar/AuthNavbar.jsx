@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useAuthContext } from '../../../../contexts/AuthContext';
 import { getOffers } from '../../../../services/api.service';
 
 
 
 const AuthNavbar = () => {
-  const authContext = useAuthContext();
-  const currentUser = authContext.user;
   const [results, setResults] = useState();
 
   useEffect(()=>{
