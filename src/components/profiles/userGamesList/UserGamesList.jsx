@@ -1,5 +1,5 @@
 import React from 'react';
-import UserGame from './userGame/UserGame';
+import UserGame from './userGameCard/UserGameCard';
 import './UserGamesList.scss';
 
 const UserGamesList = ({user}) => (
