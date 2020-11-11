@@ -23,19 +23,20 @@
 	&__languages {
 		margin-top: 1rem;
 		margin-bottom: 1.5rem;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
 	}
 
 	&__games {
 		margin-bottom: 1.5rem;
-		height: 4rem;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
 
 		& img {
-            height: 100%;
+			height: 100%;
 			width: 4rem;
-
-			& + img {
-				margin-left: 1rem;
-			}
 		}
 	}
 
