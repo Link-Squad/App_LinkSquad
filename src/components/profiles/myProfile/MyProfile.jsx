@@ -4,6 +4,7 @@ import AboutMe from '../aboutMe/AboutMe';
 import PlayerCardDetails from '../../userCardDetails/UserCardDetails';
 import FooterSmall from '../../utilities/footerSmall/FooterSmall';
 import './MyProfile.scss';
+import UserGamesList from '../userGamesList/UserGamesList';
 
 const MyProfile = () => {
     const {user} = useAuthContext();
@@ -17,9 +18,7 @@ const MyProfile = () => {
 
             <main className="MyProfile__info">
                 <AboutMe user={user}/>
-                <section className="UserGames card">
-                    <p>I'm a game!</p>
-                </section>
+                <UserGamesList user={user}/>
             </main>
         </div>
     )
