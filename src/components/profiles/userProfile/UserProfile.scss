@@ -1,0 +1,12 @@
+.UserProfile {
+    display: flex;
+    justify-content: space-between;
+
+    &__info {
+        margin-left: 1.5rem;
+
+        & > * {
+            margin-bottom: 2rem;
+        }
+    }
+}

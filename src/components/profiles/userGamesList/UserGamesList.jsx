@@ -4,7 +4,7 @@ import './UserGamesList.scss';
 
 const UserGamesList = ({user}) => (
     <section className="UserGamesList">
-        {user.userGames?.map(uG => <UserGame game={uG.game}/>)}
+        {user.userGames?.map(uG => <UserGame game={uG.game} key={uG.id}/>)}
     </section>
 )
 

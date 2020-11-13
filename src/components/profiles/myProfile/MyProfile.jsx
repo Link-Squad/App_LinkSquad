@@ -11,12 +11,12 @@ const MyProfile = () => {
 
     return (
         <div className="MyProfile">
-        <aside>
+        <aside className="MyProfile__aside">
             <PlayerCardDetails user={user}/>
             <FooterSmall />
         </aside>
 
-            <main className="MyProfile__info">
+            <main className="MyProfile__info content__main">
                 <AboutMe user={user}/>
                 <UserGamesList user={user}/>
             </main>

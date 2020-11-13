@@ -4,7 +4,7 @@ import Auth from './components/auth/Auth';
 import Header from './components/header/Header';
 import Home from './components/home/Home';
 import NotFound from './components/notFound/NotFound';
-import Profile from './components/profile/Profile';
+import UserProfile from './components/profiles/userProfile/UserProfile';
 import Results from './components/results/Results';
 import Footer from './components/footer/Footer';
 import AuthenticatedRoute from './components/utilities/authenticatedRoute/AuthenticatedRoute';
@@ -29,11 +29,11 @@ const App = () => {
 							path="/login"
 							component={Auth}
 						/>
-{/* 						<AuthenticatedRoute
+ 						<AuthenticatedRoute
 							exact
-							path="/profile/:id"
-							component={Profile}
-						/> */}
+							path="/user/:id"
+							component={UserProfile}
+						/> 
 						<AuthenticatedRoute
 							exact
 							path="/profile"

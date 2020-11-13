@@ -34,7 +34,7 @@ const PlayerCardLong = ({ player }) => {
 							<li className="language-box">{language}</li>
 						))}
 					</ul>
-                    <Link to={`/profile/${player.id}`}  className="button--fake button--primary">View Profile </Link>
+                    <Link to={`/user/${player.id}`}  className="button--fake button--primary">View Profile </Link>
 				</div>
 			</article>
 		</div>

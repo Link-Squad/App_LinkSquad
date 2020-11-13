@@ -62,20 +62,28 @@ export const search = (value) => {
 };
 
 
-export const findFriends = (user) => {
-  const {games, languages} = user;
-}
-
 export const getUserById = (id) => {
   return http.get(`/users?_id=${id}`).then(data => data[0])
 }
 
-export const createFriendship = (id) => {
-  return http.post(`/friends/${id}`)
+export const getFriends = (userId) => {
+  return http.get(`/friends/${userId}`) 
 }
 
-export const updateFriendship = (id) => {
-  return http.patch(`/friends/${id}`)
+export const getFriendshipStatus = (friendId) => {
+  return http.get(`/friends/status/${friendId}`)
+}
+
+export const addFriend = (friendId) => {
+  return http.post(`/friends/${friendId}`)
+}
+
+export const acceptFriend = (friendId) => {
+  return http.patch(`/friends/${friendId}`)
+}
+
+export const deleteFriend = (friendshipId) => {
+  return http.delete(`/friends/${friendshipId}`)
 }
 
 export const getOffers = () => {
