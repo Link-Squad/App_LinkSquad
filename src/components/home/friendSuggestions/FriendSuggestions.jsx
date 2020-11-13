@@ -54,7 +54,10 @@ const FriendSuggestions = () => {
 
 		Promise.all(getUsersRequests).then(
 			(response) => {
-				setFetchedUsers(response.flat());
+				const users = response.flat()
+				const removeUserFromArray = (array, userId) => array.filter(u => u.id !== userId)
+				
+				setFetchedUsers(removeUserFromArray(users, user.id));
 			}
 		);
 	}, []);
