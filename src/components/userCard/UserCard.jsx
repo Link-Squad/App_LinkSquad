@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import useFetchWithLoading from "../../hooks/useFetchWithLoading";
+import { getFriends } from "../../services/api.service";
 import EventCalendar from "../utilities/eventCalendar/eventCalendar";
-import { CountAcceptedFriendsFromUser } from "../utilities/userUtilities/UserUtilities";
+import FriendCount from "../utilities/friendCount/FriendCount";
 import "./UserCard.scss";
 
 const UserCard = ({ user }) => {
@@ -14,7 +16,7 @@ const UserCard = ({ user }) => {
 						<span>{user.views}</span> Views
 					</p>
 					<p className="UserCard__stats">
-						<span>{CountAcceptedFriendsFromUser(user)}</span> Friends
+						<span><FriendCount userId={user.id}/></span> Friends
 					</p>
 					<EventCalendar whose="my"/>
 				</div>

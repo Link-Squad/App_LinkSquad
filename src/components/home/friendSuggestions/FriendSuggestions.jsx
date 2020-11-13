@@ -22,6 +22,7 @@ const FriendSuggestions = () => {
 		setUsersToDisplay(userSlice);
 	}, [fetchedUsers, seeMore]);
 
+	/*REFACTOR*/
 	useEffect(() => {
 		// this could be abstracted in createRequests() function
 		const getUsersRequests = []
