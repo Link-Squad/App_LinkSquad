@@ -1,7 +1,7 @@
 import React from 'react';
-import './SearchElement.scss';
+import './ResultCard.scss';
 
-const SearchUserElement = ({ user, handleClick }) => {
+const ResultCardUser = ({ user, handleClick }) => {
 
   const mouseDown = () =>{
     handleClick(user.id);
@@ -16,4 +16,4 @@ const SearchUserElement = ({ user, handleClick }) => {
   );
 };
 
-export default SearchUserElement;
+export default ResultCardUser;
