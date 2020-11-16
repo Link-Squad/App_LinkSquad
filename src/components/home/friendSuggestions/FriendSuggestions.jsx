@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useAuthContext } from '../../../contexts/AuthContext';
 import { getRandomElementFromArray } from '../../../helpers/helpers';
 import { getUsersByQuery, getUsersByGame } from '../../../services/api.service';
-import PlayerCardSmall from '../../playerCardSmall/PlayerCardSmall';
+import UserCardSmall from '../../userCardSmall/UserCardSmall';
 import './FriendSuggestions.scss';
 
 const FriendSuggestions = () => {
@@ -73,8 +73,8 @@ const FriendSuggestions = () => {
 			<div className="FriendSuggestions__container">
 				<div className="FriendSuggestions__list">
 					{usersToDisplay?.map(suggestedUser => (
-						<PlayerCardSmall
-							player={suggestedUser}
+						<UserCardSmall
+							user={suggestedUser}
 							key={suggestedUser.id}
 						/>
 					)) || 'You have too many friends already, go out'}
