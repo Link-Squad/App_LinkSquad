@@ -1,0 +1,10 @@
+.FooterSmall {
+	font-size: 0.8rem;
+
+	&__link {
+		display: inline-block;
+		text-decoration: none;
+		padding-right: 1rem;
+		line-height: 1.4rem;
+	}
+}
