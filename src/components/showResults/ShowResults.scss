@@ -1,0 +1,26 @@
+.Results {
+  display: flex;
+
+	&__title {
+		font-weight: 400;
+		text-align: center;
+		text-shadow: black 1px 1px;
+  }
+
+	&__main {
+    flex-direction: column;
+
+		margin-top: 2.3rem;
+		& > *{
+			margin-bottom: 2rem;
+		}
+	}
+
+	&__aside {
+    margin-right: 1.5rem;
+    & .FooterSmall {
+      padding-top: 0.5rem;
+      border-top: 2px solid white;
+    }
+	}
+}

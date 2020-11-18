@@ -37,11 +37,11 @@ const ResultsBox = ({ results, onClickShowResults, onClickOutsideBox }) => {
 
 			{combinedResults.length ? (
 				<Link
-					to={{ pathname: '/results', query: { results } }}
+					to={{ pathname: '/results', state: results }}
 					className="button--primary button--fake"
 					onClick={onClickShowResults}
 				>
-					Show All Results
+					Show All Results ({combinedResults.length})
 				</Link>
 			) : (
 				<p>No results</p>

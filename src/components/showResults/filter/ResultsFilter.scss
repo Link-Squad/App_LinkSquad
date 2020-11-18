@@ -1,5 +1,4 @@
-.FilterBox {
-    width: 250px;
+.ResultsFilter {
     background-color: rgba( #2a2f3e, 0.5);
     margin-top: 10px;
     margin-bottom: 16px;
@@ -9,6 +8,10 @@
     border-color: var(--dark-bg-color);
     color: white;
     padding-bottom: 24px;
+
+    & .DropDownFilter + .DropDownFilter{
+        border-top: 1.5px solid white;
+    }
 
     button {
         margin-left: 14px;

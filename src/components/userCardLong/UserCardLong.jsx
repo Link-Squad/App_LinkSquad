@@ -24,6 +24,7 @@ const UserCardLong = ({ user }) => {
 							src={game.game.icon}
 							alt={`icon of ${game.name}`}
 							className="UserCardLong__game-icon"
+							key={game.id}
 						/>
 					))}
 				</div>
@@ -31,7 +32,7 @@ const UserCardLong = ({ user }) => {
 				<div className="UserCardLong__footer">
 					<ul className="PlayerCard__languages-wrapper">
 						{user.languages?.map(language => (
-							<li className="language-box">{language}</li>
+							<li className="language-box" key={language}>{language}</li>
 						))}
 					</ul>
                     <Link to={`/user/${user.id}`}  className="button--fake button--primary">View Profile </Link>

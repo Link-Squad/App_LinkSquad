@@ -5,7 +5,7 @@ import Header from './components/header/Header';
 import Home from './components/home/Home';
 import NotFound from './components/notFound/NotFound';
 import UserProfile from './components/profiles/userProfile/UserProfile';
-import Results from './components/results/Results';
+import ShowResults from './components/showResults/ShowResults';
 import Footer from './components/footer/Footer';
 import AuthenticatedRoute from './components/utilities/authenticatedRoute/AuthenticatedRoute';
 import UnauthenticatedRoute from './components/utilities/unauthenticatedRoute/UnauthenticatedRoute';
@@ -44,7 +44,7 @@ const App = () => {
 							path="/fill-details"
 							component={FillDetails}
 						/>
-						<Route exact path="/results" component={Results} />
+						<Route exact path="/results" component={ShowResults} />
 						<Route component={NotFound} />
 					</Switch>
 				</div>
