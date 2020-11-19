@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import OfferCard from '../offerCard/OfferCard';
 import GameCardLong from '../gameCardLong/GameCardLong';
 import UserCardLong from '../userCardLong/UserCardLong';
@@ -10,13 +10,20 @@ import { returnTruthyProperties } from '../../helpers/helpers';
 import './ShowResults.scss';
 
 const ShowResults = ({ location }) => {
-	const [games, users, offers] = location?.state || [];
+	useEffect(() => {
+		const [games, users, offers] = location?.state || [];
+		setSearchResults({ games, users, offers });
+		setToRender({
+			gamesToRender: games || [],
+			usersToRender: users || [],
+			offersToRender: offers || []
+		});
+	}, [location]);
 
-	const [toRender, setToRender] = useState({
-		gamesToRender: games,
-		usersToRender: users,
-		offersToRender: offers
-	});
+	const [searchResults, setSearchResults] = useState({});
+	const { games, users, offers } = searchResults;
+
+	const [toRender, setToRender] = useState({});
 
 	const [type, setType] = useState({
 		users: false,
@@ -72,6 +79,10 @@ const ShowResults = ({ location }) => {
 			);
 			const selectedGenres = returnTruthyProperties(gameFilters.genre);
 
+			if (![...selectedGenres, ...selectedPlatforms].length) {
+				return games
+			}
+
 			const filteredGames = games.filter(g => {
 				if (selectedPlatforms.some(sP => g.platforms.includes(sP))) {
 					return true;
@@ -92,7 +103,7 @@ const ShowResults = ({ location }) => {
 		setToRender({ usersToRender, gamesToRender, offersToRender });
 	};
 
-	const { gamesToRender, usersToRender, offersToRender } = toRender;
+	const { gamesToRender, usersToRender, offersToRender } = toRender || null;
 
 	return (
 		<div className="Results">
@@ -122,14 +133,14 @@ const ShowResults = ({ location }) => {
 				<FooterSmall />
 			</aside>
 			<main className="Results__main content__main">
-				{gamesToRender.map(g => (
+				{gamesToRender?.map(g => (
 					<GameCardLong game={g} key={g.id} />
 				))}
-				{usersToRender.map(u => (
+				{usersToRender?.map(u => (
 					<UserCardLong user={u} key={u.id} />
 				))}
 
-				{offersToRender.map(o => (
+				{offersToRender?.map(o => (
 					<OfferCard offer={o} key={o.id} />
 				))}
 			</main>
