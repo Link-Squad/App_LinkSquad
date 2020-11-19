@@ -9,9 +9,9 @@ const GamesFilterOptions = ({handleChange, areChecked}) => {
 			<DropDownOptions
 				text="What platform?"
 				handleChange={handleChange}
-				field="platform"
+				field="platforms"
 				options={filterOptions.game.platforms}
-				areChecked={areChecked.platform}
+				areChecked={areChecked.platforms}
 			/>
 
 			<DropDownOptions

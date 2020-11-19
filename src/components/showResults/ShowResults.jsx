@@ -7,7 +7,8 @@ import FooterSmall from '../utilities/footerSmall/FooterSmall';
 import DropDownOptions from '../utilities/dropDownOptions/DropDownOptions';
 import Button from '../utilities/button/Button';
 import GamesFilterOptions from './filter/gamesFilterOptions/GamesFilterOptions';
-import {filterFn} from '../../constants/filters.constants';
+import { returnTruthyProperties } from '../../helpers/helpers';
+import { filterFn } from '../../constants/filters.constants';
 import './ShowResults.scss';
 import Checkbox from '../utilities/checkbox/Checkbox';
 
@@ -27,7 +28,7 @@ const ShowResults = ({ location }) => {
 	});
 
 	const [gameFilters, setGameFilters] = useState({
-		platform: {
+		platforms: {
 			PC: false,
 			PS: false,
 			XBOX: false,
@@ -51,7 +52,7 @@ const ShowResults = ({ location }) => {
 		});
 	};
 
-	const handleGamesFilter= e => {
+	const handleGamesFilter = e => {
 		const { name, value, checked } = e.target;
 
 		setGameFilters(prev => {
@@ -68,13 +69,27 @@ const ShowResults = ({ location }) => {
 	const filterResults = e => {
 		e.preventDefault();
 
-		
 		const filterGames = () => {
-			const platform = gameFilters.platform.entries.filter(e => e[1])
-		}
+			const selectedPlatforms = returnTruthyProperties(
+				gameFilters.platforms
+			);
+			const selectedGenres = returnTruthyProperties(gameFilters.genre);
+
+			const filteredGames = games.filter(g => {
+				if (selectedPlatforms.some(sP => g.platforms.includes(sP))) {
+					return true
+				} else if (selectedGenres.some(sG => g.genre.includes(sG))) {
+					return true
+				} else {
+					return false
+				}
+			})
+
+			return filteredGames;
+		};
 
 		const usersToRender = type.users ? users : [];
-		const gamesToRender = type.games ? games : [];
+		const gamesToRender = type.games ? filterGames() : [];
 		const offersToRender = type.offers ? offers : [];
 
 		setToRender({ usersToRender, gamesToRender, offersToRender });
