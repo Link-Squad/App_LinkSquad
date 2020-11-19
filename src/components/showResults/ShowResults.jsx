@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import React, { useState } from 'react';
 import OfferCard from '../offerCard/OfferCard';
 import GameCardLong from '../gameCardLong/GameCardLong';
 import UserCardLong from '../userCardLong/UserCardLong';
@@ -8,9 +7,7 @@ import DropDownOptions from '../utilities/dropDownOptions/DropDownOptions';
 import Button from '../utilities/button/Button';
 import GamesFilterOptions from './filter/gamesFilterOptions/GamesFilterOptions';
 import { returnTruthyProperties } from '../../helpers/helpers';
-import { filterFn } from '../../constants/filters.constants';
 import './ShowResults.scss';
-import Checkbox from '../utilities/checkbox/Checkbox';
 
 const ShowResults = ({ location }) => {
 	const [games, users, offers] = location?.state || [];
@@ -77,13 +74,13 @@ const ShowResults = ({ location }) => {
 
 			const filteredGames = games.filter(g => {
 				if (selectedPlatforms.some(sP => g.platforms.includes(sP))) {
-					return true
+					return true;
 				} else if (selectedGenres.some(sG => g.genre.includes(sG))) {
-					return true
+					return true;
 				} else {
-					return false
+					return false;
 				}
-			})
+			});
 
 			return filteredGames;
 		};
@@ -130,6 +127,10 @@ const ShowResults = ({ location }) => {
 				))}
 				{usersToRender.map(u => (
 					<UserCardLong user={u} key={u.id} />
+				))}
+
+				{offersToRender.map(o => (
+					<OfferCard offer={o} key={o.id} />
 				))}
 			</main>
 		</div>
