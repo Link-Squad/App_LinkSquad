@@ -3,22 +3,23 @@ import DropDownOptions from '../../../utilities/dropDownOptions/DropDownOptions'
 import {filterFn, filterOptions} from '../../../../constants/filters.constants'
 
 
-const GamesFilterOptions = ({handleChange}) => {
+const GamesFilterOptions = ({handleChange, areChecked}) => {
 	return (
 		<div className="GamesFilterOptions">
 			<DropDownOptions
 				text="What platform?"
 				handleChange={handleChange}
 				field="platform"
-                fn={filterFn.game.platform}
 				options={filterOptions.game.platforms}
+				areChecked={areChecked.platform}
 			/>
 
 			<DropDownOptions
-				text="What team role?"
+				text="What genre?"
 				handleChange={handleChange}
-				field="role"
-				options={['Tank', 'Support', 'Damage', 'Jungle']}
+				field="genre"
+				options={filterOptions.game.genres}
+				areChecked={areChecked.genre}
 			/>
 		</div>
 	);

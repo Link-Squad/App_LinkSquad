@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Checkbox from '../checkbox/Checkbox';
 import './DropDownOptions.scss';
 
-const DropDownFilter = ({ text, field, handleChange, options }) => {
+const DropDownFilter = ({ text, field, handleChange, options, areChecked }) => {
 	const [open, setOpen] = useState(false);
 	const handleClick = () => {
 		setOpen(!open);
@@ -21,6 +21,7 @@ const DropDownFilter = ({ text, field, handleChange, options }) => {
 								handleChange={handleChange}
 								value={option}
 								text={option}
+								isChecked={areChecked[option]}
 							/>
 						);
 					})}

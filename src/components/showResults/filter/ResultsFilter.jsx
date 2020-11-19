@@ -27,7 +27,6 @@ const FilterBox = ({ handleSubmit }) => {
 	const handleChange = e => {
 		const { name, value, checked } = e.target;
 
-		console.log(e.target.checked)
 		setFilters(prev => {
 			return {
 				...prev,

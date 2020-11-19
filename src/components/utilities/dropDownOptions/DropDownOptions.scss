@@ -3,7 +3,10 @@
     cursor: pointer;
 
     .Checkbox {
-        margin: 12px 0px 0px 12px;
-        
+        margin: 1rem 0;
+
+        &__label {
+            text-transform: capitalize;
+        }
     }
 }

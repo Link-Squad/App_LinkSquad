@@ -6,6 +6,7 @@ export const filterFn = {
 
 export const filterOptions = {
     game: {
-        platforms: ['PC', 'PS', 'SWITCH', 'XBOX']
+        platforms: ['PC', 'PS', 'SWITCH', 'XBOX'],
+        genres: ['FPS', 'MOBA', 'MMORPG', 'ACTION']
     }
 }
