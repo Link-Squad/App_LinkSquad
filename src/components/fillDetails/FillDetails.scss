@@ -65,13 +65,14 @@
 }
 
 .Form {
+	height: 50%;
 	&__title {
-		margin-bottom: 3.5rem;
 		text-align: center;
 		color: var(--main-color);
 	}
 
 	&__options {
+		width: 100%;
 		display: flex;
 		justify-content: space-around;
 		flex-wrap: wrap;
@@ -102,9 +103,12 @@
 		}
 	}
 
-	& .Button {
-		text-align: center;
-		padding-top: 2.5rem;
+	&__page {
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-around;
 	}
 }
 
@@ -191,7 +195,7 @@
 	}
 
 	&::before {
-		content: 'Select some files';
+		content: 'Select avatar';
 		display: inline-block;
 		background: linear-gradient(top, #f9f9f9, #e3e3e3);
 		border: 1px solid #999;
@@ -209,5 +213,11 @@
 
 	&:active::before {
 		background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+	}
+
+	&__preview {
+		width: 32%;
+		object-fit: contain;
+		padding: 1rem;
 	}
 }

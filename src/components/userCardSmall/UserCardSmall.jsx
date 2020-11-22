@@ -4,7 +4,6 @@ import SocialLinks from "../utilities/socialLinks/SocialLinks";
 import "./UserCardSmall.scss";
 
 const UserCardSmall = ({ user }) => {
-	console.log(user.avatar)
 	return (
 		<div className="UserCardSmall card">
 			<img

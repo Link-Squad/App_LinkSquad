@@ -133,14 +133,27 @@ const FillDetails = () => {
 		});
 	};
 
+	const handleImgUpload = e => {
+		const {name, files} = e.target
+		setState(prev => {
+			return {
+				...prev,
+				data: {
+					...prev.data,
+					[name] : files[0]
+				}
+			}
+		})
+	}
+
 	const handleSubmit = e => {
 		e.preventDefault();
 		const languages = Object.keys(data.languages).filter(
 			l => data.languages[l]
 		);
-		//validate links!
-		const { social, bio } = data;
-		const userData = { languages, social, bio };
+		//TODO: validate links
+		const { social, bio, avatar } = data;
+		const userData = { languages, social, bio, avatar};
 
 		const updateRequests = [];
 
@@ -255,7 +268,10 @@ const FillDetails = () => {
 				accept="image/png, image/jpeg"
 				default=""
 				className="input-image"
+				onChange={handleImgUpload}
 			></input>
+
+			{data.avatar && (<img src={URL.createObjectURL(data.avatar)} alt="user avatar" className="input-image__preview"/>)}
 
 			<div className="Form__submit-button">
 				<Button type="submit" text="Done!" />
@@ -293,7 +309,7 @@ const FillDetails = () => {
 					</span>
 				</div>
 			</div>
-			<form className="FillDetails__form" onSubmit={handleSubmit}>
+			<form className="FillDetails__form Form" onSubmit={handleSubmit}>
 				{content[pageNumber]}
 			</form>
 
