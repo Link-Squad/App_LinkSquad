@@ -9,7 +9,7 @@ const UserCardDetails = ({ user }) => {
 	return (
 		<div className="UserCardDetails card">
 			<img
-				src={user.img}
+				src={user.avatar}
 				alt={`avatar of ${user.name}`}
 				className="UserCardDetails__avatar"
 			/>

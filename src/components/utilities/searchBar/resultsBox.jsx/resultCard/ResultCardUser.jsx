@@ -8,7 +8,7 @@ const ResultCardUser = ({ user, handleClick }) => {
   }
   return (
     <div className='SearchElement' onMouseDown={mouseDown}>
-      <img className='SearchElement__img' src={user.img} alt='user logo' />
+      <img className='SearchElement__img' src={user.avatar} alt='user logo' />
       <div className='TextContainer'>
         <p>{user.username}</p>
       </div>

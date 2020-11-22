@@ -7,7 +7,7 @@ const UserCardLong = ({ user }) => {
 	return (
 		<div className="UserCardLong card">
 			<img
-				src={user.img}
+				src={user.avatar}
 				alt="user avatar"
 				className="UserCardLong__avatar"
 			/>
