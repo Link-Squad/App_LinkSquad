@@ -10,7 +10,7 @@ const OfferCard = ({ offer }) => {
 			<div className="OfferCard__content">
 				<img
 					className="OfferCard__img"
-					alt="offer game"
+					alt="game"
 					src={offer.img || './img/gaming1.jpg'}
 				/>
 				<article className="OfferCard__body">
