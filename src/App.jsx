@@ -19,7 +19,7 @@ const App = () => {
 			<Header />
 			<div
 				className="App__container"
-				style={{ backgroundImage: 'url(./background.png)' }}
+				style={{ backgroundImage: 'url(/background.png)' }}
 			>
 				<div className="App__content">
 					<Switch>
