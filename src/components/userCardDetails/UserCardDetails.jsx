@@ -23,14 +23,15 @@ const UserCardDetails = ({ user }) => {
 				<SocialLinks social={user.social} />
 				<ul className="UserCardDetails__languages">
 					{user.languages?.map(language => (
-						<li className="language-box">{language}</li>
+						<li className="language-box" key={language}>{language}</li>
 					))}
 				</ul>
 				<div className="UserCardDetails__games">
-					{user.userGames?.map(game => (
+					{user.userGames?.map(userGame => (
 						<img
-							src={game.game.icon}
-							alt={`icon of ${game.name}`}
+							src={userGame.game.icon}
+							alt={`icon of ${userGame.game.name}`}
+							key={userGame.id}
 						/>
 					))}
 				</div>
