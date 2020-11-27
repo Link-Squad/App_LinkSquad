@@ -65,6 +65,11 @@ h5 {
 	font-weight: 400;
 }
 
+/* SCROLLBAR */
+* {
+	scrollbar-color: var(--dark-bg-color) transparent;
+}
+
 *::-webkit-scrollbar {
 	width: 12px;
 }
