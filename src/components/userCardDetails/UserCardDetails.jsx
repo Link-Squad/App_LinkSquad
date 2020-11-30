@@ -35,7 +35,7 @@ const UserCardDetails = ({ user }) => {
 						/>
 					))}
 				</div>
-				{/* TODO: check myProfile design to see if it needs to be separate component */}
+				
 				{user.id === useAuthContext().user.id ? (
 					<LogoutLink />
 				) : (

@@ -12,16 +12,16 @@ const SocialLinks = ({ social }) => {
 
 	return (
 		<div className="SocialLinks">
-			<a href={social.twitter} className="SocialLinks__icon">
+			<a href={`https://${social.twitter}`} className="SocialLinks__icon">
 				<FontAwesomeIcon icon={faTwitter} className="icon" />
 			</a>
-			<a href={social.discord} className="SocialLinks__icon">
+			<a href={`https://${social.discord}`} className="SocialLinks__icon">
 				<FontAwesomeIcon icon={faDiscord} className="icon" />
 			</a>
-			<a href={social.twitch} className="SocialLinks__icon">
+			<a href={`https://${social.twitch}`} className="SocialLinks__icon">
 				<FontAwesomeIcon icon={faTwitch} className="icon" />
 			</a>
-			<a href={social.youtube} className="SocialLinks__icon">
+			<a href={`https://${social.youtube}`} className="SocialLinks__icon">
 				<FontAwesomeIcon icon={faYoutube} className="icon" />
 			</a>
 		</div>
