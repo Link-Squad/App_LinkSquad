@@ -2,4 +2,8 @@
     &__icon + .SocialLinks__icon {
         margin-left: 0.5rem;
     }
+
+    &__icon:hover ,&__icon:focus {
+        border-bottom: 2px solid;
+    }
 }

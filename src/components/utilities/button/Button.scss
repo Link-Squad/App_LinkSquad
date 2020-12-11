@@ -4,12 +4,29 @@
 	color: white;
 	border: 2px solid var(--main-color);
 
+	&:hover,
+	&:focus {
+		text-decoration: underline;
+
+		&:disabled {
+			background-color: rgb(112, 128, 144);
+			text-decoration: none;
+		}
+	}
+
 	&--primary {
 		background-color: var(--main-color);
+
+		&:hover {
+			background-color: #c44040;
+		}
 	}
 
 	&--alt {
 		background-color: var(--dark-bg-color);
+
+		&:hover {
+			background-color: #39435e;
+		}
 	}
 }
-

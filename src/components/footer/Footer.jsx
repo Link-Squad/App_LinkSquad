@@ -17,7 +17,7 @@ const Footer = () => {
 
 				<div className="Footer__info">
 					<span>PIP Corporation &#169; 2020</span>
-					<SocialLinks social={{ twitter: 'twitter.com' }} />
+					<SocialLinks social={{ twitter: 'www.twitter.com', youtube: 'www.youtube.com', twitch: 'www.twitch.com', discord: 'www.discord.com' }} />
 				</div>
 			</div>
 		</footer>

@@ -1,3 +1,4 @@
+/* GENERAL */
 html {
 	--dark-bg-color: #2a2f3e;
 	--light-bg-color: #07c7c1;
@@ -7,7 +8,7 @@ html {
 	--card-shadow: 0 4px 10px 0 #2a2f3e;
 	--graph-shadow: 0 2px 6px #2a2f3e;
 	--content-width: 1100px;
-	font-family: "Open Sans", sans-serif;
+	font-family: 'Open Sans', sans-serif;
 }
 
 html,
@@ -17,13 +18,27 @@ body,
 	min-height: 100vh;
 }
 
-body {
-	margin: 0;
-	color: var(--dark-bg-color);
+*:focus {
+	/* Setting outline to !important was unavoidable 
+       because of firefox's default outline */
+	outline: 1px solid !important;
+	outline-offset: 2px;
 }
 
-p {
-	margin: 0;
+/* ELEMENTS */
+
+a {
+	color: white;
+	text-decoration: none;
+}
+
+a:hover,
+a:focus {
+	text-decoration: underline;
+}
+
+button:hover {
+	cursor: pointer;
 }
 
 b,
@@ -31,14 +46,9 @@ em {
 	font-weight: 600;
 }
 
-a {
-	color: white;
-}
-
-ul {
-	list-style: none;
-	padding: 0;
+body {
 	margin: 0;
+	color: var(--dark-bg-color);
 }
 
 input {
@@ -51,18 +61,24 @@ input:focus {
 	outline: none;
 }
 
-button:hover {
-	cursor: pointer;
-}
-
 h1,
 h2,
 h3,
 h4,
 h5 {
 	margin: 0;
-	font-family: "Lato", sans-serif;
+	font-family: 'Lato', sans-serif;
 	font-weight: 400;
+}
+
+p {
+	margin: 0;
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
 }
 
 /* SCROLLBAR */
