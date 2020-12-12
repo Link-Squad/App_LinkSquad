@@ -20,7 +20,8 @@ body,
 
 *:focus {
 	/* Setting outline to !important was unavoidable 
-       because of firefox's default outline */
+	   because of firefox's default outline */
+
 	outline: 1px solid !important;
 	outline-offset: 2px;
 }
