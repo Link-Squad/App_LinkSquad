@@ -6,33 +6,23 @@ import { login } from '../../services/api.service';
 import validationsFn from '../../constants/validations.constants';
 import { useAuthContext } from '../../contexts/AuthContext';
 import './LoginForm.scss';
+import useForm from '../../hooks/useForm';
 
 const LoginForm = () => {
 	/*STATE & HOOKS */
-	const [state, setState] = useState({
-		data: {
-			email: '',
-			password: ''
-		},
-		error: {
-			email: true,
-			password: true
-		},
-		touch: {}
-	});
-	const location = useLocation();
-	const [loginError, setLoginError] = useState(location?.state?.loginError);
-
 	const authContext = useAuthContext();
+	const location = useLocation();
 	const history = useHistory();
 
-	const { data, error, touch } = state;
-	const { email, password } = data;
-	const isFormValid = Object.values(error).every(err => !err);
+	const [loginError, setLoginError] = useState(location?.state?.loginError);
+	const { inputs, errors, handleInput, handleSubmit} = useForm();
+
+	
+	const { email, password } = inputs;
+	const isFormValid = Object.values(errors).every(err => !err);
 
 	/* HANDLERS */
-	const handleSubmit = e => {
-		e.preventDefault();
+	const doLogin = () => {
 		login(email, password)
 			.then(user => {
 				authContext.login(user);
@@ -43,59 +33,24 @@ const LoginForm = () => {
 			});
 	};
 
-	const handleChange = e => {
-		const { name, value } = e.target;
-		const isValid = validationsFn(name, value);
-
-		setState(prev => {
-			return {
-				...prev,
-				data: {
-					...prev.data,
-					[name]: value
-				},
-				error: {
-					...prev.error,
-					[name]: !isValid
-				}
-			};
-		});
-	};
-
-	const handleBlur = e => {
-		const { name } = e.target;
-
-		setState(prev => {
-			return {
-				...prev,
-				touch: {
-					...touch,
-					[name]: true
-				}
-			};
-		});
-	};
-
 	/* RENDER */
 	return (
-		<form className="Login" onSubmit={handleSubmit}>
+		<form className="Login" onSubmit={e => handleSubmit(e, doLogin)}>
 			<div className="Login__body">
 				<InputWithLabel
 					name="email"
 					type="email"
 					value={email}
-					handleChange={handleChange}
-					handleBlur={handleBlur}
-					error={error.email && touch.email && '* Invalid email'}
+					handleChange={handleInput}
+					error={errors.email && '* Invalid email'}
 				/>
 				<InputWithLabel
 					name="password"
 					type="password"
 					value={password}
-					handleChange={handleChange}
-					handleBlur={handleBlur}
+					handleChange={handleInput}
 					error={
-						error.password && touch.password && '* Invalid password'
+						errors.password && '* Invalid password'
 					}
 				/>
 				<Link to="#" className="Login__reset-password small">
