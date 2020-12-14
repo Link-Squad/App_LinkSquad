@@ -3,10 +3,9 @@ import InputWithLabel from '../utilities/inputWithLabel/InputWithLabel';
 import Button from '../utilities/button/Button';
 import { Link,  useHistory, useLocation } from 'react-router-dom';
 import { login } from '../../services/api.service';
-import validationsFn from '../../constants/validations.constants';
 import { useAuthContext } from '../../contexts/AuthContext';
-import './LoginForm.scss';
 import useForm from '../../hooks/useForm';
+import './LoginForm.scss';
 
 const LoginForm = () => {
 	/*STATE & HOOKS */
@@ -15,11 +14,10 @@ const LoginForm = () => {
 	const history = useHistory();
 
 	const [loginError, setLoginError] = useState(location?.state?.loginError);
-	const { inputs, errors, handleInput, handleSubmit} = useForm();
+	const { inputs, errors, handleInput, handleSubmit, isFormValid} = useForm();
 
 	
 	const { email, password } = inputs;
-	const isFormValid = Object.values(errors).every(err => !err);
 
 	/* HANDLERS */
 	const doLogin = () => {
@@ -29,7 +27,8 @@ const LoginForm = () => {
 				history.push('/')
 			})
 			.catch(e => {
-				setLoginError(e.response?.data?.message);
+				console.log(e)
+				setLoginError('Wrong credentials');
 			});
 	};
 
@@ -60,7 +59,7 @@ const LoginForm = () => {
 
 			
 
-			{loginError && <p style={{ color: 'red' }}>{loginError}</p>}
+			{loginError && <p style={{ color: 'red', marginBottom: '1rem' }}>{loginError}</p>}
 
 			<Button
 				text="Log In"

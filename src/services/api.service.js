@@ -14,7 +14,7 @@ http.interceptors.response.use(
 		if (error.response?.status === 401) {
 			localStorage.clear();
 			window.location.assign('/login');
-			//send error msg
+			window.location.state({loginError: 'Please log in'})
 		}
 
 		return Promise.reject(error);

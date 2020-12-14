@@ -1,20 +1,14 @@
-import { useState } from 'react';
-
-const emailRegex = /\S+@\S+\.\S+/;
-
-const errorFns = {
-	username: value => value.length < 2,
-	email: value => !emailRegex.test(value),
-	password: value => value.length < 5
-};
+import { useEffect, useState } from 'react';
+import VALIDATIONS from '../constants/validations.constants';
 
 const useForm = () => {
 	const [inputs, setInputs] = useState({});
 	const [errors, setErrors] = useState({});
+	const [isFormValid, setIsFormValid] = useState('false')
 
 	const handleInput = e => {
 		const input = e.target;
-		const isInvalid = errorFns[input.name];
+		const isValid = VALIDATIONS[input.name];
 
 		setInputs(prev => {
 			return {
@@ -26,10 +20,19 @@ const useForm = () => {
 		setErrors(prev => {
 			return {
 				...prev,
-				[input.name]: isInvalid ? isInvalid(input.value) : false
+				[input.name]: isValid ? !isValid(input.value) : false
 			};
 		});
 	};
+
+	useEffect(() => {
+		const errorsArr = Object.values(errors)
+
+		const areErrors = errorsArr.some(err => err)
+		const isTouch = errorsArr.length > 1
+
+		setIsFormValid(isTouch && !areErrors)
+	}, [errors])	
 
 	const handleSubmit = (event, callback) => {
 		event.preventDefault();
@@ -40,7 +43,8 @@ const useForm = () => {
 		inputs,
 		errors,
 		handleInput,
-		handleSubmit
+		handleSubmit,
+		isFormValid
 	};
 };
 

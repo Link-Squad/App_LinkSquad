@@ -1,9 +1,9 @@
+const emailRegex = /\S+@\S+\.\S+/;
+
 const VALIDATIONS = {
-    username: v => v.length,
-    email: v => v.length,
-    password: v => v.length
+    username: value => value.length > 4,
+	email: value => emailRegex.test(value),
+    password: value => value.length >= 5
 }
 
-const validationsFn = (name, value) => VALIDATIONS[name](value);
-
-export default validationsFn
+export default VALIDATIONS
