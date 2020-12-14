@@ -4,7 +4,7 @@ import VALIDATIONS from '../constants/validations.constants';
 const useForm = () => {
 	const [inputs, setInputs] = useState({});
 	const [errors, setErrors] = useState({});
-	const [isFormValid, setIsFormValid] = useState('false')
+	const [isFormValid, setIsFormValid] = useState('false');
 
 	const handleInput = e => {
 		const input = e.target;
@@ -17,22 +17,24 @@ const useForm = () => {
 			};
 		});
 
-		setErrors(prev => {
-			return {
-				...prev,
-				[input.name]: isValid ? !isValid(input.value) : false
-			};
-		});
+		setTimeout(() => {
+			setErrors(prev => {
+				return {
+					...prev,
+					[input.name]: isValid ? !isValid(input.value) : false
+				};
+			});
+		}, 2000);
 	};
 
 	useEffect(() => {
-		const errorsArr = Object.values(errors)
+		const errorsArr = Object.values(errors);
 
-		const areErrors = errorsArr.some(err => err)
-		const isTouch = errorsArr.length > 1
+		const areErrors = errorsArr.some(err => err);
+		const isTouch = errorsArr.length > 1;
 
-		setIsFormValid(isTouch && !areErrors)
-	}, [errors])	
+		setIsFormValid(isTouch && !areErrors);
+	}, [errors]);
 
 	const handleSubmit = (event, callback) => {
 		event.preventDefault();

@@ -1,28 +1,22 @@
 import React, { useState } from 'react';
 import InputWithLabel from '../utilities/inputWithLabel/InputWithLabel';
 import Button from '../utilities/button/Button';
+import TermsAndConditions from '../utilities/termsAndConditions/TermsAndConditions';
+import useForm from '../../hooks/useForm';
 import { useHistory, useLocation } from 'react-router-dom';
 import { login, signup } from '../../services/api.service';
-import TermsAndConditions from '../utilities/termsAndConditions/TermsAndConditions';
-import validationsFn from '../../constants/validations.constants';
 import { useAuthContext } from '../../contexts/AuthContext';
 import './SignupForm.scss';
 
 const SignupForm = () => {
 	/*STATE & HOOKS */
-	const [state, setState] = useState({
-		data: {
-			username: '',
-			email: '',
-			password: ''
-		},
-		error: {
-			username: true,
-			email: true,
-			password: true
-		},
-		touch: {}
-	});
+	const {
+		inputs,
+		errors,
+		handleInput,
+		handleSubmit,
+		isFormValid
+	} = useForm();
 	const location = useLocation();
 	const [isAccepted, setIsAccepted] = useState(false);
 	const [signupError, setSignupError] = useState(
@@ -32,16 +26,13 @@ const SignupForm = () => {
 	const authContext = useAuthContext();
 	const history = useHistory();
 
-	const { data, error, touch } = state;
-	const { email, password, username } = data;
-	const isFormValid = isAccepted && Object.values(error).every(err => !err);
+	const { email, password, username } = inputs;
 
 	/* HANDLERS */
-	const handleSubmit = e => {
-		e.preventDefault();
-		signup(data)
+	const doSignup = e => {
+		signup(inputs)
 			.then(() => {
-				login(data.email, data.password).then((user) => {
+				login(email, password).then(user => {
 					authContext.login(user);
 					history.push('/fill-details');
 				});
@@ -51,77 +42,36 @@ const SignupForm = () => {
 			});
 	};
 
-	const handleChange = e => {
-		const { name, value } = e.target;
-		const isValid = validationsFn(name, value);
-
-		setState(prev => {
-			return {
-				...prev,
-				data: {
-					...prev.data,
-					[name]: value
-				},
-				error: {
-					...prev.error,
-					[name]: !isValid
-				}
-			};
-		});
-	};
-
-	const handleBlur = e => {
-		const { name } = e.target;
-
-		setState(prev => {
-			return {
-				...prev,
-				touch: {
-					...touch,
-					[name]: true
-				}
-			};
-		});
-	};
-
 	/* RENDER */
 	return (
-		<form className="Signup" onSubmit={handleSubmit}>
+		<form className="Signup" onSubmit={() => handleSubmit(doSignup)}>
 			<div className="Signup__body">
 				<InputWithLabel
 					name="username"
 					type="text"
 					value={username}
-					handleChange={handleChange}
-					handleBlur={handleBlur}
-					error={
-						error.username && touch.username && '* Invalid username'
-					}
+					handleChange={handleInput}
+					error={errors.username && 'This username is not valid'}
 				/>
 				<InputWithLabel
 					name="email"
 					type="email"
 					value={email}
-					handleChange={handleChange}
-					handleBlur={handleBlur}
-					error={error.email && touch.email && '* Invalid email'}
+					handleChange={handleInput}
+					error={errors.email && 'This email is not valid'}
 				/>
 
 				<InputWithLabel
 					name="password"
 					type="password"
 					value={password}
-					handleChange={handleChange}
-					handleBlur={handleBlur}
-					error={
-						error.password && touch.password && '* Invalid password'
-					}
+					handleChange={handleInput}
+					error={errors.password && 'Password must be over 5 characters'}
 				/>
 			</div>
 
 			<TermsAndConditions
 				handleChange={() => setIsAccepted(!isAccepted)}
-				handleBlur={handleBlur}
 			/>
 
 			{signupError && <p style={{ color: 'red' }}>{signupError}</p>}
@@ -129,7 +79,7 @@ const SignupForm = () => {
 			<Button
 				text="Create an account"
 				className="Signup__submit-button"
-				isDisabled={!isFormValid}
+				isDisabled={!(isFormValid && isAccepted)}
 			/>
 		</form>
 	);
