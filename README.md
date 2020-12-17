@@ -7,7 +7,7 @@
 3. [Technical Information](#technical-information)
     1. [Features](#features)
     2. [Technologies](#technologies)
-4. [Setup](#setup)
+4. [Media](#media)
 
 
 ## Intro
@@ -24,6 +24,11 @@ Well, then wonder no more!
 
 **Linksquad** is here to help you connect with other players. Find people like you and build you very own **e-sports team**
 
+=================
+
+[LIVE DEMO HERE](https://link-squad.herokuapp.com/)
+
+=================
 
 ## About
 
@@ -42,14 +47,25 @@ Currently we are developing **LinkSquad** as a personal project, determined to p
     - Post offers so other players can join your team
     - Search games/users by name
     - Display and share your gaming preferences on your profile
+    - User authentication
+    - Form validation
 
 **TO DO:**
 
     - Create gaming teams
     - Enable real time chat between teammates
     - Create gaming events & calendar
-### Technologies 
-    WIP
+    - Implement mobile design
 
-## Setup
+### Technologies 
+    - React 
+        - Use of vanilla & custom hooks
+        - React Router
+        - React context
+
+    - SASS 
+    - Axios for AJAX calls to API
+    - Heroku deployment
+
+## Media
     WIP
