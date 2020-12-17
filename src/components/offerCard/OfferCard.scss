@@ -44,10 +44,9 @@
 	&__footer {
 		background-color: var(--dark-bg-color);
 		color: white;
-		height: calc(100% - 200px);
 		display: flex;
 		align-items: center;
-		padding-left: 1.5rem;
+		padding: 0.45em 1.5em;
 
 		& :first-child {
 			margin-right: 1rem;
