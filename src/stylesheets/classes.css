@@ -57,6 +57,7 @@ button:disabled {
 	color: var(--light-bg-color);
 	border: 2px solid var(--light-bg-color);
 	padding: 0.5rem 0.68rem;
+	text-transform: capitalize;
 	display: inline-block;
 }
 

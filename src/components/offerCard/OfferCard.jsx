@@ -1,10 +1,14 @@
+import React, { useState } from 'react';
 import { faShareAlt } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Button from '../utilities/button/Button';
 import './OfferCard.scss';
+import { isDOMComponent } from 'react-dom/test-utils';
+import OfferDropdown from './offerDropdown/OfferCardDropdown';
 
 const OfferCard = ({ offer }) => {
+	const [isDropDown, setDropdown] = useState();
+
 	return (
 		<div className="OfferCard card">
 			<div className="OfferCard__content">
@@ -20,25 +24,35 @@ const OfferCard = ({ offer }) => {
 							<img
 								src={`/roles/${offer.role}.png`}
 								alt="offer role"
+								className="requirements__imgs"
 							/>
 							<p>{offer.role}</p>
 						</div>
 
 						<div className="OfferCard__requirement-field">
-							<img src={`/ranks/${offer.rank}.png`} alt="offer rank"/>
+							<img
+								src={`/ranks/${offer.rank}.png`}
+								alt="offer rank"
+								className="requirements__imgs"
+							/>
 							<p>Rank</p>
 						</div>
 					</div>
 
-                    <Link to={`/offers/${offer.id}`} className="button--fake">See offer</Link>
+					<Button
+						text="See offer"
+						handleClick={() => setDropdown(!isDropDown)}
+					/>
 				</article>
 			</div>
 			<div className="OfferCard__footer">
 				<FontAwesomeIcon icon={faShareAlt} />
-                <p>Share</p>
-            </div>
+				<p>Share</p>
+			</div>
+
+			{isDropDown && <OfferDropdown offer={offer} />}
 		</div>
 	);
 };
 
-export default OfferCard
+export default OfferCard;
