@@ -44,7 +44,7 @@ const SignupForm = () => {
 
 	/* RENDER */
 	return (
-		<form className="Signup" onSubmit={() => handleSubmit(doSignup)}>
+		<form className="Signup" onSubmit={(e) => handleSubmit(e, doSignup)}>
 			<div className="Signup__body">
 				<InputWithLabel
 					name="username"
