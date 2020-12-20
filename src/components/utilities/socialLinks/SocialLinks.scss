@@ -1,4 +1,7 @@
 .SocialLinks {
+    a {
+        color: var(--dark-bg-color);
+    }
     &__icon + .SocialLinks__icon {
         margin-left: 0.5rem;
     }

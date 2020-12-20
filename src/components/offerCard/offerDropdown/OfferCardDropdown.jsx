@@ -44,7 +44,7 @@ const OfferDropdown = ({ offer }) => {
 					text="Contact"
 					handleClick={() =>
 						window.alert(
-							'This is a WIP feature, be sure to check it out when it is done   :)'
+							'This feature is being worked on, be sure to check it out in the future   :)'
 						)
 					}
 				/>

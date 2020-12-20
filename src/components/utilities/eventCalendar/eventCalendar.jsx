@@ -6,7 +6,7 @@ import './eventCalendar.scss';
 const EventCalendar = ({whose}) => {
 
     return (
-        <p className="EventCalendar"><FontAwesomeIcon icon={faCalendar} className="EventCalendar__icon"/>View {whose} events</p>
+        <button className="EventCalendar"><FontAwesomeIcon icon={faCalendar} className="EventCalendar__icon"/>View {whose} events</button>
     )
 }
 

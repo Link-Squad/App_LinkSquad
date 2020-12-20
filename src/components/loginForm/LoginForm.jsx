@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import InputWithLabel from '../utilities/inputWithLabel/InputWithLabel';
 import Button from '../utilities/button/Button';
-import { Link,  useHistory, useLocation } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import { login } from '../../services/api.service';
 import { useAuthContext } from '../../contexts/AuthContext';
 import useForm from '../../hooks/useForm';
@@ -14,9 +14,14 @@ const LoginForm = () => {
 	const history = useHistory();
 
 	const [loginError, setLoginError] = useState(location?.state?.loginError);
-	const { inputs, errors, handleInput, handleSubmit, isFormValid} = useForm();
+	const {
+		inputs,
+		errors,
+		handleInput,
+		handleSubmit,
+		isFormValid
+	} = useForm();
 
-	
 	const { email, password } = inputs;
 
 	/* HANDLERS */
@@ -24,10 +29,10 @@ const LoginForm = () => {
 		login(email, password)
 			.then(user => {
 				authContext.login(user);
-				history.push('/')
+				history.push('/');
 			})
 			.catch(e => {
-				console.log(e)
+				console.log(e);
 				setLoginError('Wrong credentials');
 			});
 	};
@@ -48,18 +53,20 @@ const LoginForm = () => {
 					type="password"
 					value={password}
 					handleChange={handleInput}
-					error={
-						errors.password && '* Invalid password'
-					}
+					error={errors.password && '* Invalid password'}
 				/>
-				<Link to="#" className="Login__reset-password small">
-					Forgot your password?
-				</Link>
+				<p className="Login__reset-password">
+					<Link to="#" className="small">
+						Forgot your password?
+					</Link>
+				</p>
 			</div>
 
-			
-
-			{loginError && <p style={{ color: 'red', marginBottom: '1rem' }}>{loginError}</p>}
+			{loginError && (
+				<p style={{ color: 'red', marginBottom: '1rem' }}>
+					{loginError}
+				</p>
+			)}
 
 			<Button
 				text="Log In"

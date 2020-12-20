@@ -29,8 +29,6 @@
 	}
 
 	&:focus-within {
-		outline: 2px solid var(--light-bg-color);
-		outline-offset: 4px;
 
 		.InputWithLabel__input {
 			border-bottom: 2px solid var(--light-bg-color);

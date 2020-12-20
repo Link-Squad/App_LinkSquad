@@ -1,13 +1,17 @@
 .EventCalendar {
-	text-decoration: underline;
+	background-color: inherit;
+	box-shadow: none;
+	border: none;
 	color: #444956;
+	font-size: 1rem;
 
 	&__icon {
 		padding-right: 0.6rem;
-		font-size: 20px;
+		font-size: 1.25rem;
 	}
 
 	&:hover {
 		cursor: pointer;
+		text-decoration: underline;
 	}
 }

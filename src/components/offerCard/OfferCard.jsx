@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { faShareAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from '../utilities/button/Button';
-import './OfferCard.scss';
-import { isDOMComponent } from 'react-dom/test-utils';
 import OfferDropdown from './offerDropdown/OfferCardDropdown';
+import './OfferCard.scss';
 
 const OfferCard = ({ offer }) => {
 	const [isDropDown, setDropdown] = useState();
@@ -40,7 +39,7 @@ const OfferCard = ({ offer }) => {
 					</div>
 
 					<Button
-						text="See offer"
+						text={isDropDown ? 'See less' : 'See offer'}
 						handleClick={() => setDropdown(!isDropDown)}
 					/>
 				</article>

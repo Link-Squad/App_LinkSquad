@@ -11,7 +11,7 @@ import "./SocialLinks.scss";
 const SocialLinks = ({ social }) => {
 
 	return (
-		<div className="SocialLinks">
+		<ul className="SocialLinks">
 			<a href={`https://${social.twitter}`} className="SocialLinks__icon">
 				<FontAwesomeIcon icon={faTwitter} className="icon" />
 			</a>
@@ -24,7 +24,7 @@ const SocialLinks = ({ social }) => {
 			<a href={`https://${social.youtube}`} className="SocialLinks__icon">
 				<FontAwesomeIcon icon={faYoutube} className="icon" />
 			</a>
-		</div>
+		</ul>
 	);
 };
 
