@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ResultCardGame from './resultCard/ResultCardGame';
 import ResultCardUser from './resultCard/ResultCardUser';
-import './ResultsBox.scss';
+import './DropDownSearchResults.scss';
 
-const ResultsBox = ({ results, onClickShowResults, onClickOutsideBox }) => {
+const DropDownSearchResults = ({ results, onClickShowResults, onClickOutsideBox }) => {
 	const [gameResults, userResults] = results;
 	const combinedResults = results.flat();
 
@@ -29,16 +29,14 @@ const ResultsBox = ({ results, onClickShowResults, onClickOutsideBox }) => {
 	};
 
 	return (
-		<div className="ResultsBox" id="ResultsBox">
-			<hr className="grow"></hr>
-
+		<div className="DropDownSearchResults">
 			{gamesToRender(1)}
 			{usersToRender(2)}
 
 			{combinedResults.length ? (
 				<Link
 					to={{ pathname: '/results', state: results }}
-					className="button--primary button--fake"
+					className="button--fake DropDownSearchResults__button"
 					onClick={onClickShowResults}
 				>
 					Show All Results ({combinedResults.length})
@@ -50,4 +48,4 @@ const ResultsBox = ({ results, onClickShowResults, onClickOutsideBox }) => {
 	);
 };
 
-export default ResultsBox;
+export default DropDownSearchResults;

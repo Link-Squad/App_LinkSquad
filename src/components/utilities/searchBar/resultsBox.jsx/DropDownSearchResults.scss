@@ -1,0 +1,33 @@
+.DropDownSearchResults {
+	animation: stretch 1.5s;
+	background-color: white;
+	border-radius: 3px;
+	margin-top: -3px;
+	max-width: 100%;
+	padding-bottom: 1.5em;
+	position: relative;
+	z-index: 1000;
+
+	@keyframes stretch {
+		0% {
+			max-height: 0px;
+			opacity: 0;
+			visibility: hidden;
+		}
+
+		50% {
+			opacity: 0;
+		}
+
+		100% {
+			visibility: visible;
+			opacity: 1;
+		}
+	}
+
+	&__button {
+		display: block;
+		margin: .5em 1em 1em 1em;
+		text-align: center;
+	}
+}

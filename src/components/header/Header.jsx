@@ -10,7 +10,7 @@ const Header = () => {
 	return (
 		<header className="Header">
 			<div className="Header__content">
-				<img src={logo} alt="linksquad logo" />
+				<img src={logo} alt="linksquad logo" className="Header__logo"/>
 				{user && <SearchBar />}
 				<NavBar />
 			</div>

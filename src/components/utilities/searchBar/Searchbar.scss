@@ -1,17 +1,45 @@
 .SearchBar {
-  width: 40.9%;
-  height: 59%;
-  background-color: white;
-  border-radius: 3px;
+	background-color: white;
+	box-shadow: var(--card-shadow);
+	border-radius: 3px;
+	overflow-y: visible;
+	position: relative;
+	z-index: 2000;
 
-  svg {
-    padding: 0px 10px;
-  }
+	&__container {
+		max-height: 35px;
+		overflow-y: visible;
+	}
+}
 
-  input {
-    width: 85%;
-    height: 100%;
-    padding: 0px;
-    background-color: transparent;
-  }
+.SearchBox {
+	display: inline-block;
+	height: 34px;
+
+	&__icon {
+		margin-right: 0.5em;
+		margin-left: 0.5em;
+	}
+
+	&__input {
+		width: 85%;
+		height: 100%;
+		padding: 0px;
+		background-color: transparent;
+	}
+
+	&__hr {
+		margin: -5px 8px 0 8px;
+		animation: stretch-hr 0.7s ;
+	}
+
+	@keyframes stretch-hr {
+		0% {
+			width: 0;
+		}		
+
+		100% {
+			width: 85%
+		}
+	}
 }

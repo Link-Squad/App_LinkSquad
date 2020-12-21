@@ -13,12 +13,10 @@
 		@media only screen and(min-width: 1100px) {
 			min-width: var(--content-width);
 		}
+	}
 
-		& img {
-			width: 33%;
-			height: 70%;
-			object-fit: contain;
-			object-position: left;
-		}
+	&__logo {
+		height: 47px;
+		width: 207px;
 	}
 }

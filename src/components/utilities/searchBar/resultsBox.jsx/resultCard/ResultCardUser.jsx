@@ -7,10 +7,10 @@ const ResultCardUser = ({ user, handleClick }) => {
   }
 
   return (
-    <div className='SearchElement' onMouseDown={mouseDown}>
-      <img className='SearchElement__img' src={user.avatar} alt='user logo' />
-      <div className='TextContainer'>
-        <p>{user.username}</p>
+    <div className='ResultCard' onMouseDown={mouseDown}>
+      <img className='ResultCard__img' src={user.avatar} alt='user logo' />
+      <div className='ResultCard__text-container'>
+        <p className="ResultCard__title">{user.username}</p>
       </div>
     </div>
   );
