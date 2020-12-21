@@ -14,7 +14,7 @@ const UserProfile = props => {
 		getUserById(userId).then(fetchedUser => {
 			setUser(fetchedUser);
 		});
-	}, []);
+	}, [props.match]);
 
 	const userProfile = () => (
 		<div className="UserProfile">

@@ -1,0 +1,21 @@
+.NotFound {
+	padding: 1.5em;
+	margin: 4em auto;
+	width: 300px;
+
+	&__text {
+		margin-bottom: 1.5em;
+	}
+
+	&__link {
+		background-color: var(--gunmetal-color);
+		border-radius: 3px;
+		padding: 0.5em 1em;
+
+		&:hover {
+			border-bottom: none;
+            padding: 0.5em 1em;
+            text-decoration: underline;
+		}
+	}
+}

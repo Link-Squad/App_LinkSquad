@@ -1,4 +1,5 @@
 import React from 'react';
+import { returnWIPmessage } from '../../../helpers/helpers';
 import Button from '../../utilities/button/Button';
 import './OfferCardDropdown.scss';
 
@@ -37,16 +38,12 @@ const OfferDropdown = ({ offer }) => {
 				</div>
 				<p>
 					{languages.map(l => (
-						<span className="language-box">{l}</span>
+						<span className="language-box" key={l}>{l}</span>
 					))}
 				</p>
 				<Button
 					text="Contact"
-					handleClick={() =>
-						window.alert(
-							'This feature is being worked on, be sure to check it out in the future   :)'
-						)
-					}
+					handleClick={returnWIPmessage}
 				/>
 			</div>
 		</div>

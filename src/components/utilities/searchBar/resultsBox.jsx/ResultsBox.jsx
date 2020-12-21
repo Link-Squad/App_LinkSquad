@@ -14,7 +14,7 @@ const ResultsBox = ({ results, onClickShowResults, onClickOutsideBox }) => {
 		return () => {
 			document.removeEventListener('click', onClickOutsideBox);
 		};
-	}, []);
+	}, [onClickOutsideBox]);
 
 	const usersToRender = amount => {
 		return userResults

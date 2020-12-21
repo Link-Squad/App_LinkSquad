@@ -13,7 +13,6 @@ import {
 	createUserGame,
 	getGames,
 	getUserById,
-	getUsersByQuery,
 	updateUser
 } from '../../services/api.service';
 import Button from '../utilities/button/Button';

@@ -1,13 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './NotFound.scss'
 
  const NotFound = () => (
-  <div>
-    <h1>404 - Not Found!</h1>
-    <Link to="/home">
-      Go Home, You Are Drunk.
+  <main className="NotFound card">
+    <h1 className="NotFound__title title">404 - Not Found!</h1>
+    <p className="NotFound__text">
+      The page you requested was not found
+    </p>
+    <Link to="/" className="NotFound__link">
+      Go Back
     </Link>
-  </div>
+  </main>
 );
 
 export default NotFound;

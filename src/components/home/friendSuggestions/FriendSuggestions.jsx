@@ -20,7 +20,7 @@ const FriendSuggestions = () => {
 		const end = randNumber + max;
 		const userSlice = fetchedUsers?.slice(randNumber, end);
 		setUsersToDisplay(userSlice);
-	}, [fetchedUsers, seeMore]);
+	}, [fetchedUsers, seeMore, user]);
 
 	/*REFACTOR*/
 	useEffect(() => {
@@ -61,7 +61,7 @@ const FriendSuggestions = () => {
 				setFetchedUsers(removeUserFromArray(users, user.id));
 			}
 		);
-	}, []);
+	}, [user]);
 
 	const handleClick = (e) => {
 		setSeeMore(prev => prev + 1)

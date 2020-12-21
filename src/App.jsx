@@ -11,7 +11,6 @@ import AuthenticatedRoute from './components/utilities/authenticatedRoute/Authen
 import UnauthenticatedRoute from './components/utilities/unauthenticatedRoute/UnauthenticatedRoute';
 import FillDetails from './components/fillDetails/FillDetails';
 import MyProfile from './components/profiles/myProfile/MyProfile';
-import background from './background.png'
 import './App.scss';
 
 const App = () => {

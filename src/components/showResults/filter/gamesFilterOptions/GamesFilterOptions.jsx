@@ -1,9 +1,8 @@
 import React from 'react';
 import DropDownOptions from '../../../utilities/dropDownOptions/DropDownOptions';
-import {filterFn, filterOptions} from '../../../../constants/filters.constants'
+import { filterOptions } from '../../../../constants/filters.constants';
 
-
-const GamesFilterOptions = ({handleChange, areChecked}) => {
+const GamesFilterOptions = ({ handleChange, areChecked }) => {
 	return (
 		<div className="GamesFilterOptions">
 			<DropDownOptions
@@ -25,4 +24,4 @@ const GamesFilterOptions = ({handleChange, areChecked}) => {
 	);
 };
 
-export default GamesFilterOptions
+export default GamesFilterOptions;

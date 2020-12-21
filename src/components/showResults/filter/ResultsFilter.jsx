@@ -25,7 +25,7 @@ const FilterBox = ({ handleSubmit }) => {
 	};
 
 	const handleChange = e => {
-		const { name, value, checked } = e.target;
+		const { name, value } = e.target;
 
 		setFilters(prev => {
 			return {
@@ -38,8 +38,6 @@ const FilterBox = ({ handleSubmit }) => {
 		});
 	};
 
-
-
 	return (
 		<form className="ResultsFilter">
 			<DropDownFilter
@@ -48,7 +46,7 @@ const FilterBox = ({ handleSubmit }) => {
 				options={['players', 'games', 'offers']}
 			/>
 
-			{type.games && <GamesFilterOptions handleChange={handleChange}/>}
+			{type.games && <GamesFilterOptions handleChange={handleChange} />}
 
 			<Button
 				className="Button--primary"

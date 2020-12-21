@@ -18,7 +18,7 @@ const FriendButton = ({ friendId }) => {
 				setFriendshipStatus(status);
 			})
 			.catch(e => console.error(e));
-	}, []);
+	}, [friendId]);
 
 	const buttonParams = {
 		none: {
