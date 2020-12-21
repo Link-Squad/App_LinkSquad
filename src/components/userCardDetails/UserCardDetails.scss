@@ -1,6 +1,6 @@
 .UserCardDetails {
-	min-height: 34.9375rem;
-	width: 16.6875rem;
+	min-height: 575px;
+	width: 265px;
 
 	&__avatar {
 		width: 100%;
@@ -13,30 +13,34 @@
 	}
 
 	&__title {
-		margin-bottom: 0.5rem;
+		margin-bottom: .5rem;
 	}
 
 	&__team {
-		margin-bottom: 0.5rem;
+		margin-bottom: .5rem;
 	}
 
 	&__languages {
 		margin-top: 1rem;
 		margin-bottom: 1.5rem;
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
+		display: grid;
+		grid-template-columns: repeat(2, auto) ;
+		gap: 1.5em;
+		justify-items: start;
+		width: min-content;
 	}
 
 	&__games {
 		margin-bottom: 1.5rem;
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
+		display: grid;
+		grid-template-columns: repeat(2, auto) ;
+		gap: 1.5em;
+		justify-items: start;
+		width: min-content;
 
 		& img {
 			height: 100%;
-			width: 4rem;
+			width: 65px;
 		}
 	}
 
