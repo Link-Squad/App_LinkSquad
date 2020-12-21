@@ -34,7 +34,7 @@
 .button--fake:hover {
 	background-color: var(--light-bg-color);
 	border: 2px solid var(--light-bg-color);
-	padding: 0.6875rem 2.1562rem;
+	padding: .7em 2.15em;
 	text-decoration: underline;
 }
 

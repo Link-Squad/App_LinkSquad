@@ -100,3 +100,7 @@ export const deleteFriend = friendshipId => {
 export const getOffers = () => {
 	return http.get('/offers');
 };
+
+export const addProfileView = userId => {
+	return http.put(`/users/${userId}/views`);
+}

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { addProfileView } from "../../services/api.service";
 import SocialLinks from "../utilities/socialLinks/SocialLinks";
 import "./UserCardSmall.scss";
 
@@ -19,6 +20,7 @@ const UserCardSmall = ({ user }) => {
 				<Link
 					to={`/user/${user.id}`}
 					className="UserCardSmall__profile-link button--fake button--primary"
+					onClick={() => addProfileView(user.id)}
 				>
 					View Profile
 				</Link>

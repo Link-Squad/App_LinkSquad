@@ -1,7 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import useFetchWithLoading from "../../hooks/useFetchWithLoading";
-import { getFriends } from "../../services/api.service";
 import EventCalendar from "../utilities/eventCalendar/eventCalendar";
 import FriendCount from "../utilities/friendCount/FriendCount";
 import "./UserCard.scss";
