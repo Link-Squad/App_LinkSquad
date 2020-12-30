@@ -1,22 +1,43 @@
 .Header {
-	height: 7.425vh;
 	background-color: var(--dark-bg-color);
 
 	&__content {
-		max-width: var(--content-width);
-		height: 100%;
-		display: flex;
-		margin: auto;
 		align-items: center;
+		display: flex;
+		flex-wrap: wrap;
 		justify-content: space-between;
+		max-width: var(--content-width);
+		margin: 0 auto;
+		padding: 1.5em;
 
-		@media only screen and(min-width: 1100px) {
-			min-width: var(--content-width);
+		@media only screen and (max-width: 1030px) {
+			.Navbar {
+				order: 1;
+				padding:  1em 0;
+			}
+
+			.SearchBar__container {
+				order: 2;
+				margin-top: 1em;
+			}
+
 		}
 	}
 
 	&__logo {
 		height: 47px;
 		width: 207px;
+
+		&-wrapper:hover {
+			border: none;
+		}
 	}
+}
+
+.Navbar {
+	flex-basis: 250px;
+}
+
+.SearchBar__container {
+	flex-basis: 500px;
 }

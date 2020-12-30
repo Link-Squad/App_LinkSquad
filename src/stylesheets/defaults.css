@@ -27,8 +27,7 @@ a {
 
 a:hover,
 a:focus {
-	padding-bottom: .125em;
-	border-bottom: .125em solid;
+	border-bottom: 0.125em solid;
 }
 
 button:hover {

@@ -11,7 +11,7 @@ const Header = () => {
 	return (
 		<header className="Header">
 			<div className="Header__content">
-				<Link>
+				<Link className="Header__logo-wrapper">
 					<img
 						src={logo}
 						alt="linksquad logo"
