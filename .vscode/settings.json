@@ -3,5 +3,6 @@
         "window.activeBorder": "#295c8a",
         "window.inactiveBorder": "#cccccc"
     },
-    "prettier.trailingComma": "none"
+    "prettier.trailingComma": "none",
+    "prettier.semi": true
 }

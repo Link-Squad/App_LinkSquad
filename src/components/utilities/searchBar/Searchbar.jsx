@@ -10,7 +10,6 @@ const SearchBar = () => {
 
 	return (
 		<div className="SearchBar__container" onBlur={() => resetSearchBar()}>
-						
 			<div className="SearchBar">
 				<label className="SearchBox">
 					<FontAwesomeIcon
@@ -26,9 +25,7 @@ const SearchBar = () => {
 					{results && <hr className="SearchBox__hr"></hr>}
 				</label>
 				{results ? (
-					<DropDownSearchResults
-						results={results}
-					/>
+					<DropDownSearchResults results={results} />
 				) : undefined}
 			</div>
 		</div>

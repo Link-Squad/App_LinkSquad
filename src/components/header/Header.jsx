@@ -1,16 +1,24 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import NavBar from './navBar/Navbar';
 import SearchBar from '../utilities/searchBar/Searchbar';
 import { useAuthContext } from '../../contexts/AuthContext';
-import logo from './logo.png'
+import logo from './logo.png';
 import './Header.scss';
 
 const Header = () => {
-	const {user} = useAuthContext()
+	const { user } = useAuthContext();
 	return (
 		<header className="Header">
 			<div className="Header__content">
-				<img src={logo} alt="linksquad logo" className="Header__logo"/>
+				<Link>
+					<img
+						src={logo}
+						alt="linksquad logo"
+						className="Header__logo"
+					/>
+				</Link>
+
 				{user && <SearchBar />}
 				<NavBar />
 			</div>
