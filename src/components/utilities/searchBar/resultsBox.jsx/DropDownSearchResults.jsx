@@ -1,20 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import ResultCardGame from './resultCard/ResultCardGame';
 import ResultCardUser from './resultCard/ResultCardUser';
 import './DropDownSearchResults.scss';
 
-const DropDownSearchResults = ({ results, onClickShowResults, onClickOutsideBox }) => {
+const DropDownSearchResults = ({ results, resetSearchBar }) => {
 	const [gameResults, userResults] = results;
 	const combinedResults = results.flat();
-
-	useEffect(() => {
-		document.addEventListener('click', onClickOutsideBox);
-
-		return () => {
-			document.removeEventListener('click', onClickOutsideBox);
-		};
-	}, [onClickOutsideBox]);
 
 	const usersToRender = amount => {
 		return userResults
@@ -37,7 +29,7 @@ const DropDownSearchResults = ({ results, onClickShowResults, onClickOutsideBox 
 				<Link
 					to={{ pathname: '/results', state: results }}
 					className="button--fake DropDownSearchResults__button"
-					onClick={onClickShowResults}
+					//onClick={() => resetSearchBar()}
 				>
 					Show All Results ({combinedResults.length})
 				</Link>

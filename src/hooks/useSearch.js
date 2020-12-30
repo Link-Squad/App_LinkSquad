@@ -1,10 +1,10 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect } from 'react';
 import { search } from '../services/api.service.js';
 
 const useSearch = () => {
 	const [value, setValue] = useState('');
 	const [results, setResults] = useState('');
-  const intervalId = useRef();
+	const intervalId = useRef();
 
 	const onChange = e => {
 		setResults('');
@@ -12,8 +12,10 @@ const useSearch = () => {
 	};
 
 	const resetSearchBar = e => {
-		setResults('');
-		setValue('');
+		setTimeout(() => {
+			setResults('');
+			setValue('');
+		}, 200);
 	};
 
 	useEffect(() => {
@@ -33,4 +35,4 @@ const useSearch = () => {
 	return { value, onChange, results, resetSearchBar };
 };
 
-export default useSearch
+export default useSearch;

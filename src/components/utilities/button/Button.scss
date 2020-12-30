@@ -9,10 +9,9 @@
 	}
 
 	&:hover {
-		text-decoration: underline;	
 		background-color: var(--light-bg-color);
 		border: 2px solid var(--light-bg-color);
-		
+
 		&:disabled {
 			background-color: rgb(112, 128, 144);
 			text-decoration: none;

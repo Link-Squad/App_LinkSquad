@@ -9,7 +9,8 @@ const SearchBar = () => {
 	const { value, onChange, results, resetSearchBar } = useSearch();
 
 	return (
-		<div className="SearchBar__container">
+		<div className="SearchBar__container" onBlur={() => resetSearchBar()}>
+						
 			<div className="SearchBar">
 				<label className="SearchBox">
 					<FontAwesomeIcon
@@ -21,15 +22,12 @@ const SearchBar = () => {
 						onChange={onChange}
 						value={value}
 						className="SearchBox__input"
-						placeholder=""
 					/>
 					{results && <hr className="SearchBox__hr"></hr>}
 				</label>
 				{results ? (
 					<DropDownSearchResults
 						results={results}
-						onClickShowResults={resetSearchBar}
-						onClickOutsideBox={resetSearchBar}
 					/>
 				) : undefined}
 			</div>
