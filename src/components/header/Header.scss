@@ -5,20 +5,29 @@
 		align-items: center;
 		display: flex;
 		flex-wrap: wrap;
+		gap: 1em;
 		justify-content: space-between;
 		max-width: var(--content-width);
 		margin: 0 auto;
 		padding: 1.5em;
 
-		@media only screen and (max-width: 1030px) {
+		@media only screen and (max-width: 1037px) {
 			.Navbar {
 				order: 1;
-				padding:  1em 0;
 			}
 
 			.SearchBar__container {
 				order: 2;
-				margin-top: 1em;
+			}
+
+			@supports not (gap: 1em) {
+				.Navbar {
+					padding: 1em 0;
+				}
+
+				.SearchBar__container {
+					margin-top: 1em;
+				}
 			}
 
 		}
