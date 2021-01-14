@@ -10,8 +10,8 @@ const MyProfile = () => {
     const {user} = useAuthContext();
 
     return (
-        <div className="MyProfile">
-        <aside className="MyProfile__aside">
+        <div className="MyProfile content__wrapper">
+        <aside className="MyProfile__aside content__aside">
             <PlayerCardDetails user={user}/>
             <FooterSmall />
         </aside>

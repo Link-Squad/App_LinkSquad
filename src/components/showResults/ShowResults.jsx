@@ -106,8 +106,8 @@ const ShowResults = ({ location }) => {
 	const { gamesToRender, usersToRender, offersToRender } = toRender || null;
 
 	return (
-		<div className="Results">
-			<aside className="Results__aside">
+		<div className="Results content__wrapper">
+			<aside className="Results__aside content__aside">
 				<h2 className="Results__title title">Filter:</h2>
 				<form className="ResultsFilter">
 					<DropDownOptions

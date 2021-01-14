@@ -1,16 +1,3 @@
-.Home {
-	display: flex;
-	justify-content: space-between;
-
-	&__aside {
-        margin-right: 1.5rem;
-        
-        & .UserCard {
-            margin-bottom: 1rem;
-        }
-	}
-
-	&__main {
-		width: 74%;
-	}
+.Home .UserCard {
+	margin-bottom: 1em;
 }

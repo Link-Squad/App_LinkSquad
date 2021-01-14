@@ -1,5 +1,4 @@
 .Results {
-  display: flex;
 
 	&__title {
 		font-weight: 400;
@@ -17,7 +16,6 @@
 	}
 
 	&__aside {
-    margin-right: 1.5rem;
     & .FooterSmall {
       padding-top: 0.5rem;
       border-top: 2px solid white;

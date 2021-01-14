@@ -12,12 +12,12 @@ const Home = () => {
 	const user = authContext.user;
 
 	return (
-		<div className="Home">
-			<aside className="Home__aside">
+		<div className="Home content__wrapper">
+			<aside className="Home__aside content__aside">
 				<UserCard user={user} />
 				<FooterSmall />
 			</aside>
-			<main className="Home__main">
+			<main className="Home__main content__main">
 				<FriendSuggestions />
 				<News />
 			</main>

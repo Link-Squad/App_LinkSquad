@@ -1,30 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useAuthContext } from '../../../contexts/AuthContext';
-import { getRandomElementFromArray } from '../../../helpers/helpers';
+import { getRandomElementFromArray, removeUserFromArray } from '../../../helpers/helpers';
 import { getUsersByQuery, getUsersByGame } from '../../../services/api.service';
 import UserCardSmall from '../../userCardSmall/UserCardSmall';
 import './FriendSuggestions.scss';
 
 const FriendSuggestions = () => {
 	const { user } = useAuthContext();
-	const [fetchedUsers, setFetchedUsers] = useState();
+
+	const fetchedUsers = useRef([])
 	const [usersToDisplay, setUsersToDisplay] = useState();
-	const [seeMore, setSeeMore] = useState(0)
+	const [userPagination, setUserPagination] = useState(0)
 
 	useEffect(() => {
-		const max = 3;
-		const randNumber = Math.floor(
-			Math.random() * (fetchedUsers?.length - max) + max
-		);
-
-		const end = randNumber + max;
-		const userSlice = fetchedUsers?.slice(randNumber, end);
-		setUsersToDisplay(userSlice);
-	}, [fetchedUsers, seeMore, user]);
-
-	/*REFACTOR*/
-	useEffect(() => {
-		// this could be abstracted in createRequests() function
 		const getUsersRequests = []
 		const {languages, userGames} = user;
 
@@ -45,26 +33,34 @@ const FriendSuggestions = () => {
 		}
 
 		if (!getUsersRequests.length) {
-			//not very scalable
 			const allUsersRequest = getUsersByQuery('');
 
 			getUsersRequests.push(allUsersRequest)
 		}
-		// till here
 		
 
 		Promise.all(getUsersRequests).then(
 			(response) => {
-				const users = response.flat()
-				const removeUserFromArray = (array, userId) => array.filter(u => u.id !== userId)
-				
-				setFetchedUsers(removeUserFromArray(users, user.id));
+				const users = removeUserFromArray(response.flat(), user.id)
+
+				fetchedUsers.current = users
+				setUsersToDisplay(users.slice(0, 3))
 			}
 		);
 	}, [user]);
 
+	useEffect(() => {
+		const sliceStart = userPagination * 3
+		const sliceEnd = sliceStart + 3
+
+		setUsersToDisplay(fetchedUsers.current.slice(sliceStart, sliceEnd))
+	}, [userPagination])
+
 	const handleClick = (e) => {
-		setSeeMore(prev => prev + 1)
+		setUserPagination(prev => {
+			if (prev * 3 + 3 >= fetchedUsers.current.length) return 0
+			return ++prev
+		})
 	}
 
 	return (
@@ -77,7 +73,7 @@ const FriendSuggestions = () => {
 							user={suggestedUser}
 							key={suggestedUser.id}
 						/>
-					)) || 'You have too many friends already, go out'}
+					)) || 'loading...'}
 				</div>
 				<button onClick={handleClick}> {'>'} </button>
 			</div>
