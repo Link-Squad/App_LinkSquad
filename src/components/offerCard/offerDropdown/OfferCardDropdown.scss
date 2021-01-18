@@ -4,10 +4,9 @@
 	display: grid;
 	grid-template-columns: 175px auto;
 	grid-template-rows: auto 1fr auto;
-	grid-column-gap: 1.5rem;
+	grid-gap: 1.5rem;
 
 	&__title {
-		margin-bottom: 1.5rem;
 		grid-column: 1 / -1;
 	}
 
@@ -18,14 +17,14 @@
 		grid-row: span 2;
 	}
 
-	&__description {
-		grid-column: 2 / -1;
-	}
+	
 
 	&__details {
-		display: flex;
-		justify-content: space-between;
 		align-items: center;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1em;
+		justify-content: space-between;
 	}
 
 	&__requirements-wrapper {
@@ -37,7 +36,19 @@
 		}
 	}
 
-	& .language-box {
-		margin-right: 1em;
+	&__languages {
+		display: flex;
+
+		& > .language-box {
+			margin-right: 1.5em;
+		}
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.OfferCardDropdown {
+		&__description {
+			grid-column: span 2;
+		}
 	}
 }

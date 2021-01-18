@@ -36,11 +36,11 @@ const OfferDropdown = ({ offer }) => {
 						<p>Rank</p>
 					</div>
 				</div>
-				<p>
+				<div className="OfferCardDropdown__languages">
 					{languages.map(l => (
 						<span className="language-box" key={l}>{l}</span>
 					))}
-				</p>
+				</div>
 				<Button
 					text="Contact"
 					handleClick={returnWIPmessage}

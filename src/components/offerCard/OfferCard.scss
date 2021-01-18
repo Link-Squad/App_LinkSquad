@@ -1,7 +1,7 @@
 .OfferCard {
-
 	&__content {
-		display: flex;
+		display: grid;
+		grid-template-columns: 1fr auto;
 	}
 
 	&__img {
@@ -31,15 +31,14 @@
 		&-field {
 			text-align: center;
 			margin: 0 0.5rem;
-
 		}
 	}
 
-			 .requirements__imgs {
-				width: 3.75rem;
-				height: 3rem;
-				object-fit: contain;
-			}
+	.requirements__imgs {
+		width: 3.75rem;
+		height: 3rem;
+		object-fit: contain;
+	}
 
 	&__footer {
 		background-color: var(--dark-bg-color);
@@ -52,6 +51,4 @@
 			margin-right: 1rem;
 		}
 	}
-
-	
 }
