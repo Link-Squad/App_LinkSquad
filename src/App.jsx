@@ -1,12 +1,10 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Auth from './components/auth/Auth';
-import Header from './components/header/Header';
 import Home from './components/home/Home';
 import NotFound from './components/notFound/NotFound';
 import UserProfile from './components/profiles/userProfile/UserProfile';
 import ShowResults from './components/showResults/ShowResults';
-import Footer from './components/footer/Footer';
 import AuthenticatedRoute from './components/utilities/authenticatedRoute/AuthenticatedRoute';
 import UnauthenticatedRoute from './components/utilities/unauthenticatedRoute/UnauthenticatedRoute';
 import FillDetails from './components/fillDetails/FillDetails';

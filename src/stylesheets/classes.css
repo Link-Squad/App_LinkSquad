@@ -33,7 +33,7 @@ button:disabled {
 .content {
 	margin-left: auto;
 	margin-right: auto;
-	width: var(--content-width);
+	width: min(90vw, var(--content-width));
 }
 
 .content__aside {
@@ -41,13 +41,14 @@ button:disabled {
 }
 
 .content__main {
-	flex: 1 1 74%;
+	flex: 1 1 73%;
 }
 
-.content__wrapper {
+.content--wrapper {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 1.5em;
+	padding-top: 2.5em;
 	overflow-y: auto;
 }
 
@@ -56,6 +57,14 @@ button:disabled {
 		margin-right: 1.5em;
 		margin-bottom: 1.5em;
 	}
+}
+
+.form {
+	background-color: var(--dark-bg-color);
+	box-shadow: var(--card-shadow);
+	border-radius: 3px;
+	min-height: 635px;
+	width: min(calc(100vw - 3em), 825px);
 }
 
 .hidden {

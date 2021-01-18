@@ -1,7 +1,4 @@
 .UserProfile {
-    display: flex;
-    justify-content: space-between;
-
     &__info {
         & > * {
             margin-bottom: 2rem;

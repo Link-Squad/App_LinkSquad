@@ -15,6 +15,7 @@ import {
 	getUserById,
 	updateUser
 } from '../../services/api.service';
+import Layout from '../layout/Layout';
 import Button from '../utilities/button/Button';
 import './FillDetails.scss';
 
@@ -133,17 +134,17 @@ const FillDetails = () => {
 	};
 
 	const handleImgUpload = e => {
-		const {name, files} = e.target
+		const { name, files } = e.target;
 		setState(prev => {
 			return {
 				...prev,
 				data: {
 					...prev.data,
-					[name] : files[0]
+					[name]: files[0]
 				}
-			}
-		})
-	}
+			};
+		});
+	};
 
 	const handleSubmit = e => {
 		e.preventDefault();
@@ -152,7 +153,7 @@ const FillDetails = () => {
 		);
 		//TODO: validate links
 		const { social, bio, avatar } = data;
-		const userData = { languages, social, bio, avatar};
+		const userData = { languages, social, bio, avatar };
 
 		const updateRequests = [];
 
@@ -270,7 +271,13 @@ const FillDetails = () => {
 				onChange={handleImgUpload}
 			></input>
 
-			{data.avatar && (<img src={URL.createObjectURL(data.avatar)} alt="user avatar" className="input-image__preview"/>)}
+			{data.avatar && (
+				<img
+					src={URL.createObjectURL(data.avatar)}
+					alt="user avatar"
+					className="input-image__preview"
+				/>
+			)}
 
 			<div className="Form__submit-button">
 				<Button type="submit" text="Done!" />
@@ -287,47 +294,52 @@ const FillDetails = () => {
 	};
 
 	return (
-		<main className="FillDetails__wrapper">
-			<div className="FillDetails__title">
-				<h2 className="title">Are you ready?</h2>
-				<h3>Help us find you better gaming partners</h3>
-				<div className="FillDetails__progress">
-					<div className="ProgressBar__container">
-						<div
-							className="ProgressBar__content"
-							style={progressBarWidth}
-						>
-							<FontAwesomeIcon
-								icon={faUser}
-								className="ProgressBar__icon"
-							/>
+		<Layout withHeader={true}>
+			<main className="FillDetails__wrapper content form">
+				<div className="FillDetails__title">
+					<h2 className="title">Are you ready?</h2>
+					<h3>Help us find you better gaming partners</h3>
+					<div className="FillDetails__progress">
+						<div className="ProgressBar__container">
+							<div
+								className="ProgressBar__content"
+								style={progressBarWidth}
+							>
+								<FontAwesomeIcon
+									icon={faUser}
+									className="ProgressBar__icon"
+								/>
+							</div>
 						</div>
+						<span className="FillDetails__progress-number">
+							{(pageNumber / maxPageNumber) * 100}
+						</span>
 					</div>
-					<span className="FillDetails__progress-number">
-						{(pageNumber / maxPageNumber) * 100}
-					</span>
 				</div>
-			</div>
-			<form className="FillDetails__form Form" onSubmit={handleSubmit}>
-				{content[pageNumber]}
-			</form>
+				<form
+					className="FillDetails__form Form"
+					onSubmit={handleSubmit}
+				>
+					{content[pageNumber]}
+				</form>
 
-			<footer className="FillDetails__footer">
-				<Button
-					text="<"
-					alt="true"
-					value={-1}
-					handleClick={changePage}
-				/>
-				<Link to="/">Complete later</Link>
-				<Button
-					text=">"
-					alt="true"
-					value={1}
-					handleClick={changePage}
-				/>
-			</footer>
-		</main>
+				<footer className="FillDetails__footer">
+					<Button
+						text="<"
+						alt="true"
+						value={-1}
+						handleClick={changePage}
+					/>
+					<Link to="/">Complete later</Link>
+					<Button
+						text=">"
+						alt="true"
+						value={1}
+						handleClick={changePage}
+					/>
+				</footer>
+			</main>
+		</Layout>
 	);
 };
 

@@ -8,6 +8,7 @@ import Button from '../utilities/button/Button';
 import GamesFilterOptions from './filter/gamesFilterOptions/GamesFilterOptions';
 import { returnTruthyProperties } from '../../helpers/helpers';
 import './ShowResults.scss';
+import Layout from '../layout/Layout';
 
 const ShowResults = ({ location }) => {
 	useEffect(() => {
@@ -80,7 +81,7 @@ const ShowResults = ({ location }) => {
 			const selectedGenres = returnTruthyProperties(gameFilters.genre);
 
 			if (![...selectedGenres, ...selectedPlatforms].length) {
-				return games
+				return games;
 			}
 
 			const filteredGames = games.filter(g => {
@@ -106,45 +107,47 @@ const ShowResults = ({ location }) => {
 	const { gamesToRender, usersToRender, offersToRender } = toRender || null;
 
 	return (
-		<div className="Results content__wrapper">
-			<aside className="Results__aside content__aside">
-				<h2 className="Results__title title">Filter:</h2>
-				<form className="ResultsFilter">
-					<DropDownOptions
-						text="What are you looking for?"
-						handleChange={changeType}
-						options={['users', 'games', 'offers']}
-						areChecked={type}
-					/>
-
-					{type.games && (
-						<GamesFilterOptions
-							handleChange={handleGamesFilter}
-							areChecked={gameFilters}
+		<Layout withHeader={true}>
+			<div className="Results content content--wrapper">
+				<aside className="Results__aside content__aside">
+					<h2 className="Results__title title">Filter:</h2>
+					<form className="ResultsFilter">
+						<DropDownOptions
+							text="What are you looking for?"
+							handleChange={changeType}
+							options={['users', 'games', 'offers']}
+							areChecked={type}
 						/>
-					)}
 
-					<Button
-						className="Button--primary"
-						text="Apply Filter"
-						handleClick={filterResults}
-					/>
-				</form>
-				<FooterSmall />
-			</aside>
-			<main className="Results__main content__main">
-				{gamesToRender?.map(g => (
-					<GameCardLong game={g} key={g.id} />
-				))}
-				{usersToRender?.map(u => (
-					<UserCardLong user={u} key={u.id} />
-				))}
+						{type.games && (
+							<GamesFilterOptions
+								handleChange={handleGamesFilter}
+								areChecked={gameFilters}
+							/>
+						)}
 
-				{offersToRender?.map(o => (
-					<OfferCard offer={o} key={o.id} />
-				))}
-			</main>
-		</div>
+						<Button
+							className="Button--primary"
+							text="Apply Filter"
+							handleClick={filterResults}
+						/>
+					</form>
+					<FooterSmall />
+				</aside>
+				<main className="Results__main content__main">
+					{gamesToRender?.map(g => (
+						<GameCardLong game={g} key={g.id} />
+					))}
+					{usersToRender?.map(u => (
+						<UserCardLong user={u} key={u.id} />
+					))}
+
+					{offersToRender?.map(o => (
+						<OfferCard offer={o} key={o.id} />
+					))}
+				</main>
+			</div>
+		</Layout>
 	);
 };
 

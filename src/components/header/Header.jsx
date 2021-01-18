@@ -10,7 +10,7 @@ const Header = () => {
 	const { user } = useAuthContext();
 	return (
 		<header className="Header">
-			<div className="Header__content">
+			<div className="Header__content content">
 				<Link className="Header__logo-wrapper">
 					<img
 						src={logo}

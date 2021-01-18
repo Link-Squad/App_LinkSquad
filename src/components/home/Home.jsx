@@ -19,7 +19,7 @@ const Home = () => {
 
 	return (
 		<Layout withHeader={true}>
-			<div className="Home content__wrapper">
+			<div className="Home content content--wrapper">
 				<aside className="Home__aside content__aside">
 					<UserCard user={user} />
 					<FooterSmall />

@@ -5,6 +5,7 @@ import AboutMe from '../aboutMe/AboutMe';
 import UserGamesList from '../userGamesList/UserGamesList';
 import { getUserById } from '../../../services/api.service';
 import './UserProfile.scss';
+import Layout from '../../layout/Layout';
 
 const UserProfile = props => {
 	const [user, setUser] = useState(null);
@@ -17,19 +18,21 @@ const UserProfile = props => {
 	}, [props.match]);
 
 	const userProfile = () => (
-		<div className="UserProfile">
-			<aside className="UserProfile__aside">
-				<UserCardDetails user={user} />
-				<FooterSmall />
-			</aside>
-			<main className="UserProfile__info content__main">
-				<AboutMe user={user} />
-				<UserGamesList user={user} />
-			</main>
-		</div>
-    );
+		<Layout withHeader={true}>
+			<div className="UserProfile content content--wrapper">
+				<aside className="UserProfile__aside content__aside">
+					<UserCardDetails user={user} />
+					<FooterSmall />
+				</aside>
+				<main className="UserProfile__info content__main">
+					<AboutMe user={user} />
+					<UserGamesList user={user} />
+				</main>
+			</div>
+		</Layout>
+	);
 
-	return <div>{user ? userProfile() : 'loading...'}</div>;
+	return <>{user ? userProfile() : 'loading...'}</>;
 };
 
 export default UserProfile;

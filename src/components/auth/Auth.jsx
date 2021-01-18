@@ -15,7 +15,7 @@ const Auth = () => {
 
 	return (
 		<Layout withFooter={true} withHeader={true}>
-				<main className="Auth">
+				<main className="Auth form">
 					<section className="Auth__form">
 						{hasAccount === 'true' ? <LoginForm /> : <SignupForm />}
 					</section>

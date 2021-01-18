@@ -8,7 +8,6 @@
 		gap: 1em;
 		justify-content: space-between;
 		margin: 1.5em auto;
-		width: unquote('min(90vw, var(--content-width))');
 
 		@media only screen and (max-width: 1037px) {
 			.Navbar {
