@@ -24,7 +24,7 @@ const useForm = () => {
 					[input.name]: isValid ? !isValid(input.value) : false
 				};
 			});
-		}, 2000);
+		}, 1000);
 	};
 
 	useEffect(() => {
