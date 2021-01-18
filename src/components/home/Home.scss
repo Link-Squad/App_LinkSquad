@@ -1,3 +1,9 @@
-.Home .UserCard {
-	margin-bottom: 1em;
+.Home {
+	justify-self: center;	
+	padding-top: 2.5em;
+	width: unquote("min(90vw, var(--content-width))");
+
+	& .UserCard {
+		margin-bottom: 1em;
+	}
 }
