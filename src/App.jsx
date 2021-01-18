@@ -16,41 +16,26 @@ import './App.scss';
 const App = () => {
 	return (
 		<div className="App">
-			<Header />
-			<div
-				className="App__container"
-			>
-				<div className="App__content">
-					<Switch>
-						<AuthenticatedRoute exact path="/" component={Home} />
-						<UnauthenticatedRoute
-							exact
-							path="/login"
-							component={Auth}
-						/>
- 						<AuthenticatedRoute
-							exact
-							path="/user/:id"
-							component={UserProfile}
-						/> 
-						<AuthenticatedRoute
-							exact
-							path="/profile"
-							component={MyProfile}
-						/>
-						<AuthenticatedRoute
-							exact
-							path="/fill-details"
-							component={FillDetails}
-						/>
-						<Route exact path="/results" component={ShowResults} />
-						<Route component={NotFound} />
-					</Switch>
-				</div>
-			</div>
-
 			<Switch>
-				<Route exact path="/login" component={Footer} />
+				<AuthenticatedRoute exact path="/" component={Home} />
+				<UnauthenticatedRoute exact path="/login" component={Auth} />
+				<AuthenticatedRoute
+					exact
+					path="/user/:id"
+					component={UserProfile}
+				/>
+				<AuthenticatedRoute
+					exact
+					path="/profile"
+					component={MyProfile}
+				/>
+				<AuthenticatedRoute
+					exact
+					path="/fill-details"
+					component={FillDetails}
+				/>
+				<Route exact path="/results" component={ShowResults} />
+				<Route component={NotFound} />
 			</Switch>
 		</div>
 	);

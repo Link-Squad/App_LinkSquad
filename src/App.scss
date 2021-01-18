@@ -1,22 +1,10 @@
 .App {
-	&__container {
-		background-size: cover;
-		height: calc(100vh - 97px);
-		display: flex;
-		background-image: url('./background.png');
-		background-repeat: no-repeat;
-	}
+	background-size: cover;
+	background-image: url('./background.png');
+	background-repeat: no-repeat;
+	
+	display: grid;
+	grid-template-rows: auto 1fr;
 
-	&__content {
-		max-width: var(--content-width);
-		padding: 3.5rem 1.5em;
-		margin-right: auto;
-		margin-left: auto;
-		padding-bottom: 2.5rem;
-		overflow-y: auto;
-
-		@media only screen and(min-width: 1100px) {
-			min-width: var(--content-width);
-		}
-	}
+	height: 100vh;
 }
