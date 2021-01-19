@@ -63,7 +63,8 @@ button:disabled {
 	background-color: var(--dark-bg-color);
 	box-shadow: var(--card-shadow);
 	border-radius: 3px;
-	min-height: 635px;
+	height: min(85%, 635px);
+	place-self: center center;
 	width: min(calc(100vw - 3em), 825px);
 }
 

@@ -6,7 +6,7 @@ import './Footer.scss';
 const Footer = () => {
 	return (
 		<footer className="Footer">
-			<div className="Footer__content">
+			<div className="Footer__content content">
 				<nav className="Footer__nav">
 					<Link to="/info/conditions">Terms and conditions</Link>
 					<Link to="/info/legal">Legal</Link>
