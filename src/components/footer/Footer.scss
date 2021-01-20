@@ -22,7 +22,9 @@
 		margin-left: 2rem;
 		margin-right: 1rem;
 
-		& svg {
+		& svg,
+		:hover,
+		:focus {
 			color: white;
 		}
 	}
@@ -34,28 +36,37 @@
 
 @media screen and (max-width: 1100px) {
 	.Footer {
-		font-size: 0.8em;
+		font-size: 0.85em;
 
-		& .nav-toggle[aria-expanded='false'] ~ .Footer__nav {
+		&__nav,
+		.SocialLinks {
 			display: none;
 		}
 
-		& .social-toggle[aria-expanded='false'] ~ .SocialLinks {
-			display: none;
-		}
-
-		& .nav-toggle[aria-expanded='true'] ~ .Footer__nav {
-            background-color: rgba(112, 128, 144, 0.8);
-            border-radius: 3px;
-            box-shadow: var(--card-shadow);
-            display: flex;
-            padding: 1em;
+		& .nav-toggle[aria-expanded='true'] ~ .Footer__nav,
+		.social-toggle[aria-expanded='true'] ~ .SocialLinks {
+			background-color: rgba(112, 128, 144, 0.8);
+			border-radius: 3px;
+			box-shadow: var(--card-shadow);
+			display: flex;
+			padding: 1em;
 			position: absolute;
-			top: -51px;
+			top: -50px;
+		}
+
+		& .social-toggle[aria-expanded='true'] ~ .SocialLinks {
+			right: 0;
 		}
 
 		&__btn {
+			border-width: 1px;
 			display: inline-block;
+
+			&[aria-expanded='true'] {
+				background-color: var(--light-bg-color);
+				border: 2px solid var(--light-bg-color);
+				padding: 0.7em 2.15em;
+			}
 		}
 	}
 }

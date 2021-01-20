@@ -23,12 +23,13 @@ const Footer = () => {
 				<button
 					aria-expanded={isOpen.nav}
 					aria-controls="nav"
-					className="Footer__btn nav-toggle"
+					className="Footer__btn button--fake button--fake-alt nav-toggle"
 					onClick={toggleDropdown}
+					onBlur={toggleDropdown}
 				>
 					More
 				</button>
-				<nav className="Footer__nav" id="nav">
+				<nav className="Footer__nav dropdown" id="nav">
 					<Link to="/info/conditions">Terms and conditions</Link>
 					<Link to="/info/legal">Legal</Link>
 					<Link to="/info/privacy">Privacy policy</Link>
@@ -40,8 +41,9 @@ const Footer = () => {
 				<button
 					aria-controls="social"
 					aria-expanded={isOpen.social}
-					className="Footer__btn social-toggle"
+					className="Footer__btn button--fake button--fake-alt social-toggle"
 					onClick={toggleDropdown}
+					onBlur={toggleDropdown}
 				>
 					Social
 				</button>

@@ -4,7 +4,7 @@ import ResultCardGame from './resultCard/ResultCardGame';
 import ResultCardUser from './resultCard/ResultCardUser';
 import './DropDownSearchResults.scss';
 
-const DropDownSearchResults = ({ results, resetSearchBar }) => {
+const DropDownSearchResults = ({ results }) => {
 	const [gameResults, userResults] = results;
 	const combinedResults = results.flat();
 
@@ -29,7 +29,6 @@ const DropDownSearchResults = ({ results, resetSearchBar }) => {
 				<Link
 					to={{ pathname: '/results', state: results }}
 					className="button--fake DropDownSearchResults__button"
-					//onClick={() => resetSearchBar()}
 				>
 					Show All Results ({combinedResults.length})
 				</Link>
