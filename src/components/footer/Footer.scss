@@ -61,6 +61,7 @@
 		&__btn {
 			border-width: 1px;
 			display: inline-block;
+			padding: .5em 1.5em;
 
 			&[aria-expanded='true'] {
 				background-color: var(--light-bg-color);
