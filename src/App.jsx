@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Auth from './components/auth/Auth';
-import Home from './components/home/Home';
 import NotFound from './components/notFound/NotFound';
 import UserProfile from './components/profiles/userProfile/UserProfile';
 import ShowResults from './components/showResults/ShowResults';
@@ -10,12 +9,13 @@ import UnauthenticatedRoute from './components/utilities/unauthenticatedRoute/Un
 import FillDetails from './components/fillDetails/FillDetails';
 import MyProfile from './components/profiles/myProfile/MyProfile';
 import './App.scss';
+import HomeRedirect from './components/homeRedirect/HomeRedirect';
 
 const App = () => {
 	return (
 		<div className="App">
 			<Switch>
-				<AuthenticatedRoute exact path="/" component={Home} />
+				<Route exact path="/" component={HomeRedirect} />
 				<UnauthenticatedRoute exact path="/login" component={Auth} />
 				<AuthenticatedRoute
 					exact
