@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import NavBar from './navBar/Navbar';
 import SearchBar from '../utilities/searchBar/Searchbar';
 import { useAuthContext } from '../../contexts/AuthContext';
-import logo from './logo.png';
 import './Header.scss';
 
 const Header = () => {
@@ -13,7 +12,7 @@ const Header = () => {
 			<div className="Header__content content">
 				<Link className="Header__logo-wrapper">
 					<img
-						src={logo}
+						src="/logo.png"
 						alt="linksquad logo"
 						className="Header__logo"
 					/>
