@@ -12,7 +12,7 @@ const Landing = () => {
 	return (
 		<div className="Landing">
 			<section className="section1 two-col-grid">
-				<div className="section1__cta left-col">
+				<div className="section1__cta cta">
 					<img
 						src="/logo.png"
 						alt="LinkSquad Logo"
@@ -34,7 +34,7 @@ const Landing = () => {
 				</div>
 			</section>
 			<section className="section2 divider-bg two-col-grid">
-				<div className="section2__acronym left-col">
+				<div className="section2__acronym cta">
 					<p>
 						<span className="hl">P</span>articipate in games
 					</p>
@@ -64,7 +64,7 @@ const Landing = () => {
 				</div>
 			</section>
 			<section className="section3 divider-bg two-col-grid">
-				<div className="section3__cta left-col">
+				<div className="section3__cta cta">
 					<h2>We know how hard it is to create a new team</h2>
 					<h3>Specially finding new members</h3>
 					<p>
@@ -73,13 +73,12 @@ const Landing = () => {
 					</p>
 				</div>
 
-				<div className="gallery">
 					<img
 						src={offer}
 						alt="team vacancy offer"
-						className="gallery__offer"
+						className="section3__offer"
 					/>
-					<div className="gallery__carousel">
+					<div className="section3__carousel">
 						<img
 							src="/logos/lol.png"
 							alt="league of legends logo"
@@ -90,12 +89,11 @@ const Landing = () => {
 							src="/logos/counter.png"
 							alt="counter strike logo"
 						/>
-					</div>
 				</div>
 			</section>
 			<section className="section4 divider-bg">
 				<img src={users_carousel} alt="users carousel" className="section4__carousel"/>
-				<div className="section4__cta">
+				<div className="section4__cta cta">
 					<h2>Meet and play</h2>
 					<h3>Find other players with similar interests</h3>
 					<p>

@@ -3,12 +3,14 @@
 	--divider-width: clamp(1400px, 90vw, 1700px);
 	--section-height: 80vh;
 	color: white;
-	font-size: clamp(1rem, 2.5vw, 1.8rem);
+	font-size: clamp(1rem, 1.35vw, 1.8rem);
 	overflow-y: auto;
 
+	h1,
 	h2 {
 		font-size: 1.3em;
 		font-weight: 800;
+		margin: 0;
 	}
 
 	h3 {
@@ -17,18 +19,13 @@
 
 	section {
 		min-height: var(--section-height);
+		padding: 0 5vw;
 	}
 
-	.two-col-grid {
-		display: grid;
-		grid-template-columns: var(--two-column-grid);
-	}
-
-	.left-col {
-		align-content: center;
+	.cta {
 		display: grid;
 		grid-row-gap: 2em;
-		padding: 0 20%;
+		padding: 0 2.5em;
 	}
 
 	.divider-bg {
@@ -38,20 +35,19 @@
 		background-repeat: no-repeat;
 	}
 
+	.two-col-grid {
+		align-content: center;
+		display: grid;
+		grid-template-columns: var(--two-column-grid);
+	}
+
 	& .section1 {
+		background-color: var(--dark-bg-color);
 		&__logo {
 			width: 70%;
 		}
 
 		&__cta {
-			background-color: var(--dark-bg-color);
-
-			& h1 {
-				margin: 0;
-				font-size: 1.5em;
-				font-weight: 700;
-			}
-
 			& a {
 				justify-self: start;
 			}
@@ -93,6 +89,7 @@
 		&__acronym {
 			font-size: 1.1em;
 			grid-row-gap: 1em;
+			justify-self: end;
 			& .hl {
 				color: var(--main-color);
 			}
@@ -124,32 +121,26 @@
 		background-color: #fff;
 		background-image: url('./assets/divider_dark.png');
 		color: var(--dark-bg-color);
-		padding-top: 20vh;
 
 		&__cta {
 			align-content: start;
 			grid-row-gap: 1em;
+			justify-self: end;
 			text-align: right;
 		}
 
-		& .gallery {
-			align-content: start;
-			display: grid;
-			grid-row-gap: 1em;
-			max-width: 880px;
+		&__offer {
+			width: 100%;
+		}
 
-			&__offer {
-				width: 100%;
-			}
+		&__carousel {
+			align-items: center;
+			display: flex;
+			grid-column: 2 / -1;
+			justify-content: space-around;
 
-			&__carousel {
-				align-items: center;
-				display: flex;
-				justify-content: space-around;
-
-				& img {
-					width: 17%;
-				}
+			& img {
+				width: 17%;
 			}
 		}
 	}
@@ -160,7 +151,6 @@
 		background-image: url('./assets/divider_pink.png');
 		display: grid;
 		grid-template-columns: repeat(2, minmax(360px, 750px));
-		grid-column-gap: 5em;
 		justify-content: center;
 
 		&__carousel {
@@ -187,7 +177,7 @@
 		}
 
 		img {
-			width: unquote("min(1000px, 100%)");
+			width: unquote('min(1000px, 100%)');
 		}
 	}
 }
