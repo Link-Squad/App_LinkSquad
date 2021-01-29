@@ -32,7 +32,6 @@ const LoginForm = () => {
 				history.push('/');
 			})
 			.catch(e => {
-				console.log(e);
 				setLoginError('Wrong credentials');
 			});
 	};
