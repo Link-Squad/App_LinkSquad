@@ -4,7 +4,7 @@
 	--divider-width: clamp(1400px, 90vw, 1700px);
 	--section-height: 80vh;
 	color: white;
-	font-size: clamp(1rem, 1.35vw, 1.8rem);
+	font-size: clamp(1rem, 1.35vw, 1.7rem);
 	overflow-y: auto;
 
 	h1,
@@ -46,10 +46,15 @@
 
 	//LAYOUT
 	& .Navbar {
+		background-color: #ffffffe3;
+		border-radius: 3px;
+		box-shadow: var(--card-shadow);
 		position: fixed;
-		right: 20%;
+		right: 5%;
+		top: 16px;
 
 		& a {
+			color: var(--dark-bg-color);
 			padding: 1em;
 			font-weight: 700;
 
@@ -198,14 +203,14 @@
 	& .Footer__content {
 		padding: 0 5vw;
 		font-size: unquote('max(.8em, 12px)');
-		width: 100% ;
+		width: 100%;
 
 		& .icon {
 			font-size: 1.5em;
 		}
 	}
 
-	@media screen and (max-width: 600px){
+	@media screen and (max-width: 600px) {
 		section {
 			grid-template-columns: 1fr;
 			grid-row-gap: 1.5em;
@@ -216,7 +221,7 @@
 		.section1 {
 			&__collage {
 				display: none;
-			}	
+			}
 		}
 
 		.section2 {
@@ -231,4 +236,3 @@
 		}
 	}
 }
-
