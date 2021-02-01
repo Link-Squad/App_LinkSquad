@@ -1,5 +1,6 @@
 .Landing {
-	--two-column-grid: minmax(350px, 2fr) 3fr;
+	//DEFAULTS
+	--twelve-column-grid: repeat(12, 1fr);
 	--divider-width: clamp(1400px, 90vw, 1700px);
 	--section-height: 80vh;
 	color: white;
@@ -18,14 +19,17 @@
 	}
 
 	section {
+		align-content: center;
+		display: grid;
+		grid-template-columns: var(--twelve-column-grid);
 		min-height: var(--section-height);
-		padding: 0 5vw;
+		padding: 2em 5vw;
 	}
 
 	.cta {
 		display: grid;
 		grid-row-gap: 2em;
-		padding: 0 2.5em;
+		grid-column: span 4;
 	}
 
 	.divider-bg {
@@ -35,50 +39,51 @@
 		background-repeat: no-repeat;
 	}
 
-	.two-col-grid {
-		align-content: center;
-		display: grid;
-		grid-template-columns: var(--two-column-grid);
+	.media {
+		grid-column: span 7;
+		grid-column-end: -1;
+	}
+
+	//LAYOUT
+	& .Navbar {
+		position: fixed;
+		right: 20%;
+
+		& a {
+			padding: 1em;
+			font-weight: 700;
+
+			&:hover,
+			:focus {
+				border-bottom: 0.2em solid var(--light-bg-color);
+			}
+		}
 	}
 
 	& .section1 {
+		align-self: stretch;
 		background-color: var(--dark-bg-color);
+		padding-bottom: 0;
+		padding-right: 0;
+		padding-top: 0;
+
 		&__logo {
 			width: 70%;
 		}
 
 		&__cta {
+			align-self: center;
 			& a {
 				justify-self: start;
 			}
 		}
 
-		&__nav {
-			align-items: start;
-			background-image: url('./assets/img-section1.jpg');
-			background-color: rgba(26, 29, 38, 0.53);
-			background-blend-mode: overlay;
-			background-size: cover;
-			display: flex;
-			justify-content: end;
-			padding: 1.5em;
-			position: relative;
-
-			& .Navbar {
-				position: relative;
-				flex-basis: 500px;
-				right: 20%;
-
-				& a {
-					padding: 1em;
-					font-weight: 700;
-
-					&:hover,
-					:focus {
-						border-bottom: 0.2em solid var(--light-bg-color);
-					}
-				}
-			}
+		&__collage {
+			grid-column: 6 / -1;
+			height: var(--section-height);
+			object-fit: cover;
+			object-position: 0 0;
+			width: 100%;
 		}
 	}
 
@@ -97,6 +102,7 @@
 
 		&__hexagons {
 			display: flex;
+			gap: 2em;
 			justify-content: space-around;
 		}
 
@@ -108,7 +114,7 @@
 			justify-items: center;
 
 			& img {
-				width: 8em;
+				width: 100%;
 			}
 
 			& p {
@@ -136,7 +142,6 @@
 		&__carousel {
 			align-items: center;
 			display: flex;
-			grid-column: 2 / -1;
 			justify-content: space-around;
 
 			& img {
@@ -150,28 +155,23 @@
 		background-color: var(--dark-bg-color);
 		background-image: url('./assets/divider_pink.png');
 		display: grid;
-		grid-template-columns: repeat(2, minmax(360px, 750px));
 		justify-content: center;
 
 		&__carousel {
+			grid-column: 1 / 6;
 			max-width: 100%;
 		}
 
 		&__cta {
-			display: grid;
-			grid-row-gap: 1em;
+			grid-column: 7 / -1;
 		}
 	}
 
 	.section5 {
 		align-items: center;
 		background-color: var(--main-color);
-		grid-gap: 5em;
 
 		&__cta {
-			display: grid;
-			grid-row-gap: 1em;
-			max-width: 550px;
 			justify-self: end;
 			text-align: right;
 		}
@@ -180,4 +180,55 @@
 			width: unquote('min(1000px, 100%)');
 		}
 	}
+
+	.final-cta {
+		align-content: center;
+		background-color: var(--light-bg-color);
+		display: grid;
+		grid-gap: 1em;
+		justify-content: center;
+		min-height: calc(var(--section-height) / 2);
+		text-align: center;
+
+		a {
+			justify-self: center;
+		}
+	}
+
+	& .Footer__content {
+		padding: 0 5vw;
+		font-size: unquote('max(.8em, 12px)');
+		width: 100% ;
+
+		& .icon {
+			font-size: 1.5em;
+		}
+	}
+
+	@media screen and (max-width: 600px){
+		section {
+			grid-template-columns: 1fr;
+			grid-row-gap: 1.5em;
+			justify-items: center;
+			justify-content: center;
+		}
+
+		.section1 {
+			&__collage {
+				display: none;
+			}	
+		}
+
+		.section2 {
+			&__hexagons {
+			}
+		}
+
+		.section5 {
+			img {
+				width: 90vw;
+			}
+		}
+	}
 }
+

@@ -12,7 +12,6 @@ const AuthNavbar = () => {
 	}, []);
 	return (
 		<nav className="Navbar">
-			<Link to="/">Home</Link>
 			<Link to={{ pathname: '/results', state: results }}>
 				Team offers
 			</Link>
