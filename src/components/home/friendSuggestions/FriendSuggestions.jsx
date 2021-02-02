@@ -16,7 +16,7 @@ const FriendSuggestions = () => {
 	const [userPagination, setUserPagination] = useState(0);
 	const [usersAmount, setUsersAmount] = useState(3)
 
-	useLayoutEffect(() => {
+	useEffect(() => {
 		const updateUsersAmount = () => {
 			const {innerWidth: width} = window
 
