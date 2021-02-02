@@ -1,4 +1,7 @@
 .Navbar {
   display: flex;
-  justify-content: space-around;
+  
+  & a:first-child  {
+    margin-right: 1.5em;
+  }
 }

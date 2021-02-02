@@ -17,7 +17,7 @@ const Landing = () => {
 			<section className="section1 ">
 				<div className="section1__cta cta">
 					<img
-						src="/logo.png"
+						src="/logo.svg"
 						alt="LinkSquad Logo"
 						className="section1__logo"
 					/>

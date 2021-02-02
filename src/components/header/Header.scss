@@ -5,19 +5,11 @@
 		align-items: center;
 		display: flex;
 		flex-wrap: wrap;
-		gap: 1em;
+		gap: 1.5em;
 		justify-content: space-between;
 		margin: 1em auto;
 
-		@media only screen and (max-width: 1037px) {
-			.Navbar {
-				order: 1;
-			}
-
-			.SearchBar__container {
-				order: 2;
-			}
-
+		@media only screen and (max-width: 800px) {
 			@supports not (gap: 1em) {
 				.Navbar {
 					padding: 1em 0;
@@ -32,7 +24,6 @@
 
 	&__logo {
 		height: 47px;
-		width: 207px;
 
 		&-wrapper:hover {
 			border: none;
@@ -40,10 +31,6 @@
 	}
 }
 
-.Navbar {
-	flex-basis: 250px;
-}
-
 .SearchBar__container {
-	flex-basis: 500px;
+	flex: 1 1 200px;
 }

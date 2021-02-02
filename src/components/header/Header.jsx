@@ -12,7 +12,7 @@ const Header = () => {
 			<div className="Header__content content">
 				<Link className="Header__logo-wrapper" to="/">
 					<img
-						src="/logo.png"
+						srcset="/logo.svg 1400w, /icon.svg 800w"
 						alt="linksquad logo"
 						className="Header__logo"
 					/>
