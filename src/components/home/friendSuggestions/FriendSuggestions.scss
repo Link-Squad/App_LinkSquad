@@ -20,13 +20,17 @@
 	}
 	
 	& button {
-		height: 350px;
-		width: 2.25rem;
+		align-self: stretch;
+		padding: 0 1.5em;
 		background-color: rgba(235, 235, 235, 0.55);
 		border-radius: 3px;
 		box-shadow: var(--card-shadow);
 		border: none;
 		outline: none;
+
+		& svg {
+			font-size: 2em;
+		}
 
 		&:hover {
 			background-color: rgba(235, 235, 235, 0.9);
