@@ -1,0 +1,15 @@
+.RadioGroup {
+    border: none;
+    margin: 0;
+    padding: 1.5em 1em;
+    display: grid;
+    gap: 1em;
+
+    &__legend {
+        float: left;
+    }
+
+    & .Checkbox__label{
+        text-transform: capitalize;
+    }
+}

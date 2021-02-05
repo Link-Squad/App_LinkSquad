@@ -3,12 +3,12 @@ import OfferCard from '../offerCard/OfferCard';
 import GameCardLong from '../gameCardLong/GameCardLong';
 import UserCardLong from '../userCardLong/UserCardLong';
 import FooterSmall from '../utilities/footerSmall/FooterSmall';
-import DropDownOptions from '../utilities/dropDownOptions/DropDownOptions';
 import Button from '../utilities/button/Button';
 import GamesFilterOptions from './filter/gamesFilterOptions/GamesFilterOptions';
 import { returnTruthyProperties } from '../../helpers/helpers';
 import './ShowResults.scss';
 import Layout from '../layout/Layout';
+import RadioGroup from '../utilities/RadioGroup/RadioGroup';
 
 const ShowResults = ({ location }) => {
 	useEffect(() => {
@@ -26,11 +26,7 @@ const ShowResults = ({ location }) => {
 
 	const [toRender, setToRender] = useState({});
 
-	const [type, setType] = useState({
-		users: false,
-		games: false,
-		offers: false
-	});
+	const [type, setType] = useState();
 
 	const [gameFilters, setGameFilters] = useState({
 		platforms: {
@@ -47,14 +43,9 @@ const ShowResults = ({ location }) => {
 		}
 	});
 
-	const changeType = e => {
-		const { value, checked } = e.target;
-		setType(prev => {
-			return {
-				...prev,
-				[value]: checked
-			};
-		});
+	const handleRadio = e => {
+		const { value } = e.target;
+		setType(value);
 	};
 
 	const handleGamesFilter = e => {
@@ -112,19 +103,16 @@ const ShowResults = ({ location }) => {
 				<aside className="Results__aside content__aside">
 					<h2 className="Results__title title">Filter:</h2>
 					<form className="ResultsFilter">
-						<DropDownOptions
-							text="What are you looking for?"
-							handleChange={changeType}
-							options={['users', 'games', 'offers']}
-							areChecked={type}
-						/>
 
-						{type.games && (
+					<RadioGroup name="type" values={["users", "games", "offers"]} handleClick={handleRadio} text="What are you looking for?"/>
+
+						{type === 'games' && (
 							<GamesFilterOptions
 								handleChange={handleGamesFilter}
 								areChecked={gameFilters}
 							/>
 						)}
+
 
 						<Button
 							className="Button--primary"
