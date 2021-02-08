@@ -1,6 +1,6 @@
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
+import React, { useState, useEffect,  useRef } from 'react';
 import { useAuthContext } from '../../../contexts/AuthContext';
 import {
 	getRandomElementFromArray,
